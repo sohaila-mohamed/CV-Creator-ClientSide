@@ -40,3 +40,31 @@
         margin: 0 0.8em 0 0.2em !important;
     }
 }
+
+
+/* Underline Trials */
+
+#home-link::before {
+    content: '';
+    position: absolute;
+    top: 3em;
+    left: 0;
+    background: #404040;
+    background-color: #6b82b7 !important;
+    width: 3.5em;
+    height: 0.1rem;
+    margin-left: 1rem;
+    margin-right: 0.5rem;
+    padding: 0.2rem;
+    border-radius: 1rem;
+    -webkit-transform: translateY(24px);
+    transform: translateY(24px);
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+#home-link:active::before {
+    -webkit-transform: translateY(18px);
+    transform: translateY(18px);
+    opacity: 1;
+}

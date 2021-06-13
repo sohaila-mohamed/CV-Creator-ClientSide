@@ -23,8 +23,8 @@ function Header() {
 
                         <Navbar.Collapse id="basic-navbar-nav ">
                             <Nav >
-                                <Nav.Link href="#home"  className="pr-3 nav-l">Home</Nav.Link>
-                                <Nav.Link href="#editor"  className="pr-3 nav-l">Resume Builder</Nav.Link>
+                                <Nav.Link href="#home"  className="pr-3 nav-l" id="home-link">Home</Nav.Link>
+                                <Nav.Link href="#editor"  className="pr-3 nav-l" >Resume Builder</Nav.Link>
                                 <Nav.Link href="#templates"  className="pr-3 nav-l">Templates</Nav.Link>
                                 <Nav.Link href="#tips"  className="pr-3 nav-l">Tips</Nav.Link>
                                 <Nav.Link href="#about-us"  className="pr-3 nav-l">About-us</Nav.Link>
