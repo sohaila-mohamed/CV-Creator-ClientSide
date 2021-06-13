@@ -6,7 +6,7 @@ function Header() {
         <Navbar bg="light" expand="lg" >
             <div className="container-fluid">
                 <div className="row m-0 p-0 justify-content-start w-100" >
-                    <div className="col-4">
+                    <div className="col-3">
                         <Navbar.Brand href="#home" className="m-lg-2">
                             <img
                                 src={logo}
@@ -19,18 +19,18 @@ function Header() {
                     <div className="col-2 offset-4 d-lg-none d-flex align-content-center justify-content-center">
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     </div>
-                    <div className="col-lg-6 col-12 offset-lg-0 offset-1 d-flex align-content-center ">
+                    <div className="col-lg-9 col-12  d-flex align-content-center ">
 
-                        <Navbar.Collapse id="basic-navbar-nav">
+                        <Navbar.Collapse id="basic-navbar-nav ">
                             <Nav >
-                                <Nav.Link href="#home" className="pr-4">Home</Nav.Link>
-                                <Nav.Link href="#link" className="pr-4">Link</Nav.Link>
-                                <Nav.Link href="#home" className="pr-4">Home</Nav.Link>
-                                <Nav.Link href="#link" className="pr-4">Link</Nav.Link>
-                                <Nav.Link href="#home" className="pr-4">Home</Nav.Link>
-                                <Nav.Link href="#home" className="pr-4 d-lg-none d-inline-block">Sign-IN</Nav.Link>
-                                <Nav.Link href="#home" className="pr-4 d-lg-none d-inline-block">Sign-UP</Nav.Link>
-                                <Button variant="primary" className="sign-btn d-lg-inline-block d-none">Sign-IN</Button>
+                                <Nav.Link href="#home"  className="pr-3 nav-l">Home</Nav.Link>
+                                <Nav.Link href="#editor"  className="pr-3 nav-l">Resume Builder</Nav.Link>
+                                <Nav.Link href="#templates"  className="pr-3 nav-l">Templates</Nav.Link>
+                                <Nav.Link href="#tips"  className="pr-3 nav-l">Tips</Nav.Link>
+                                <Nav.Link href="#about-us"  className="pr-3 nav-l">About-us</Nav.Link>
+                                <Nav.Link href="#sign-in"  className="pr-3 d-lg-none d-inline-block">Sign-IN</Nav.Link>
+                                <Nav.Link href="#sign-up"  className="pr-3 d-lg-none d-inline-block">Sign-UP</Nav.Link>
+                                <Button variant="primary"  className="sign-btn d-lg-inline-block d-none" id="filled-btn">Sign-IN</Button>
                                 <Button  className="sign-btn d-lg-inline-block d-none" id="outLined-btn">Sign-UP</Button>
                             
                             </Nav>
