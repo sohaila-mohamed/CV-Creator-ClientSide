@@ -17,7 +17,7 @@ function Header() {
               />
             </Navbar.Brand>
           </div>
-          <div className="col-2 offset-4 d-lg-none d-flex align-content-center justify-content-end">
+          <div className="col-2 offset-7 d-lg-none d-flex align-content-center justify-content-end">
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
           </div>
           <div className="col-lg-6 col-12 d-flex align-items-center ">
@@ -61,13 +61,13 @@ function Header() {
                 </NavLink>
                 <NavLink
                   to="/sign-in"
-                  className="pr-3 d-lg-none d-inline-block"
+                  className="pr-3 d-lg-none nav-link d-inline-block"
                 >
                   Sign-IN
                 </NavLink>
                 <NavLink
                   to="/sign-up"
-                  className="pr-3 d-lg-none d-inline-block"
+                  className="pr-3 d-lg-none nav-link d-inline-block"
                 >
                   Sign-UP
                 </NavLink>
