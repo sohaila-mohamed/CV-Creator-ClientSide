@@ -5,7 +5,7 @@ import "./Header.css";
 
 function Header() {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar className="shadow" bg="white" expand="lg">
       <div className="container-fluid">
         <div className="row m-0 p-0 justify-content-start w-100">
           <div className="col-3">
@@ -29,7 +29,7 @@ function Header() {
                   activeClassName="Active-link"
                   className="pr-3  nav-link position-relative"
                 >
-                   Home
+                  Home
                 </NavLink>
                 <NavLink
                   to="/Editor"
