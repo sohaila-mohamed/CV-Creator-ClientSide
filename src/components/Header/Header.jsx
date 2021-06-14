@@ -27,9 +27,9 @@ function Header() {
                   exact
                   to="/"
                   activeClassName="Active-link"
-                  className="pr-3 nav-link position-relative"
+                  className="pr-3  nav-link position-relative"
                 >
-                  Home
+                   Home
                 </NavLink>
                 <NavLink
                   to="/Editor"
@@ -41,21 +41,21 @@ function Header() {
                 <NavLink
                   to="/templates"
                   activeClassName="Active-link"
-                  className="pr-3 nav-link"
+                  className="pr-3 nav-link position-relative"
                 >
                   Templates
                 </NavLink>
                 <NavLink
                   to="/tips"
                   activeClassName="Active-link"
-                  className="pr-3 nav-link"
+                  className="pr-3 nav-link position-relative"
                 >
                   Tips
                 </NavLink>
                 <NavLink
                   to="/about-us"
                   activeClassName="Active-link"
-                  className="pr-3 nav-link"
+                  className="pr-3 nav-link position-relative"
                 >
                   About-us
                 </NavLink>
