@@ -22,7 +22,7 @@ function Header() {
           </div>
           <div className="col-lg-6 col-12 d-flex align-items-center ">
             <Navbar.Collapse id="basic-navbar-nav ">
-              <Nav className="d-flex align-content-center justify-content-center m-auto ">
+              <Nav className="d-flex align-content-center  m-auto ">
                 <NavLink
                   exact
                   to="/"
