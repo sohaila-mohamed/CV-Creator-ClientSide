@@ -15,12 +15,12 @@ function Header() {
               />
             </Navbar.Brand>
           </div>
-          <div className="col-2 offset-4 d-lg-none d-flex align-content-center justify-content-center">
+          <div className="col-2 offset-4 d-lg-none d-flex align-content-center justify-content-end">
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
           </div>
-          <div className="col-lg-9 col-12  d-flex align-content-center ">
+          <div className="col-lg-6 col-12 d-flex align-items-center ">
             <Navbar.Collapse id="basic-navbar-nav ">
-              <Nav>
+              <Nav className="d-flex align-content-center justify-content-center m-auto">
                 <Nav.Link href="#home" className="pr-3 nav-l" id="home-link">
                   Home
                 </Nav.Link>
@@ -48,21 +48,23 @@ function Header() {
                 >
                   Sign-UP
                 </Nav.Link>
-                <Button
-                  variant="primary"
-                  className="sign-btn d-lg-inline-block d-none"
-                  id="filled-btn"
-                >
-                  Sign-IN
-                </Button>
-                <Button
-                  className="sign-btn d-lg-inline-block d-none"
-                  id="outLined-btn"
-                >
-                  Sign-UP
-                </Button>
               </Nav>
             </Navbar.Collapse>
+          </div>
+          <div className="col-3  d-none d-lg-flex align-items-center justify-content-end">
+            <Button
+              variant="primary"
+              className="sign-btn d-lg-inline-block d-none"
+              id="filled-btn"
+            >
+              Sign-IN
+            </Button>
+            <Button
+              className="sign-btn d-lg-inline-block d-none"
+              id="outLined-btn"
+            >
+              Sign-UP
+            </Button>
           </div>
         </div>
       </div>
