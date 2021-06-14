@@ -1,6 +1,8 @@
 import { Navbar, Nav, Button } from "react-bootstrap";
 import logo from "../../images/logo.svg";
+import { NavLink } from "react-router-dom";
 import "./Header.css";
+
 function Header() {
   return (
     <Navbar bg="light" expand="lg">
@@ -20,34 +22,55 @@ function Header() {
           </div>
           <div className="col-lg-6 col-12 d-flex align-items-center ">
             <Navbar.Collapse id="basic-navbar-nav ">
-              <Nav className="d-flex align-content-center justify-content-center m-auto">
-                <Nav.Link href="#home" className="pr-3 nav-l" id="home-link">
+              <Nav className="d-flex align-content-center justify-content-center m-auto ">
+                <NavLink
+                  exact
+                  to="/"
+                  activeClassName="Active-link"
+                  className="pr-3 nav-link position-relative"
+                >
                   Home
-                </Nav.Link>
-                <Nav.Link href="#editor" className="pr-3 nav-l">
+                </NavLink>
+                <NavLink
+                  to="/Editor"
+                  activeClassName="Active-link"
+                  className="pr-3 nav-link position-relative"
+                >
                   Resume Builder
-                </Nav.Link>
-                <Nav.Link href="#templates" className="pr-3 nav-l">
+                </NavLink>
+                <NavLink
+                  to="/templates"
+                  activeClassName="Active-link"
+                  className="pr-3 nav-link"
+                >
                   Templates
-                </Nav.Link>
-                <Nav.Link href="#tips" className="pr-3 nav-l">
+                </NavLink>
+                <NavLink
+                  to="/tips"
+                  activeClassName="Active-link"
+                  className="pr-3 nav-link"
+                >
                   Tips
-                </Nav.Link>
-                <Nav.Link href="#about-us" className="pr-3 nav-l">
+                </NavLink>
+                <NavLink
+                  to="/about-us"
+                  activeClassName="Active-link"
+                  className="pr-3 nav-link"
+                >
                   About-us
-                </Nav.Link>
-                <Nav.Link
-                  href="#sign-in"
+                </NavLink>
+                <NavLink
+                  to="/sign-in"
                   className="pr-3 d-lg-none d-inline-block"
                 >
                   Sign-IN
-                </Nav.Link>
-                <Nav.Link
-                  href="#sign-up"
+                </NavLink>
+                <NavLink
+                  to="/sign-up"
                   className="pr-3 d-lg-none d-inline-block"
                 >
                   Sign-UP
-                </Nav.Link>
+                </NavLink>
               </Nav>
             </Navbar.Collapse>
           </div>
