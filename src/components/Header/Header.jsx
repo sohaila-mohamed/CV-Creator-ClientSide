@@ -1,4 +1,4 @@
-import { Navbar, Nav,Button } from 'react-bootstrap'
+import { Navbar, Nav, Button } from 'react-bootstrap'
 import logo from '../../images/logo.svg'
 import './Header.css';
 function Header() {
@@ -16,25 +16,30 @@ function Header() {
                         </Navbar.Brand>
 
                     </div>
-                    <div className="col-2 offset-4 d-lg-none d-flex align-content-center justify-content-center">
+                    <div className="col-2 offset-4 d-lg-none d-flex align-content-center justify-content-end">
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     </div>
-                    <div className="col-lg-9 col-12  d-flex align-content-center ">
+                    <div className="col-lg-6 col-12 d-flex align-items-center ">
 
-                        <Navbar.Collapse id="basic-navbar-nav ">
-                            <Nav >
-                                <Nav.Link href="#home"  className="pr-3 nav-l" id="home-link">Home</Nav.Link>
-                                <Nav.Link href="#editor"  className="pr-3 nav-l" >Resume Builder</Nav.Link>
-                                <Nav.Link href="#templates"  className="pr-3 nav-l">Templates</Nav.Link>
-                                <Nav.Link href="#tips"  className="pr-3 nav-l">Tips</Nav.Link>
-                                <Nav.Link href="#about-us"  className="pr-3 nav-l">About-us</Nav.Link>
-                                <Nav.Link href="#sign-in"  className="pr-3 d-lg-none d-inline-block">Sign-IN</Nav.Link>
-                                <Nav.Link href="#sign-up"  className="pr-3 d-lg-none d-inline-block">Sign-UP</Nav.Link>
-                                <Button variant="primary"  className="sign-btn d-lg-inline-block d-none" id="filled-btn">Sign-IN</Button>
-                                <Button  className="sign-btn d-lg-inline-block d-none" id="outLined-btn">Sign-UP</Button>
-                            
+                        <Navbar.Collapse id="basic-navbar-nav " >
+
+                            <Nav className="d-flex align-content-center justify-content-center m-auto">
+                                <Nav.Link href="#home" className="pr-3 nav-l" id="home-link">Home</Nav.Link>
+                                <Nav.Link href="#editor" className="pr-3 nav-l" >Resume Builder</Nav.Link>
+                                <Nav.Link href="#templates" className="pr-3 nav-l">Templates</Nav.Link>
+                                <Nav.Link href="#tips" className="pr-3 nav-l">Tips</Nav.Link>
+                                <Nav.Link href="#about-us" className="pr-3 nav-l">About-us</Nav.Link>
+                                <Nav.Link href="#sign-in" className="pr-3 d-lg-none d-inline-block">Sign-IN</Nav.Link>
+                                <Nav.Link href="#sign-up" className="pr-3 d-lg-none d-inline-block">Sign-UP</Nav.Link>
+
+
                             </Nav>
                         </Navbar.Collapse>
+
+                    </div>
+                    <div className="col-3  d-none d-lg-flex align-items-center justify-content-end">
+                        <Button variant="primary" className="sign-btn d-lg-inline-block d-none" id="filled-btn">Sign-IN</Button>
+                        <Button className="sign-btn d-lg-inline-block d-none" id="outLined-btn">Sign-UP</Button>
 
                     </div>
 

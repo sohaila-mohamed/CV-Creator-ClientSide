@@ -4,10 +4,10 @@
 
 .sign-btn {
     width: 6rem !important;
-    height: auto !important;
-    margin: 0 1em 0 12.5em;
-    padding: 0.16em 0.18em 0.16em 0.19em !important;
-    border-radius: 0.9em !important;
+    height: 2.3rem !important;
+    margin: 0 0em 0 1em;
+    padding: 0em 0em 0em 0em !important;
+    border-radius: 1em !important;
     background-color: #6b82b7 !important;
     border: 0px !important;
     font-size: 0.9rem !important;
@@ -20,7 +20,7 @@
 }
 
 #outLined-btn {
-    margin: 0 3em 0 1em;
+    /* margin: 0 3em 0 1em; */
     background-color: transparent !important;
     border: 1px solid #6b82b7 !important;
     color: #6b82b7 !important;
