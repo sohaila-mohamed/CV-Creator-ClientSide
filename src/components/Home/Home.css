@@ -2,6 +2,84 @@
   font-family: Cabin;
   font-style: normal;
   font-weight: bold;
-  font-size: 35px;
+  font-size: 2.1rem;
   width: 30rem;
+}
+.font-textt {
+  width: 44ch; /*24rem;*/
+  font-family: Roboto;
+  font-style: normal;
+}
+.card-center-text {
+  top: 5rem !important;
+  left: 3.5rem !important;
+}
+.btn-custom {
+  border-radius: 0.5em !important;
+  background-color: #6b82b7 !important;
+  border-color: transparent !important;
+  margin-right: 1.5em;
+  margin-top: 1.5em;
+}
+.btn-custon-outline {
+  border-radius: 0.5em !important;
+  background-color: transparent !important;
+  border-color: #6b82b7 !important;
+  margin-top: 1.5em;
+}
+.text-color {
+  color: #6b82b7 !important;
+}
+@media (max-width: 991.98px) {
+  .font {
+    font-size: 1.5rem;
+    width: 25rem;
+  }
+  .font-textt {
+    width: 38ch;
+  }
+  .card-center-text {
+    top: 3rem !important;
+    left: 3rem !important;
+  }
+  .btn-custom,
+  .btn-custon-outline {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 767.98px) {
+  .font {
+    width: 17rem;
+    font-size: 1.2rem;
+  }
+  .font-textt {
+    width: 33ch;
+    font-size: 0.8rem;
+  }
+  .card-center-text {
+    top: 2.5rem !important;
+    left: 2.5rem !important;
+  }
+  .btn-custom,
+  .btn-custon-outline {
+    font-size: 0.8rem !important;
+  }
+}
+@media (max-width: 575.98px) {
+  .font {
+    width: 15rem;
+    font-size: 1rem;
+  }
+  .font-textt {
+    display: none;
+  }
+  .card-center-text {
+    top: 1.5rem !important;
+    left: 1.5rem !important;
+  }
+  .btn-custom,
+  .btn-custon-outline {
+    font-size: 0.5rem !important;
+    margin-top: 0.2em;
+  }
 }
