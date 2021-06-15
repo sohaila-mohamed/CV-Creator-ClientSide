@@ -1,9 +1,17 @@
 import { Navbar, Nav, Button } from "react-bootstrap";
 import logo from "../../images/logo.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import "./Header.css";
 
 function Header() {
+
+  const history = useHistory();
+
+  function handleSignUp() {
+    history.push("/sign-up");
+  }
+
+
   return (
     <Navbar className="shadow" bg="white" expand="lg">
       <div className="container-fluid">
@@ -85,6 +93,7 @@ function Header() {
             <Button
               className="sign-btn d-lg-inline-block d-none"
               id="outLined-btn"
+              onClick={handleSignUp}
             >
               Sign-UP
             </Button>
