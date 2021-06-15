@@ -19,7 +19,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="*" render={() => <p>404</p>} />
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }

@@ -1,145 +1,176 @@
 .font {
-  font-family: Cabin;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 2.1rem;
-  width: 30rem;
+    font-family: Cabin;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2.1rem;
+    width: 30rem;
 }
+
 .font-textt {
-  width: 44ch; /*24rem;*/
-  font-family: Roboto;
-  font-style: normal;
+    width: 44ch;
+    font-family: Roboto;
+    font-style: normal;
 }
+
 .card-center-text {
-  top: 5rem !important;
-  left: 3.5rem !important;
+    top: 5rem !important;
+    left: 3.5rem !important;
 }
+
 .btn-custom {
-  border-radius: 0.5em !important;
-  background-color: #6b82b7 !important;
-  border-color: transparent !important;
-  margin-right: 1.5em;
-  margin-top: 1.5em;
+    border-radius: 0.5em !important;
+    background-color: #6b82b7 !important;
+    border-color: transparent !important;
+    margin-right: 1.5em;
+    margin-top: 1.5em;
 }
+
 .btn-custon-outline {
-  border-radius: 0.5em !important;
-  background-color: transparent !important;
-  border-color: #6b82b7 !important;
-  margin-top: 1.5em;
+    border-radius: 0.5em !important;
+    background-color: transparent !important;
+    border-color: #6b82b7 !important;
+    margin-top: 1.5em;
 }
+
 .text-color {
-  color: #6b82b7 !important;
+    color: #6b82b7 !important;
 }
 
 .Floating-card {
-  border-radius: 1em !important;
-  background-color: white !important;
-  border: 1px solid #6b82b7 !important;
-  margin-right: 4em;
-  font-weight: bold;
-  text-align: center;
-  height: 8em;
-  width: 16ch;
+    border-radius: 1em !important;
+    background-color: white !important;
+    border: 1px solid #6b82b7 !important;
+    margin-right: 4rem;
+    font-weight: bold;
+    text-align: center;
+    height: 8em;
+    width: 16ch;
 }
-/* #f-card-1:hover,
-#f-card-2:hover,
-#f-card-3:hover {
-  width: 10em;
-  -webkit-transform: translateY(15px);
-  transform: translateY(15px);
-} */
-#f-card-1 {
-  position: absolute;
-  top: 13.5em;
-  left: 4em;
+
+.cards-container {
+    height: 15rem !important;
 }
-#f-card-2 {
-  position: absolute;
-  top: 10.5em;
-  left: 4em;
+
+#heroimg {
+    max-height: 45rem;
 }
-#f-card-3 {
-  position: absolute;
-  top: 8.5em;
-  left: 4em;
-}
+
 .img-position {
-  position: absolute;
-  top: 7em;
-  left: 3.5em;
+    position: absolute;
+    top: 7em;
+    left: 3.5em;
 }
+
 @media (max-width: 991.98px) {
-  .Floating-card {
-    width: 13ch;
-    font-size: 0.9rem;
-  }
-  .img-position {
-    left: 2.5em;
-  }
-  /* #f-card-1 {
-    top: 33.7em;
-  }
-  #f-card-2 {
-    top: 31.5em;
-    left: 17em;
-  }
-  #f-card-3 {
-    top: 28.5em;
-    left: 30em;
-  } */
-  .font {
-    font-size: 1.5rem;
-    width: 25rem;
-  }
-  .font-textt {
-    width: 38ch;
-  }
-  .card-center-text {
-    top: 3rem !important;
-    left: 3rem !important;
-  }
-  .btn-custom,
-  .btn-custon-outline {
-    font-size: 0.8rem;
-  }
+    .Floating-card {
+        width: 15ch;
+        font-size: 0.8rem;
+    }
+    .img-position {
+        left: 2.5em;
+    }
+    .cards-container {
+        height: 12rem !important;
+    }
+    .font {
+        font-size: 1.5rem;
+        width: 25rem;
+    }
+    .font-textt {
+        width: 38ch;
+    }
+    .card-center-text {
+        top: 3rem !important;
+        left: 3rem !important;
+    }
+    .btn-custom,
+    .btn-custon-outline {
+        font-size: 0.8rem;
+    }
 }
+
 @media (max-width: 767.98px) {
-  .font {
-    width: 17rem;
-    font-size: 1.2rem;
-  }
-  .font-textt {
-    width: 33ch;
-    font-size: 0.8rem;
-  }
-  .card-center-text {
-    top: 2.5rem !important;
-    left: 2.5rem !important;
-  }
-  .btn-custom,
-  .btn-custon-outline {
-    font-size: 0.8rem !important;
-  }
+    .font {
+        width: 17rem;
+        font-size: 1.1rem;
+    }
+    .font-textt {
+        width: 38ch;
+        font-size: 0.75rem;
+    }
+    .card-center-text {
+        top: 2.5rem !important;
+        left: 2.5rem !important;
+    }
+    .btn-custom,
+    .btn-custon-outline {
+        margin-top: -0.6rem;
+        font-size: 0.7rem !important;
+    }
+    .Floating-card {
+        width: 16ch;
+        font-size: 0.7rem;
+        margin-right: 1.5rem !important;
+    }
+    .img-position {
+        left: 2.5em;
+    }
+    .cards-container {
+        margin-top: 2rem;
+        height: 10rem !important;
+    }
 }
+
+@media (max-width:650px) {
+    .Floating-card {
+        width: 16ch;
+        font-size: 0.65rem;
+        margin-right: 1.5rem !important;
+    }
+    .cards-container {
+        margin-top: 2rem;
+        height: 7rem !important;
+    }
+}
+
 @media (max-width: 575.98px) {
-  .font {
-    width: 13rem;
-    font-size: 0.7rem;
-  }
-  .font-textt {
-    display: none;
-  }
-  .card-center-text {
-    top: 1.2rem !important;
-    left: 1.2rem !important;
-  }
-  .btn-custom,
-  .btn-custon-outline {
-    font-size: 0.5rem !important;
-    margin-top: 0.3em;
-  }
-  .btn-custon-outline {
-    margin-top: 0.8em !important;
-    display: block !important;
-  }
+    .font {
+        width: 13rem;
+        font-size: 0.8rem;
+    }
+    .font-textt {
+        font-size: 0.7rem;
+        max-width: 30ch;
+    }
+    .card-center-text {
+        top: 1.2rem !important;
+        left: 1.2rem !important;
+    }
+    .btn-custom,
+    .btn-custon-outline {
+        font-size: 0.5rem !important;
+        margin-top: 0.3em;
+    }
+    .cards-container {
+        display: none !important;
+    }
+}
+
+@media (max-width: 450px) {
+    .font {
+        width: 10rem;
+        font-size: 0.7rem;
+    }
+    .font-textt {
+        font-size: 0.6rem;
+        max-width: 28ch;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .btn-custom,
+    .btn-custon-outline {
+        font-size: 0.4rem !important;
+        margin-top: 0.2em;
+    }
 }

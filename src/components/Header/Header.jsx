@@ -4,34 +4,6 @@ import { NavLink } from "react-router-dom";
 import "./Header.css";
 
 function Header() {
-<<<<<<< HEAD
-    return (
-        <Navbar className="shadow" bg="white" expand="lg">
-            <div className="container-fluid">
-                <div className="row m-0 p-0 justify-content-start w-100">
-                    <div className="col-3">
-                        <Navbar.Brand href="#home" className="m-lg-2">
-                            <img
-                                src={logo}
-                                className="d-inline-block align-center "
-                                id="Logo"
-                            />
-                        </Navbar.Brand>
-                    </div>
-                    <div className="col-2 offset-7 d-lg-none d-flex align-content-center justify-content-end">
-                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    </div>
-                    <div className="col-lg-6 col-12 d-flex align-items-center ">
-                        <Navbar.Collapse id="basic-navbar-nav ">
-                            <Nav className="d-flex align-content-center  m-auto ">
-                                <NavLink
-                                    exact
-                                    to="/"
-                                    activeClassName="Active-link"
-                                    className="pr-3  nav-link position-relative"
-                                >
-                                    Home
-=======
   return (
     <Navbar className="shadow" style={{ zIndex: 999 }} bg="white" expand="lg">
       <div className="container-fluid">
@@ -58,7 +30,6 @@ function Header() {
                   className="pr-3  nav-link position-relative"
                 >
                   Home
->>>>>>> fe901176739952dda5f10c5118030a826b000cf4
                 </NavLink>
                                 <NavLink
                                     to="/Editor"

@@ -10,7 +10,8 @@ function Home() {
     <Fragment>
       <div className="card position-relative">
         <img src={hero} alt="hero" className="img-fluid w-100" id="heroimg" />
-        <div className="card-img-overlay card-center-text p-0">
+        <div className="card-img-overlay card-center-text p-0 d-flex">
+          <div className="align-self-start">
           <p className="font">
             Build The Perfect Resume With Our Online Resume Maker
           </p>
@@ -25,26 +26,30 @@ function Home() {
             Show tempaltes{" "}
             <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
           </Button>
-          <div className="position-absolute d-flex">
+          </div>
+          
+          
+          
+          <div className="position-absolute d-lg-flex cards-container align-self-end  d-md-flex d-sm-flex d-none " >
             <div
-              className="Floating-card p-4 shadow position-relative"
-              id="f-card-1"
+              className="Floating-card p-4 shadow position-relative align-self-end"
+            
             >
               <p>Create Multiple Versions</p>
               <img src={verified} alt="verified" className="img-position" />
             </div>
             <div
-              className="Floating-card p-4 shadow position-relative"
-              id="f-card-2"
+              className="Floating-card p-4 shadow position-relative align-self-center"
+            
             >
               <p>Custom Layout</p>
               <img src={verified} alt="verified" className="img-position" />
             </div>
             <div
-              className="Floating-card p-4 shadow position-relative"
-              id="f-card-3"
+              className="Floating-card p-4 shadow position-relative align-self-start"
+            
             >
-              <p //style={{ width: "6ch" }}
+              <p 
               >
                 3 Page CV
               </p>
