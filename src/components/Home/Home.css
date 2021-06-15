@@ -30,6 +30,33 @@
 .text-color {
   color: #6b82b7 !important;
 }
+
+.Floating-card {
+  border-radius: 1em !important;
+  background-color: white !important;
+  border: 1px solid #6b82b7 !important;
+  margin-right: 4em;
+  font-weight: bold;
+  width: 16ch;
+  text-align: center;
+  height: 8em;
+}
+#f-card-1 {
+  position: absolute;
+  top: 43.5em;
+  left: 4em;
+}
+#f-card-2 {
+  position: absolute;
+  top: 41.5em;
+  left: 20em;
+}
+#f-card-3 {
+  position: absolute;
+  top: 38.5em;
+  left: 35em;
+}
+/* git push origin adding-home */
 @media (max-width: 991.98px) {
   .font {
     font-size: 1.5rem;

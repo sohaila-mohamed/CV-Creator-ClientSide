@@ -8,7 +8,7 @@ function Home() {
   return (
     <Fragment>
       <div className="card position-relative">
-        <img src={hero} alt="hero" className="img-fluid w-100" />
+        <img src={hero} alt="hero" className="img-fluid w-100" id="heroimg" />
         <div className="card-img-overlay card-center-text p-0">
           <p className="font">
             Build The Perfect Resume With Our Online Resume Maker
@@ -24,6 +24,17 @@ function Home() {
             Show tempaltes{" "}
             <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
           </Button>
+        </div>
+        <div className="position-absolute d-flex">
+          <div className="Floating-card p-4 shadow" id="f-card-1">
+            Create Multiple Versions
+          </div>
+          <div className="Floating-card p-4 shadow" id="f-card-2">
+            Custom Layout
+          </div>
+          <div className="Floating-card p-4 shadow" id="f-card-3">
+            3 Page CV
+          </div>
         </div>
       </div>
     </Fragment>
