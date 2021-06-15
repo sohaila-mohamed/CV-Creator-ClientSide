@@ -67,19 +67,23 @@
 }
 @media (max-width: 575.98px) {
   .font {
-    width: 15rem;
-    font-size: 1rem;
+    width: 13rem;
+    font-size: 0.7rem;
   }
   .font-textt {
     display: none;
   }
   .card-center-text {
-    top: 1.5rem !important;
-    left: 1.5rem !important;
+    top: 1.2rem !important;
+    left: 1.2rem !important;
   }
   .btn-custom,
   .btn-custon-outline {
     font-size: 0.5rem !important;
-    margin-top: 0.2em;
+    margin-top: 0.3em;
+  }
+  .btn-custon-outline {
+    margin-top: 0.8em !important;
+    display: block !important;
   }
 }

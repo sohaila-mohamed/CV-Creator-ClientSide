@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 import { Button } from "react-bootstrap";
 import hero from "../../images/All.svg";
-import arrow from "../../images/right-arrow 1.svg";
-import arrowWhite from "../../images/arrow-white.svg";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Home.css";
 function Home() {
   return (
@@ -18,10 +18,11 @@ function Home() {
             resume maker to create the customized resume.
           </p>
           <Button className="btn-custom text-white">
-            Build resume <img src={arrowWhite} alt="arrow" />
+            Build resume <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
           </Button>
           <Button className="btn-custon-outline text-color">
-            Show tempaltes <img src={arrow} alt="arrow" />
+            Show tempaltes{" "}
+            <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
           </Button>
         </div>
       </div>
