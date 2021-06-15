@@ -37,27 +37,56 @@
   border: 1px solid #6b82b7 !important;
   margin-right: 4em;
   font-weight: bold;
-  width: 16ch;
   text-align: center;
   height: 8em;
+  width: 16ch;
 }
+/* #f-card-1:hover,
+#f-card-2:hover,
+#f-card-3:hover {
+  width: 10em;
+  -webkit-transform: translateY(15px);
+  transform: translateY(15px);
+} */
 #f-card-1 {
   position: absolute;
-  top: 43.5em;
+  top: 13.5em;
   left: 4em;
 }
 #f-card-2 {
   position: absolute;
-  top: 41.5em;
-  left: 20em;
+  top: 10.5em;
+  left: 4em;
 }
 #f-card-3 {
   position: absolute;
-  top: 38.5em;
-  left: 35em;
+  top: 8.5em;
+  left: 4em;
 }
-/* git push origin adding-home */
+.img-position {
+  position: absolute;
+  top: 7em;
+  left: 3.5em;
+}
 @media (max-width: 991.98px) {
+  .Floating-card {
+    width: 13ch;
+    font-size: 0.9rem;
+  }
+  .img-position {
+    left: 2.5em;
+  }
+  /* #f-card-1 {
+    top: 33.7em;
+  }
+  #f-card-2 {
+    top: 31.5em;
+    left: 17em;
+  }
+  #f-card-3 {
+    top: 28.5em;
+    left: 30em;
+  } */
   .font {
     font-size: 1.5rem;
     width: 25rem;

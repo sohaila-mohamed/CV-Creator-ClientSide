@@ -4,6 +4,7 @@ import hero from "../../images/All.svg";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Home.css";
+import verified from "../../images/verified.svg";
 function Home() {
   return (
     <Fragment>
@@ -24,16 +25,31 @@ function Home() {
             Show tempaltes{" "}
             <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
           </Button>
-        </div>
-        <div className="position-absolute d-flex">
-          <div className="Floating-card p-4 shadow" id="f-card-1">
-            Create Multiple Versions
-          </div>
-          <div className="Floating-card p-4 shadow" id="f-card-2">
-            Custom Layout
-          </div>
-          <div className="Floating-card p-4 shadow" id="f-card-3">
-            3 Page CV
+          <div className="position-absolute d-flex">
+            <div
+              className="Floating-card p-4 shadow position-relative"
+              id="f-card-1"
+            >
+              <p>Create Multiple Versions</p>
+              <img src={verified} alt="verified" className="img-position" />
+            </div>
+            <div
+              className="Floating-card p-4 shadow position-relative"
+              id="f-card-2"
+            >
+              <p>Custom Layout</p>
+              <img src={verified} alt="verified" className="img-position" />
+            </div>
+            <div
+              className="Floating-card p-4 shadow position-relative"
+              id="f-card-3"
+            >
+              <p //style={{ width: "6ch" }}
+              >
+                3 Page CV
+              </p>
+              <img src={verified} alt="verified" className="img-position" />
+            </div>
           </div>
         </div>
       </div>
