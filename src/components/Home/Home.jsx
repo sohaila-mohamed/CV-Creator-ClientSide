@@ -5,7 +5,6 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Home.css";
 import verified from "../../images/verified.svg";
-<<<<<<< HEAD
 import descImg_1 from '../../images/description/description-img1.png';
 import number_01 from '../../images/description/01.png';
 import number_02 from '../../images/description/02.svg';
@@ -14,9 +13,7 @@ import number_04 from '../../images/description/04.svg';
 import './description';
 import { registration_head, registration_text, categories_text, categories_head, content_head, content_text, export_head, export_text } from "./description";
 
-=======
 import Category from "./Categories/Category";
->>>>>>> b618b667de6512798e01f40aaa5f2dab0403ded6
 function Home() {
 
   var description_items = [
