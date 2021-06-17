@@ -33,3 +33,6 @@
 .Category-card-color:hover .overlay-hover {
   opacity: 1;
 }
+.card-text {
+  width: 24ch !important;
+}
