@@ -18,7 +18,7 @@ function App() {
         <Route path="/about-us" render={() => <p>About</p>} />
         <Route path="/sign-in" component={AuthWrapper} />
         <Route path="/sign-up" component={AuthWrapper} />
-        <Route exact path="/" render={() => <p>Home</p>} />
+        <Route exact path="/" component={Home} />
         <Route path="*" render={() => <p>404</p>} />
       </Switch>
       <Footer />
