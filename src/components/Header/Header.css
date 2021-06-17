@@ -1,13 +1,15 @@
 #Logo {
-    width: 10rem;
+    max-width: 9rem;
+    width: 100%;
+    min-width: 8rem;
 }
 
 .sign-btn {
     width: 6rem !important;
-    height: auto !important;
-    margin: 0 1em 0 12.5em;
-    padding: 0.16em 0.18em 0.16em 0.19em !important;
-    border-radius: 0.9em !important;
+    height: 2.3rem !important;
+    margin: 0 0em 0 1em;
+    padding: 0em 0em 0em 0em !important;
+    border-radius: 1em !important;
     background-color: #6b82b7 !important;
     border: 0px !important;
     font-size: 0.9rem !important;
@@ -20,7 +22,7 @@
 }
 
 #outLined-btn {
-    margin: 0 3em 0 1em;
+    /* margin: 0 3em 0 1em; */
     background-color: transparent !important;
     border: 1px solid #6b82b7 !important;
     color: #6b82b7 !important;
@@ -32,7 +34,23 @@
     color: white !important;
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1296px) {
+.Active-link::before {
+    content: " ";
+    position: absolute;
+    bottom: 34%;
+    left: 0%;
+    width: 100%;
+    padding: 0.2em;
+    display: inline-block;
+    background-color: #6b82b8;
+    border-radius: 3.2em 3.2em 0em 0em;
+    text-align: center;
+    -webkit-transform: translateY(35px);
+    transform: translateY(35px);
+    opacity: 1;
+}
+
+@media only screen and (min-width: 991.98px) and (max-width: 1296px) {
     .sign-btn {
         margin: 0 0.7em 0 0.5em !important;
     }
@@ -41,30 +59,8 @@
     }
 }
 
-
-/* Underline Trials */
-
-#home-link::before {
-    content: '';
-    position: absolute;
-    top: 3em;
-    left: 0;
-    background: #404040;
-    background-color: #6b82b7 !important;
-    width: 3.5em;
-    height: 0.1rem;
-    margin-left: 1rem;
-    margin-right: 0.5rem;
-    padding: 0.2rem;
-    border-radius: 1rem;
-    -webkit-transform: translateY(24px);
-    transform: translateY(24px);
-    opacity: 0;
-    transition: 0.3s ease;
-}
-
-#home-link:active::before {
-    -webkit-transform: translateY(18px);
-    transform: translateY(18px);
-    opacity: 1;
+@media (max-width: 991.98px) {
+    .Active-link::before {
+        content: none !important;
+    }
 }

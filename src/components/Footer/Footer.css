@@ -1,0 +1,29 @@
+#Footer {
+  /* position: absolute;
+  bottom: 0; */
+  background-color:/* red;*/ #ecebeb;
+  width: 100%;
+  /* height: 5rem; */
+}
+#Footer-logo {
+  max-width: 8rem;
+  width: 100%;
+  min-width: 6rem;
+}
+.Footer-a,
+.Footer-a:hover {
+  text-decoration: none;
+  color: #000000;
+}
+.Footer-a:hover {
+  color: grey;
+}
+.icon {
+  width: 1.2rem;
+}
+
+@media (max-width: 744px) {
+  .custom-style {
+    display: block !important;
+  }
+}
