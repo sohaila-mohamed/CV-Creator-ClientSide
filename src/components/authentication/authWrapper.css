@@ -8,6 +8,7 @@
     background-color: rgb(255, 255, 255);
     display: flex;
     box-sizing: border-box;
+    z-index: 1000;
 }
 .auth-container > div
 {
