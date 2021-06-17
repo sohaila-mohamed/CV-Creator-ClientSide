@@ -195,3 +195,9 @@ body {
     padding: 0.5em 3em !important;
   }
 }
+
+@media screen and (max-width: 445px){
+    .Btn {
+        padding: 0.5em 1.3em !important;
+      } 
+}
