@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Home.css";
 import verified from "../../images/verified.svg";
 import Category from "./Categories/Category";
+import Plan from "./Plans/Plan";
 function Home() {
   return (
     <Fragment>
@@ -47,6 +48,7 @@ function Home() {
         </div>
       </div>
       <Category />
+      <Plan />
     </Fragment>
   );
 }
