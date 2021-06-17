@@ -10,6 +10,9 @@ function Header() {
   function handleSignUp() {
     history.push("/sign-up");
   }
+  function handleSignIn() {
+    history.push("/sign-in");
+  }
 
 
   return (
@@ -87,6 +90,7 @@ function Header() {
               variant="primary"
               className="sign-btn d-lg-inline-block d-none"
               id="filled-btn"
+              onClick={handleSignIn}
             >
               Sign-IN
             </Button>

@@ -40,34 +40,15 @@
     box-shadow: 0 0 70px 0px rgb(204, 204, 204);
     padding: 10px 0;
 }
-.auth-indecator
-{
-    padding: 0 30px;
-    /* roboto -> font family should be Roboto */
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 25px;
-    color: #6B82B7;
-    font-weight: bold;
-    position: relative;
-}
-.auth-indecator::before
-{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 7px;
-    background-color: #6B82B7;
-    border-bottom-right-radius: 5px;
-    border-top-right-radius: 5px;
-}
+
 
 
 /* the form it self  */
 form
 {
     padding: 20px 30px 0 30px;
+    position: relative;
+    
 }
 .auth-form-group
 {
@@ -93,6 +74,10 @@ form
     display: flex;
     justify-content: space-between;
 }
+.auth-names .auth-form-group
+{
+    width: 45%;
+}
 
 .sign-up-btn
 {
@@ -104,6 +89,16 @@ form
     background-color: #6B82B7;
     color: white;
     margin: 10px 0;
+    transition: 0.5s;
+}
+.sign-up-btn:disabled
+{
+    background-color: #8fa6db;
+    cursor: not-allowed;
+}
+.hover-effect:hover
+{
+    transform: scale(0.98);
 }
 .sign-in-link
 {
@@ -113,7 +108,13 @@ form
 .sign-in-link span
 {
     color: #6B82B7;
+    cursor: pointer;
 }
+.sign-in-link span:hover
+{
+   border-bottom: 1px solid #6B82B7;
+}
+
 .sperator
 {
     width: 100%;
@@ -125,4 +126,10 @@ form
     font-size: 12px;
     text-align: center;
     padding: 15px 30px 0 30px;
+}
+
+
+.auth-form-hidden
+{
+    visibility: hidden;
 }
