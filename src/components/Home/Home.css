@@ -51,9 +51,10 @@
     height: 15rem !important;
 }
 
-#heroimg {
+
+/* #heroimg {
     max-height: 45rem;
-}
+} */
 
 .img-position {
     position: absolute;
@@ -227,7 +228,7 @@
     }
 }
 
-@media (max-width:650px) {
+@media (max-width: 650px) {
     .Floating-card {
         width: 16ch;
         font-size: 0.65rem;
@@ -240,7 +241,7 @@
 }
 
 @media (max-width: 575.98px) {
-    .font {
+    <<<<<<< HEAD .font {
         width: 13rem;
         font-size: 0.8rem;
     }
@@ -285,6 +286,27 @@
     .img-left {
         margin: 2rem 0rem 0rem 3rem;
     }
+    =======.font {
+        width: 13rem;
+        font-size: 0.8rem;
+    }
+    .font-textt {
+        font-size: 0.7rem;
+        max-width: 30ch;
+    }
+    .card-center-text {
+        top: 1.2rem !important;
+        left: 1.2rem !important;
+    }
+    .btn-custom,
+    .btn-custon-outline {
+        font-size: 0.5rem !important;
+        margin-top: 0.3em;
+    }
+    .cards-container {
+        display: none !important;
+    }
+    >>>>>>>b618b667de6512798e01f40aaa5f2dab0403ded6
 }
 
 @media (max-width: 450px) {
