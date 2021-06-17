@@ -16,7 +16,7 @@ function Header() {
 
 
   return (
-    <Navbar className="shadow" bg="white" expand="lg">
+    <Navbar className="shadow" style={{ zIndex: 999 }} bg="white" expand="lg">
       <div className="container-fluid">
         <div className="row m-0 p-0 justify-content-start w-100">
           <div className="col-3">
