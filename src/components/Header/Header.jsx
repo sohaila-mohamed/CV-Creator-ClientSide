@@ -31,68 +31,68 @@ function Header() {
                 >
                   Home
                 </NavLink>
-                                <NavLink
-                                    to="/Editor"
-                                    activeClassName="Active-link"
-                                    className="pr-3 nav-link position-relative"
-                                >
-                                    Resume Builder
+                <NavLink
+                  to="/Editor"
+                  activeClassName="Active-link"
+                  className="pr-3 nav-link position-relative"
+                >
+                  Resume Builder
                 </NavLink>
-                                <NavLink
-                                    to="/templates"
-                                    activeClassName="Active-link"
-                                    className="pr-3 nav-link position-relative"
-                                >
-                                    Templates
+                <NavLink
+                  to="/templates"
+                  activeClassName="Active-link"
+                  className="pr-3 nav-link position-relative"
+                >
+                  Templates
                 </NavLink>
-                                <NavLink
-                                    to="/tips"
-                                    activeClassName="Active-link"
-                                    className="pr-3 nav-link position-relative"
-                                >
-                                    Tips
+                <NavLink
+                  to="/tips"
+                  activeClassName="Active-link"
+                  className="pr-3 nav-link position-relative"
+                >
+                  Tips
                 </NavLink>
-                                <NavLink
-                                    to="/about-us"
-                                    activeClassName="Active-link"
-                                    className="pr-3 nav-link position-relative"
-                                >
-                                    About-us
+                <NavLink
+                  to="/about-us"
+                  activeClassName="Active-link"
+                  className="pr-3 nav-link position-relative"
+                >
+                  About-us
                 </NavLink>
-                                <NavLink
-                                    to="/sign-in"
-                                    className="pr-3 d-lg-none nav-link d-inline-block"
-                                >
-                                    Sign-IN
+                <NavLink
+                  to="/sign-in"
+                  className="pr-3 d-lg-none nav-link d-inline-block"
+                >
+                  Sign-IN
                 </NavLink>
-                                <NavLink
-                                    to="/sign-up"
-                                    className="pr-3 d-lg-none nav-link d-inline-block"
-                                >
-                                    Sign-UP
+                <NavLink
+                  to="/sign-up"
+                  className="pr-3 d-lg-none nav-link d-inline-block"
+                >
+                  Sign-UP
                 </NavLink>
-                            </Nav>
-                        </Navbar.Collapse>
-                    </div>
-                    <div className="col-3  d-none d-lg-flex align-items-center justify-content-end">
-                        <Button
-                            variant="primary"
-                            className="sign-btn d-lg-inline-block d-none"
-                            id="filled-btn"
-                        >
-                            Sign-IN
+              </Nav>
+            </Navbar.Collapse>
+          </div>
+          <div className="col-3  d-none d-lg-flex align-items-center justify-content-end">
+            <Button
+              variant="primary"
+              className="sign-btn d-lg-inline-block d-none"
+              id="filled-btn"
+            >
+              Sign-IN
             </Button>
-                        <Button
-                            className="sign-btn d-lg-inline-block d-none"
-                            id="outLined-btn"
-                        >
-                            Sign-UP
+            <Button
+              className="sign-btn d-lg-inline-block d-none"
+              id="outLined-btn"
+            >
+              Sign-UP
             </Button>
-                    </div>
-                </div>
-            </div>
-        </Navbar>
-    );
+          </div>
+        </div>
+      </div>
+    </Navbar>
+  );
 }
 
 export default Header;
