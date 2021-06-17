@@ -14,6 +14,7 @@ import './description';
 import { registration_head, registration_text, categories_text, categories_head, content_head, content_text, export_head, export_text } from "./description";
 
 import Category from "./Categories/Category";
+import Plan from "./Plans/Plan";
 function Home() {
 
   var description_items = [
@@ -138,6 +139,7 @@ function Home() {
         </Container>
       </div>
       <Category />
+      <Plan />
     </Fragment>
   );
 }
