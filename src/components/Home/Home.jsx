@@ -21,6 +21,52 @@ function Home() {
     { image: number_03, title: content_head, text: content_text },
     { image: number_04, title: export_head, text: export_text },
   ];
+  var leftSection = (item) => (<Fragment>
+    <div className="col-lg-8 col-md-8 col-sm-8 col-12 home-desc-sideText ">
+      <h1 >
+        {item.title}
+      </h1>
+      <span>
+        {item.text}
+      </span>
+
+    </div>
+    <div className="col-lg-4 col-md-4 col-sm-4 col-8 offset-2 offset-lg-0 offset-md-0  offset-sm-0 ">
+      <img src={descImg_1} className="home-desc-sideImg  "></img>
+
+    </div>
+  </Fragment>);
+  var rightSection = (item) => (<Fragment>
+
+    <div className="col-lg-4 col-md-4 col-sm-4 col-8 offset-1 offset-lg-0 offset-md-0  offset-sm-0 ">
+      <img src={descImg_1} className="home-desc-sideImg img-left "></img>
+
+    </div>
+
+    <div className="col-lg-8 col-md-8 col-sm-8 col-12 home-desc-sideText sideText-text-right ">
+      <h1 >
+        {item.title}
+      </h1>
+      <span>
+        {item.text}
+      </span>
+
+    </div>
+
+  </Fragment>);
+  var descriptionList = description_items.map((item, index) => (
+    <div className="home-desc-item">
+      <div className="row m-0 p-0">
+        <div className="col-12  m-0 position-relative  ">
+          <img src={item.image} className="home-desc-numbers " />
+        </div>
+      </div>
+      <div className="row m-0 home-desc-line position-relative">
+        {index % 2 == 0 ? leftSection(item) : rightSection(item)}
+      </div>
+    </div>
+  ));
+
 
 
   return (
@@ -85,53 +131,7 @@ function Home() {
             </div>
           </div>
           {
-            description_items.map((item,index) => (
-              <div className="home-desc-item">
-                <div className="row m-0 p-0">
-                  <div className="col-12  m-0 position-relative  ">
-                    <img src={item.image} className="home-desc-numbers " />
-                  </div>
-                </div>
-                <div className="row m-0 home-desc-line position-relative">
-                  {index%2==0? (
-                    <Fragment>
-                  <div className="col-lg-8 col-md-8 col-sm-8 col-12 home-desc-sideText ">
-                    <h1 >
-                      {item.title}
-                    </h1>
-                    <span>
-                      {item.text}
-                    </span>
-
-                  </div>
-                  <div className="col-lg-4 col-md-4 col-sm-4 col-8 offset-2 offset-lg-0 offset-md-0  offset-sm-0 ">
-                    <img src={descImg_1} className="home-desc-sideImg  "></img>
-
-                  </div>
-                  </Fragment>
-                  ):(
-                  <Fragment>
-                  <div className="col-lg-4 col-md-4 col-sm-4 col-8 offset-1 offset-lg-0 offset-md-0  offset-sm-0 ">
-                    <img src={descImg_1} className="home-desc-sideImg img-left "></img>
-
-                  </div>
-
-                  <div className="col-lg-8 col-md-8 col-sm-8 col-12 home-desc-sideText sideText-text-right ">
-                    <h1 >
-                      {item.title}
-                    </h1>
-                    <span>
-                      {item.text}
-                    </span>
-
-                  </div>
-                 
-                  </Fragment>
-                  )
-                  }
-                </div>
-              </div>
-            ))
+            descriptionList
           }
         </Container>
       </div>
