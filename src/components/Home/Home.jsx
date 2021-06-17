@@ -16,15 +16,17 @@ import { registration_head, registration_text, categories_text, categories_head,
 function Home() {
 
   var description_items = [
-  { image: number_01, title: registration_head, text: registration_text },
-  { image: number_02, title: categories_head, text: categories_text },
-  { image: number_03, title: content_head, text: content_text },
-  { image: number_04, title: export_head, text: export_text },
+    { image: number_01, title: registration_head, text: registration_text },
+    { image: number_02, title: categories_head, text: categories_text },
+    { image: number_03, title: content_head, text: content_text },
+    { image: number_04, title: export_head, text: export_text },
   ];
 
 
   return (
     <Fragment>
+
+      {/* Nav-Header */}
       <div className="card position-relative border-0 mb-3">
         <img src={hero} alt="hero" className="img-fluid w-100" id="heroimg" />
         <div className="card-img-overlay card-center-text p-0 d-flex">
@@ -74,7 +76,7 @@ function Home() {
       </div>
 
 
-
+      {/* description section  */}
       <div className="home-desc-section">
         <Container className="p-0 home-desc-container">
           <div className="row m-0">
@@ -83,15 +85,16 @@ function Home() {
             </div>
           </div>
           {
-            description_items.map((item) => (
-
-              <div >
+            description_items.map((item,index) => (
+              <div className="home-desc-item">
                 <div className="row m-0 p-0">
                   <div className="col-12  m-0 position-relative  ">
                     <img src={item.image} className="home-desc-numbers " />
                   </div>
                 </div>
                 <div className="row m-0 home-desc-line position-relative">
+                  {index%2==0? (
+                    <Fragment>
                   <div className="col-lg-8 col-md-8 col-sm-8 col-12 home-desc-sideText ">
                     <h1 >
                       {item.title}
@@ -101,14 +104,33 @@ function Home() {
                     </span>
 
                   </div>
-                  <div className="col-lg-4 col-md-4 col-sm-4 col-8 offset-2 offset-lg-0 offset-md-0  offset-sm-0 d-flex">
-                    <img src={descImg_1} className="home-desc-sideImg align-self-end"></img>
+                  <div className="col-lg-4 col-md-4 col-sm-4 col-8 offset-2 offset-lg-0 offset-md-0  offset-sm-0 ">
+                    <img src={descImg_1} className="home-desc-sideImg  "></img>
 
                   </div>
+                  </Fragment>
+                  ):(
+                  <Fragment>
+                  <div className="col-lg-4 col-md-4 col-sm-4 col-8 offset-1 offset-lg-0 offset-md-0  offset-sm-0 ">
+                    <img src={descImg_1} className="home-desc-sideImg img-left "></img>
+
+                  </div>
+
+                  <div className="col-lg-8 col-md-8 col-sm-8 col-12 home-desc-sideText sideText-text-right ">
+                    <h1 >
+                      {item.title}
+                    </h1>
+                    <span>
+                      {item.text}
+                    </span>
+
+                  </div>
+                 
+                  </Fragment>
+                  )
+                  }
                 </div>
               </div>
-
-
             ))
           }
         </Container>

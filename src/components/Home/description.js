@@ -1,4 +1,4 @@
-const registration_head = " registration_text"
+const registration_head = "Register in a Flash"
 const registration_text = `It only takes a couple of seconds to start using our online resum builder. 
 The resume creator is offered completely through our website, meaning
  there is no software to download.`

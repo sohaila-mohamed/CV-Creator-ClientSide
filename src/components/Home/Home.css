@@ -78,6 +78,13 @@
     box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.2);
 }
 
+.img-left {
+    width: 100%;
+    display: inline-block;
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.2);
+    margin: 2rem 0rem 0rem 4rem;
+}
+
 .home-desc-sideText h1 {
     font-size: 2rem;
     font-weight: bold;
@@ -94,6 +101,15 @@
     padding-left: 4rem;
 }
 
+.sideText-text-right h1 {
+    margin-top: 4rem;
+    padding-left: 8rem;
+}
+
+.sideText-text-right span {
+    padding-left: 8rem;
+}
+
 .home-desc-line::before {
     position: absolute;
     top: 0;
@@ -108,7 +124,7 @@
 .home-desc-line::after {
     position: absolute;
     bottom: -2.5rem;
-    left: 1.1rem;
+    left: 1.05rem;
     display: inline-block;
     margin-right: 1.2rem;
     content: url('../../images//description/LineEllipse.png');
@@ -120,6 +136,10 @@
 
 .home-desc-container {
     max-width: 100% !important;
+}
+
+.home-desc-item {
+    margin-bottom: 3rem;
 }
 
 @media (max-width: 991.98px) {
@@ -198,6 +218,13 @@
         width: 5rem;
         margin-left: -0.9rem;
     }
+    .sideText-text-right h1 {
+        margin-top: 1.5rem;
+        padding-left: 5rem;
+    }
+    .sideText-text-right span {
+        padding-left: 5rem;
+    }
 }
 
 @media (max-width:650px) {
@@ -247,6 +274,13 @@
         margin-top: 1.3rem;
         margin-bottom: 1.3rem;
         width: 100%;
+    }
+    .sideText-text-right h1 {
+        margin-top: 2rem;
+        padding-left: 4rem;
+    }
+    .sideText-text-right span {
+        padding-left: 4rem;
     }
 }
 
