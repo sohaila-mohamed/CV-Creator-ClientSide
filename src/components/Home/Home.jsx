@@ -11,10 +11,12 @@ import number_02 from '../../images/description/02.svg';
 import number_03 from '../../images/description/03.svg';
 import number_04 from '../../images/description/04.svg';
 import './description';
-import { registration_head, registration_text, categories_text, categories_head, content_head, content_text, export_head, export_text } from "./description";
-
+import { registration_head, registration_text, categories_text, categories_head,
+   content_head, content_text,
+   export_head, export_text } from "./description";
 import Category from "./Categories/Category";
 import Plan from "./Plans/Plan";
+import ProgressiveRender from './ProgressiveComponent'
 function Home() {
 
   var description_items = [
@@ -64,7 +66,10 @@ function Home() {
         </div>
       </div>
       <div className="row m-0 home-desc-line position-relative">
-        {index % 2 == 0 ? leftSection(item) : rightSection(item)}
+        <ProgressiveRender>
+              {index % 2 == 0 ? leftSection(item) : rightSection(item)}
+        </ProgressiveRender>
+
       </div>
     </div>
   ));
@@ -134,6 +139,7 @@ function Home() {
             </div>
           </div>
           {
+
             descriptionList
           }
         </Container>
