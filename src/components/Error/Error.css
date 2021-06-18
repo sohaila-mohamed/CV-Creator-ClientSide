@@ -1,0 +1,12 @@
+.textColor {
+  color: #808080;
+  font-size: 1.5rem;
+}
+.error-Link {
+  text-decoration: underline;
+  color: #c4c4c4 !important;
+}
+#error-text {
+  color: #c4c4c4 !important;
+  font-size: 1.1rem;
+}
