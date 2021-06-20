@@ -8,14 +8,15 @@
     padding: 40px 0;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 .cv-image-upload
 {
     background-color: white;
-    border-radius: 10px;
-    width: 70%;
+    border-radius: 5px;
+    width: 75%;
     margin: 0 auto 15px auto;
-    font-size: 12px;
+    font-size: 9px;
     color: #6B82B7;
     padding: 15px 0;
     text-align: center;
@@ -62,4 +63,23 @@
 .each-section:hover
 {
     background-color: rgba(8, 44, 58, 0.5);
+}
+
+.back-home-icon
+{
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-60%,0);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.back-home-icon:hover
+{
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
 }

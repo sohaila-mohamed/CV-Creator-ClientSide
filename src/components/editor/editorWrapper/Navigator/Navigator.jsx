@@ -1,11 +1,19 @@
+import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import "./Navigator.css"
 function Navigator() {
+
+    const history = useHistory();
+    const backHomeHandler= () =>{
+        history.push('/')
+    }
+
     return (
-        <div className="navigator-container">
+        <div className="navigator-container ">
             <div className="cv-image-upload">
-              Upload Your CV
+              Upload Your Image
             {/* <input type="file" /> */}
             </div>
 
@@ -107,6 +115,11 @@ function Navigator() {
                    About me
                 </NavLink>
             </div>
+
+            <div className="back-home-icon" onClick={backHomeHandler}>
+                <FontAwesomeIcon icon={faHome} size="2x" />
+            </div>
+            
 
         </div>
     )
