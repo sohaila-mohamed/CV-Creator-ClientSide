@@ -69,22 +69,16 @@ function EditorWrapper() {
             <Route path="/Editor/About-me" render={() => <h3>About me</h3>} />
           </Switch>
         </div>
+      </div>
 
-        <div className="right-editor d-none d-md-block w-100 w-md-50">
-          <button>
-            <FontAwesomeIcon icon={faEye} className="mr-2" />
-            Preview
-          </button>
-        </div>
-        <div className="right-editor">
-          <button>
-            <FontAwesomeIcon icon={faEye} className="mr-2" />
-            Preview
-          </button>
+      <div className="right-editor d-none d-md-block w-100 w-md-50">
+        <button>
+          <FontAwesomeIcon icon={faEye} className="mr-2" />
+          Preview
+        </button>
 
-          {/* to include the cv component here  */}
-          <CvD1 />
-        </div>
+        {/* to include the cv component here  */}
+        <CvD1 />
       </div>
     </div>
   );
