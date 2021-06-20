@@ -7,6 +7,7 @@ import Education from "../EditorComponents/Education/Education";
 import PersonalInfo from "../EditorComponents/PersonalInfo/PersonalInfo";
 import "./editorWrapper.css";
 import Navigator from "./Navigator/Navigator";
+import Experience from "./../EditorComponents/Experience/Experience";
 function EditorWrapper() {
   const [personalInfo, setpersonalInfo] = useState({
     firstName: "",
@@ -56,10 +57,7 @@ function EditorWrapper() {
             />
             <Route path="/Editor/Education" component={Education} />
             <Route path="/Editor/Contacts" render={() => <p>Contacts</p>} />
-            <Route
-              path="/Editor/Experiences"
-              render={() => <h3>Experiences</h3>}
-            />
+            <Route path="/Editor/Experiences" component={Experience} />
             <Route path="/Editor/Skilles" render={() => <h3>Skilles</h3>} />
             <Route path="/Editor/Courses" render={() => <h3>Courses</h3>} />
             <Route
