@@ -5,9 +5,9 @@ function Education() {
     return (
         <div>
             <h3>Education</h3>
-            <FormInput title="Univirstiy"/>
+            <FormInput title="University"/>
             <FormInput title="Grad year" width="50"/>
-            <FormInput title="Univirstiy" width="50"/>
+            <FormInput title="University" width="50"/>
         </div>
     )
 }
