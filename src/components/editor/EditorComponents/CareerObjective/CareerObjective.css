@@ -1,0 +1,32 @@
+.form-floating {
+  position: relative;
+}
+
+.form-floating > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 1rem 0.75rem;
+  pointer-events: none;
+  border: 1px solid transparent;
+  transform-origin: 0 0;
+  transition: 0.5s ease-in-out;
+}
+.form-floating > .form-control:focus {
+  padding-left: 1.2rem;
+  padding-top: 2rem;
+}
+.form-floating > .form-control:focus ~ label {
+  font-size: 0.7rem;
+  color: grey;
+  transition: 0.5s ease-in-out;
+}
+textarea:not(:placeholder-shown) ~ label {
+  font-size: 0.7rem;
+  color: grey;
+}
+textarea:not(:placeholder-shown) {
+  padding-left: 1.2rem !important;
+  padding-top: 2.5rem !important;
+}

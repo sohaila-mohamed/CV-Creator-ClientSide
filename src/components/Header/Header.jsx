@@ -4,7 +4,6 @@ import { NavLink, useHistory } from "react-router-dom";
 import "./Header.css";
 
 function Header() {
-
   const history = useHistory();
 
   function handleSignUp() {
@@ -13,7 +12,6 @@ function Header() {
   function handleSignIn() {
     history.push("/sign-in");
   }
-
 
   return (
     <Navbar className="shadow" style={{ zIndex: 999 }} bg="white" expand="lg">
@@ -25,6 +23,7 @@ function Header() {
                 src={logo}
                 className="d-inline-block align-center "
                 id="Logo"
+                alt="logo"
               />
             </Navbar.Brand>
           </div>
