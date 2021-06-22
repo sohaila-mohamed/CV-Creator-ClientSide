@@ -87,7 +87,7 @@ function Navigator() {
 
       <div className="each-section">
         <NavLink
-          to="/Editor/Courses"
+          to="/Editor/Languages"
           className="each-section-link"
           exact
           activeClassName="active-route"
