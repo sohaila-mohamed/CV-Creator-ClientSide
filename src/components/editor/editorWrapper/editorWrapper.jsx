@@ -3,12 +3,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import CvD1 from "../CvTemplate/CvD1";
-import Education from "../EditorComponents/Education/Education";
+
+import "./editorWrapper.css";
+
+import Navigator from "./Navigator/Navigator";
+
 import PersonalInfo from "../EditorComponents/PersonalInfo/PersonalInfo";
 import Career from "../EditorComponents/CareerObjective/CareerObjective";
-import "./editorWrapper.css";
-import Navigator from "./Navigator/Navigator";
+import Education from "../EditorComponents/Education/Education";
 import Experience from "./../EditorComponents/Experience/Experience";
+import Courses from "./../EditorComponents/Courses/Courses";
+import Skills from "./../EditorComponents/Skills/Skills";
+
 function EditorWrapper() {
   const [personalInfo, setpersonalInfo] = useState({
     firstName: "",
@@ -34,6 +40,17 @@ function EditorWrapper() {
     endDate2: "",
   });
 
+  const [coursesData, setCoursesData] = useState({
+    courseName1: "",
+    startDate1: "",
+    endDate1: "",
+    certificate1: "",
+    courseName2: "",
+    startDate2: "",
+    endDate2: "",
+    certificate2: "",
+  });
+
   const [careerData, SetcareerData] = useState("");
 
   const personalHandler = (data) => {
@@ -47,6 +64,9 @@ function EditorWrapper() {
   };
   const careerHandeler = (data) => {
     SetcareerData(data);
+  };
+  const coursesHandler = (data) => {
+    setCoursesData(data);
   };
 
   return (
@@ -81,11 +101,19 @@ function EditorWrapper() {
                 setExperienceData={experienceHandler}
               ></Experience>
             </Route>
-            {/* <Route path="/Editor/Education" component={Education} /> */}
-            <Route path="/Editor/Contacts" render={() => <p>Contacts</p>} />
-            {/* <Route component={Experience} /> */}
-            <Route path="/Editor/Skilles" render={() => <h3>Skilles</h3>} />
-            <Route path="/Editor/Courses" render={() => <h3>Courses</h3>} />
+            <Route path="/Editor/Projects" render={() => <h3>Projects</h3>} />
+            <Route path="/Editor/Skills">
+              <Skills>
+                
+              </Skills>
+            </Route>
+            <Route path="/Editor/Courses">
+              <Courses
+                data={coursesData}
+                setCoursesData={coursesHandler}
+              ></Courses>
+            </Route>
+            <Route path="/Editor/Languages" render={() => <h3>Languages</h3>} />
             <Route
               path="/Editor/Media-accounts"
               render={() => <h3>Media-accounts</h3>}

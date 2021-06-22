@@ -1,0 +1,26 @@
+.addBtn {
+  background-color: #6b82b7 !important;
+  color: #fff !important;
+  margin-top: 1em;
+  border-radius: 20px;
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.skill-bill {
+  background-color: #6b82b7 !important;
+  color: #fff !important;
+  border-radius: 20px;
+}
+
+.skill-remove-icon {
+  cursor: pointer !important;
+}
+
+.warnMsg{
+    color: lightslategray;
+    font-size: 12px;
+}
