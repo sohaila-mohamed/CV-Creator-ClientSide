@@ -3,14 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import CvD1 from "../CvTemplate/CvD1";
+import Education from "../EditorComponents/Education/Education";
+import PersonalInfo from "../EditorComponents/PersonalInfo/PersonalInfo";
+import Career from "../EditorComponents/CareerObjective/CareerObjective";
+import Languages from "../EditorComponents/Languages/Languages";
 
 import "./editorWrapper.css";
 
 import Navigator from "./Navigator/Navigator";
-
-import PersonalInfo from "../EditorComponents/PersonalInfo/PersonalInfo";
-import Career from "../EditorComponents/CareerObjective/CareerObjective";
-import Education from "../EditorComponents/Education/Education";
 import Experience from "./../EditorComponents/Experience/Experience";
 import Courses from "./../EditorComponents/Courses/Courses";
 import Skills from "./../EditorComponents/Skills/Skills";
@@ -55,6 +55,13 @@ function EditorWrapper() {
 
   const [careerData, SetcareerData] = useState("");
 
+  const [LangData, SetLangData] = useState({
+    Lang: "",
+    rate: "",
+  });
+
+  const [ArrLangData, SetArrLangData] = useState([]);
+
   const personalHandler = (data) => {
     setpersonalInfo(data);
   };
@@ -69,6 +76,12 @@ function EditorWrapper() {
   };
   const coursesHandler = (data) => {
     setCoursesData(data);
+  };
+  const LangHandler = (data) => {
+    SetLangData(data);
+  };
+  const LangArrHandler = (data) => {
+    SetArrLangData(data);
   };
 
   const skillsHandler = (data) => {
@@ -117,7 +130,17 @@ function EditorWrapper() {
                 setCoursesData={coursesHandler}
               ></Courses>
             </Route>
-            <Route path="/Editor/Languages" render={() => <h3>Languages</h3>} />
+            <Route
+              path="/Editor/Languages"
+              render={() => (
+                <Languages
+                  data={LangData}
+                  SetLangageData={LangHandler}
+                  Arr={ArrLangData}
+                  LangArrData={LangArrHandler}
+                ></Languages>
+              )}
+            />
             <Route
               path="/Editor/Career-objective"
               render={() => (
