@@ -99,7 +99,6 @@ function EditorWrapper() {
                 ></PersonalInfo>
               )}
             />
-
             <Route
               path="/Editor/Education"
               render={() => (
@@ -135,10 +134,6 @@ function EditorWrapper() {
                   LangArrData={LangArrHandler}
                 ></Languages>
               )}
-            />
-            <Route
-              path="/Editor/Media-accounts"
-              render={() => <h3>Media-accounts</h3>}
             />
             <Route
               path="/Editor/Career-objective"
