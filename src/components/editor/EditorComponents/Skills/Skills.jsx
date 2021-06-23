@@ -4,10 +4,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./Skills.css";
 
-const Skills = () => {
+const Skills = (props) => {
   const [Skill, setSkill] = useState("");
   const [msg, changeMsg] = useState(true);
   const [SkillsArray, setSkills] = useState([]);
+
+  useEffect(() => {
+    setSkills(props.data);
+  }, []);
+
+  useEffect(() => {
+    props.setSkillsData(SkillsArray);
+  }, [SkillsArray]);
 
   const addSkill = () => {
     Skill.length != 0 ? setSkills([...SkillsArray, Skill]) : changeMsg(false);
@@ -19,7 +27,7 @@ const Skills = () => {
   };
 
   const removeSkill = (s) => {
-    console.log(s);
+    setSkills(SkillsArray.filter((skill) => skill != s));
   };
 
   return (
