@@ -23,6 +23,7 @@ function Header() {
                 src={logo}
                 className="d-inline-block align-center "
                 id="Logo"
+                alt="logo"
               />
             </Navbar.Brand>
           </div>

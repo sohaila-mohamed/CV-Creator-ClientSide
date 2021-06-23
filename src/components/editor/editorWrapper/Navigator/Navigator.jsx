@@ -54,17 +54,6 @@ function Navigator() {
 
       <div className="each-section">
         <NavLink
-          to="/Editor/Contacts"
-          className="each-section-link"
-          exact
-          activeClassName="active-route"
-        >
-          Contacts
-        </NavLink>
-      </div>
-
-      <div className="each-section">
-        <NavLink
           to="/Editor/Experiences"
           className="each-section-link"
           exact
@@ -76,12 +65,34 @@ function Navigator() {
 
       <div className="each-section">
         <NavLink
-          to="/Editor/Skilles"
+          to="/Editor/Projects"
           className="each-section-link"
           exact
           activeClassName="active-route"
         >
-          Skilles
+          Projects
+        </NavLink>
+      </div>
+
+      <div className="each-section">
+        <NavLink
+          to="/Editor/Skills"
+          className="each-section-link"
+          exact
+          activeClassName="active-route"
+        >
+          Skills
+        </NavLink>
+      </div>
+
+      <div className="each-section">
+        <NavLink
+          to="/Editor/Languages"
+          className="each-section-link"
+          exact
+          activeClassName="active-route"
+        >
+          Courses
         </NavLink>
       </div>
 
@@ -93,17 +104,6 @@ function Navigator() {
           activeClassName="active-route"
         >
           Languages
-        </NavLink>
-      </div>
-
-      <div className="each-section">
-        <NavLink
-          to="/Editor/Media-accounts"
-          className="each-section-link"
-          exact
-          activeClassName="active-route"
-        >
-          Media <br /> accounts
         </NavLink>
       </div>
 

@@ -58,7 +58,7 @@ function Home() {
     <div className="home-desc-item">
       <div className="row m-0 p-0">
         <div className="col-12  m-0 position-relative  ">
-          <img src={item.image} className="home-desc-numbers " />
+          <img src={item.image} className="home-desc-numbers " alt="descImg" />
         </div>
       </div>
       <div className="row m-0 home-desc-line position-relative">

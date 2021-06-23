@@ -7,11 +7,14 @@ import Education from "../EditorComponents/Education/Education";
 import PersonalInfo from "../EditorComponents/PersonalInfo/PersonalInfo";
 import Career from "../EditorComponents/CareerObjective/CareerObjective";
 import Languages from "../EditorComponents/Languages/Languages";
+
 import "./editorWrapper.css";
+
 import Navigator from "./Navigator/Navigator";
 import Experience from "./../EditorComponents/Experience/Experience";
 import Courses from "./../EditorComponents/Courses/Courses";
 import Skills from "./../EditorComponents/Skills/Skills";
+
 function EditorWrapper() {
   const [personalInfo, setpersonalInfo] = useState({
     firstName: "",
@@ -24,13 +27,6 @@ function EditorWrapper() {
     university: "",
     graduationYear: "",
     grade: "",
-  });
-
-  const [careerData, SetcareerData] = useState("");
-
-  const [LangData, SetLangData] = useState({
-    Lang: "",
-    rate: "",
   });
 
   const [experienceData, setExperienceData] = useState({
@@ -53,6 +49,13 @@ function EditorWrapper() {
     startDate2: "",
     endDate2: "",
     certificate2: "",
+  });
+
+  const [careerData, SetcareerData] = useState("");
+
+  const [LangData, SetLangData] = useState({
+    Lang: "",
+    rate: "",
   });
 
   const [ArrLangData, SetArrLangData] = useState([]);
@@ -78,6 +81,7 @@ function EditorWrapper() {
   const LangArrHandler = (data) => {
     SetArrLangData(data);
   };
+
   return (
     <div className="editorWrapper-container">
       <div className="left-editor w-100 w-md-50">
@@ -113,10 +117,12 @@ function EditorWrapper() {
                 ></Education>
               )}
             />
-            <Route
-              path="/Editor/Experiences"
-              render={() => <h3>Experiences</h3>}
-            />
+            <Route path="/Editor/Experiences">
+              <Experience
+                data={experienceData}
+                setExperienceData={experienceHandler}
+              ></Experience>
+            </Route>
             <Route path="/Editor/Projects" render={() => <h3>Projects</h3>} />
             <Route path="/Editor/Skills">
               <Skills></Skills>

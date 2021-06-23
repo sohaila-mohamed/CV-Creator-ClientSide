@@ -7,7 +7,7 @@ function FormInput(props) {
   // and you can provide some properties like title , width and type and all other regular input properties
 
   useEffect(() => {
-    console.log(props);
+    // console.log(props);
     if (props.value) {
       setTop(true);
       setvalue(props.value);
