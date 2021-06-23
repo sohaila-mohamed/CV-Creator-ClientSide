@@ -83,23 +83,23 @@ const Courses = (props) => {
         <h3>2</h3>
         <FormInput
           title="Course Name"
-          value={Courses.courseName1}
-          valueBack={courseName1Handler}
+          value={Courses.courseName2}
+          valueBack={courseName2Handler}
         />
         <FormInput
           title="Start Date"
-          value={Courses.startDate1}
-          valueBack={startDate1Handler}
+          value={Courses.startDate2}
+          valueBack={startDate2Handler}
         />
         <FormInput
           title="End Date"
-          value={Courses.endDate1}
-          valueBack={endDate1Handler}
+          value={Courses.endDate2}
+          valueBack={endDate2Handler}
         />
         <FormInput
           title="Certificate (if available)"
-          value={Courses.endDate1}
-          valueBack={endDate1Handler}
+          value={Courses.endDate2}
+          valueBack={endDate2Handler}
         />
       </div>
 
