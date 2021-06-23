@@ -14,6 +14,7 @@ import Navigator from "./Navigator/Navigator";
 import Experience from "./../EditorComponents/Experience/Experience";
 import Courses from "./../EditorComponents/Courses/Courses";
 import Skills from "./../EditorComponents/Skills/Skills";
+import Projects from "./../EditorComponents/Projects/Projects";
 
 function EditorWrapper() {
   const [personalInfo, setpersonalInfo] = useState({
@@ -21,6 +22,9 @@ function EditorWrapper() {
     lastName: "",
     age: "",
     phoneNumber: "",
+    address: "",
+    Linkedin: "",
+    GitHub: "",
   });
 
   const [educationData, seteducationData] = useState({
@@ -114,7 +118,7 @@ function EditorWrapper() {
                 setExperienceData={experienceHandler}
               ></Experience>
             </Route>
-            <Route path="/Editor/Projects" render={() => <h3>Projects</h3>} />
+            <Route path="/Editor/Projects" render={() => <Projects />} />
             <Route path="/Editor/Skills">
               <Skills></Skills>
             </Route>
