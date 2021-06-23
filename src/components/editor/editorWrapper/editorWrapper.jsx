@@ -99,15 +99,7 @@ function EditorWrapper() {
                 ></PersonalInfo>
               )}
             />
-            <Route
-              path="/Editor/Education"
-              render={() => (
-                <Education
-                  data={educationData}
-                  setEducationData={educationHandler}
-                ></Education>
-              )}
-            />
+
             <Route
               path="/Editor/Education"
               render={() => (
