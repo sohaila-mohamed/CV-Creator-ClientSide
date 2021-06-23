@@ -55,6 +55,8 @@ function EditorWrapper() {
     certificate2: "",
   });
 
+  const [skillsData, setSkillsData] = useState([]);
+
   const [careerData, SetcareerData] = useState("");
 
   const [LangData, SetLangData] = useState({
@@ -84,6 +86,10 @@ function EditorWrapper() {
   };
   const LangArrHandler = (data) => {
     SetArrLangData(data);
+  };
+
+  const skillsHandler = (data) => {
+    setSkillsData(data);
   };
 
   return (
@@ -120,7 +126,7 @@ function EditorWrapper() {
             </Route>
             <Route path="/Editor/Projects" render={() => <Projects />} />
             <Route path="/Editor/Skills">
-              <Skills></Skills>
+              <Skills data={skillsData} setSkillsData={skillsHandler}></Skills>
             </Route>
             <Route path="/Editor/Courses">
               <Courses
