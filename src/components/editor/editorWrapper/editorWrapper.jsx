@@ -1,7 +1,7 @@
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import CvD1 from "../CvTemplate/CvD1";
 import Education from "../EditorComponents/Education/Education";
 import PersonalInfo from "../EditorComponents/PersonalInfo/PersonalInfo";
@@ -66,6 +66,14 @@ function EditorWrapper() {
 
   const [ArrLangData, SetArrLangData] = useState([]);
 
+  const [ProjectData, SetProjectData] = useState({
+    projectTitle: "",
+    date: "",
+    description: "",
+    link: "",
+  });
+
+  const [ArrProjects, SetArrProjects] = useState([]);
   const personalHandler = (data) => {
     setpersonalInfo(data);
   };
@@ -87,11 +95,15 @@ function EditorWrapper() {
   const LangArrHandler = (data) => {
     SetArrLangData(data);
   };
-
+  const ProjectsHandler = (data) => {
+    SetProjectData(data);
+  };
   const skillsHandler = (data) => {
     setSkillsData(data);
   };
-
+  const ArrProjectsData = (data) => {
+    SetArrProjects(data);
+  };
   return (
     <div className="editorWrapper-container">
       <div className="left-editor w-100 w-md-50">
@@ -124,7 +136,17 @@ function EditorWrapper() {
                 setExperienceData={experienceHandler}
               ></Experience>
             </Route>
-            <Route path="/Editor/Projects" render={() => <Projects />} />
+            <Route
+              path="/Editor/Projects"
+              render={() => (
+                <Projects
+                  Arrdata={ArrProjects}
+                  SetArrproject={ArrProjectsData}
+                  data={ProjectData}
+                  setprojectdata={ProjectsHandler}
+                />
+              )}
+            />
             <Route path="/Editor/Skills">
               <Skills data={skillsData} setSkillsData={skillsHandler}></Skills>
             </Route>

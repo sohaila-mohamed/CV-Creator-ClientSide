@@ -38,14 +38,22 @@ function Home() {
         <span>{item.text}</span>
       </div>
       <div className="col-lg-4 col-md-4 col-sm-4 col-8 offset-2 offset-lg-0 offset-md-0  offset-sm-0 ">
-        <img src={descImg_1} className="home-desc-sideImg  "></img>
+        <img
+          src={descImg_1}
+          className="home-desc-sideImg  "
+          alt="desc img"
+        ></img>
       </div>
     </Fragment>
   );
   var rightSection = (item) => (
     <Fragment>
       <div className="col-lg-4 col-md-4 col-sm-4 col-8 offset-1 offset-lg-0 offset-md-0  offset-sm-0 ">
-        <img src={descImg_1} className="home-desc-sideImg img-left "></img>
+        <img
+          src={descImg_1}
+          className="home-desc-sideImg img-left "
+          alt="desc img"
+        ></img>
       </div>
 
       <div className="col-lg-8 col-md-8 col-sm-8 col-12 home-desc-sideText sideText-text-right ">
@@ -55,7 +63,7 @@ function Home() {
     </Fragment>
   );
   var descriptionList = description_items.map((item, index) => (
-    <div className="home-desc-item">
+    <div className="home-desc-item" key={index}>
       <div className="row m-0 p-0">
         <div className="col-12  m-0 position-relative  ">
           <img src={item.image} className="home-desc-numbers " alt="descImg" />
@@ -63,7 +71,7 @@ function Home() {
       </div>
       <div className="row m-0 home-desc-line position-relative">
         <ProgressiveRender>
-          {index % 2 == 0 ? leftSection(item) : rightSection(item)}
+          {index % 2 === 0 ? leftSection(item) : rightSection(item)}
         </ProgressiveRender>
       </div>
     </div>
