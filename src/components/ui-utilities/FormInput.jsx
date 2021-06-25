@@ -7,12 +7,12 @@ function FormInput(props) {
   // and you can provide some properties like title , width and type and all other regular input properties
 
   useEffect(() => {
-    console.log(props);
+    // console.log(props);
     if (props.value) {
       setTop(true);
       setvalue(props.value);
     }
-    if (props.value == "") setTop(false);
+    if (props.value === "") setTop(false);
   }, [props.value]);
 
   const [top, setTop] = useState(false);
@@ -23,7 +23,7 @@ function FormInput(props) {
   };
 
   const blurHandler = () => {
-    if (val == "") setTop(false);
+    if (val === "") setTop(false);
   };
 
   const inputHndler = (e) => {
@@ -42,7 +42,7 @@ function FormInput(props) {
         onFocus={focusHandler}
         onBlur={blurHandler}
         onChange={inputHndler}
-        value={props.value}
+        value={props.value || ""}
       />
     </div>
   );

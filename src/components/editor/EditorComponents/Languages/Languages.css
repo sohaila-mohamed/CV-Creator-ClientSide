@@ -1,0 +1,16 @@
+.custom-style{
+    cursor: pointer;
+    padding: .8em;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: black !important;
+}
+.custom-style:hover {
+    border-radius: 5rem;
+    background-color: rgba(0, 0, 0, 0.199) !important;
+    color: white !important;
+    transition: 0.3s ease;
+}
+.custom-style:focus{
+    box-shadow: none !important;
+}
