@@ -7,24 +7,23 @@ import Home from "./components/Home/Home";
 import Categories from "./components/Categories/categories";
 import Error from "./components/Error/Error";
 import EditorWrapper from "./components/editor/editorWrapper/editorWrapper";
-
-function App() {
+import { React } from "react";
+const App = () => {
   return (
     <BrowserRouter>
       <Header />
       <Switch>
+        <Route exact path="/" component={Home} />
         <Route path="/Editor" component={EditorWrapper} />
         <Route exact path="/templates" component={Categories} />
-        <Route path="/tips" render={() => <p>Tips</p>} />
         <Route path="/about-us" render={() => <p>About</p>} />
         <Route path="/sign-in" component={AuthWrapper} />
         <Route path="/sign-up" component={AuthWrapper} />
-        <Route exact path="/" component={Home} />
         <Route path="*" component={Error} />
       </Switch>
       <Footer />
     </BrowserRouter>
   );
-}
+};
 
 export default App;

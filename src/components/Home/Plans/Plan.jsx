@@ -1,4 +1,5 @@
 import { Button } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import "./Plan.css";
 function Plan() {
   return (
@@ -18,7 +19,9 @@ function Plan() {
               </p>
             </div>
             <div className="card-footer bg-white">
-              <Button className="Plan-color-gray w-100">Sign up</Button>
+              <NavLink to="/sign-up">
+                <Button className="Plan-color-gray w-100">Sign up</Button>
+              </NavLink>
             </div>
           </div>
 
