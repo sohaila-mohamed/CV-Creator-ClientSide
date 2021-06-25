@@ -26,8 +26,8 @@ const Skills = (props) => {
     setSkill(() => v);
   };
 
-  const removeSkill = (s) => {
-    setSkills(SkillsArray.filter((skill) => skill !== s));
+  const removeSkill = (id) => {
+    setSkills(SkillsArray.filter((skill, i) => i !== id));
   };
 
   return (
@@ -55,7 +55,7 @@ const Skills = (props) => {
           <span key={index} className="skill-bill py-2 px-3 m-2">
             {skill}
             <FontAwesomeIcon
-              onClick={() => removeSkill(skill)}
+              onClick={() => removeSkill(index)}
               className="ml-2 skill-remove-icon"
               icon={faTimes}
             />
