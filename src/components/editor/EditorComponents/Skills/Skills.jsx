@@ -18,7 +18,7 @@ const Skills = (props) => {
   }, [SkillsArray]);
 
   const addSkill = () => {
-    Skill.length != 0 ? setSkills([...SkillsArray, Skill]) : changeMsg(false);
+    Skill.length !== 0 ? setSkills([...SkillsArray, Skill]) : changeMsg(false);
   };
 
   const getValue = (v) => {
@@ -27,7 +27,7 @@ const Skills = (props) => {
   };
 
   const removeSkill = (s) => {
-    setSkills(SkillsArray.filter((skill) => skill != s));
+    setSkills(SkillsArray.filter((skill) => skill !== s));
   };
 
   return (
@@ -45,7 +45,7 @@ const Skills = (props) => {
       <button
         className="btn addBtn"
         onClick={addSkill}
-        disabled={SkillsArray.length == 10 ? true : false}
+        disabled={SkillsArray.length === 10 ? true : false}
       >
         Add
       </button>

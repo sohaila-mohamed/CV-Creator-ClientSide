@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./Languages.css";
 import FormInput from "../../../ui-utilities/FormInput";
 import { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { DropdownButton, Dropdown } from "react-bootstrap";
-import ActionBtns from "./../../../ui-utilities/ActionBtns/ActionBtns";
+
 function Languages(props) {
   const [ArrLang, SetArrLang] = useState([]);
   const [Language, SetLanguage] = useState({});
@@ -36,12 +36,21 @@ function Languages(props) {
         return [...prev, Language];
       });
       SetFilled(true);
-      //   for (const val in Language) {
-      //     Language[val] = "";
-      //   }
     } else {
       SetFilled(false);
     }
+
+    // for (const val in Language) {
+    //   if (val === "Lang") {
+    //     for (let i = 0; i < ArrLang.length; i++) {
+    //       console.log(ArrLang[val]);
+    //     }
+    //   }
+    //   // Language[val] = "";
+    // }
+  };
+  const removeLang = (id) => {
+    SetArrLang(ArrLang.filter((lang, i) => i !== id));
   };
   //   const saveChanges = () => {
   //     props.LangArrData(ArrLang);
@@ -72,6 +81,7 @@ function Languages(props) {
         >
           {langRate.map((value, i) => (
             <Dropdown.Item
+              key={i}
               eventKey={i}
               onSelect={(e) => {
                 RateHandler(langRate[parseInt(e)]);
@@ -100,15 +110,23 @@ function Languages(props) {
               <th scope="col">#</th>
               <th scope="col">Language</th>
               <th scope="col">Rate</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             {ArrLang.map((lang, i) => (
               <tr key={i}>
-                {" "}
                 <th scope="row">{i + 1}</th>
                 <td>{lang.Lang}</td>
                 <td>{lang.rate}</td>
+                {/* <p>{SetLanguage({ ...Language, id: i + 1 })}</p> */}
+                <td onClick={() => removeLang(i)}>
+                  <FontAwesomeIcon
+                    icon={faTimes}
+                    className="mt-2"
+                    style={{ color: "red", cursor: "pointer" }}
+                  ></FontAwesomeIcon>
+                </td>
               </tr>
             ))}
           </tbody>
