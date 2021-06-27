@@ -7,7 +7,6 @@ import Education from "../EditorComponents/Education/Education";
 import PersonalInfo from "../EditorComponents/PersonalInfo/PersonalInfo";
 import Career from "../EditorComponents/CareerObjective/CareerObjective";
 import Languages from "../EditorComponents/Languages/Languages";
-
 import "./editorWrapper.css";
 
 import Navigator from "./Navigator/Navigator";
@@ -15,7 +14,6 @@ import Experience from "./../EditorComponents/Experience/Experience";
 import Courses from "./../EditorComponents/Courses/Courses";
 import Skills from "./../EditorComponents/Skills/Skills";
 import Projects from "./../EditorComponents/Projects/Projects";
-import axios from "axios";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
@@ -127,21 +125,10 @@ function EditorWrapper() {
     SetArrProjects(data);
   };
 
-  const [cvTemplate, setcvTemplate] = useState("Cv Template");
+  const [cvTemplate, setCvTemplate] = useState("Cv Template");
+
   // request the new cv template with new update
-  const loadNewCvVersion = () => {
-    const body = { userId: "", cvId: "", data: "" };
-    axios
-      .post(
-        "https://still-spire-04865.herokuapp.com/api/user/cv/update",
-        body,
-        userState.authHeaders
-      )
-      .then((res) => {
-        // set the new cv template and fill each object
-      })
-      .catch((err) => {});
-  };
+  const loadNewCvVersion = async () => {};
 
   return (
     <div className="editorWrapper-container">
@@ -216,15 +203,14 @@ function EditorWrapper() {
         </div>
       </div>
 
-      <div className="right-editor d-none d-md-block w-100 w-md-50">
+      <div className="right-editor d-none d-md-block ">
+        {/* w-100 w-md-50 */}
         <button onClick={loadNewCvVersion}>
           <FontAwesomeIcon icon={faEye} className="mr-2" />
           Preview
         </button>
         {/* state with the new content "cv template " */}
-        <CvD1>
-          <div dangerouslySetInnerHTML={{ __html: cvTemplate }}></div>
-        </CvD1>
+        <CvD1></CvD1>
       </div>
     </div>
   );
