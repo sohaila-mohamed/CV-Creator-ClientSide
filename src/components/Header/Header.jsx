@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
 import logo from "../../images/logo.svg";
-import { NavLink, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import "./Header.css";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -63,6 +63,12 @@ function Header() {
   }
 
 
+  // const scrollToTop = () => {
+  //   window.scrollTo({
+  //     top: 950,
+  //     behavior: "smooth",
+  //   });
+  // };
   return (
     <Navbar className="shadow" style={{ zIndex: 999 }} bg="white" expand="lg">
       <div className="container-fluid">
@@ -105,13 +111,14 @@ function Header() {
                 >
                   Templates
                 </NavLink>
-                <NavLink
-                  to="/tips"
+                <Link
+                  to="/#tips"
                   activeClassName="Active-link"
                   className="pr-3 nav-link position-relative"
+                  // onClick={scrollToTop}
                 >
                   Tips
-                </NavLink>
+                </Link>
                 <NavLink
                   to="/about-us"
                   activeClassName="Active-link"

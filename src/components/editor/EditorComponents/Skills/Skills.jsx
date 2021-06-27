@@ -18,7 +18,7 @@ const Skills = (props) => {
   }, [SkillsArray]);
 
   const addSkill = () => {
-    Skill.length != 0 ? setSkills([...SkillsArray, Skill]) : changeMsg(false);
+    Skill.length !== 0 ? setSkills([...SkillsArray, Skill]) : changeMsg(false);
   };
 
   const getValue = (v) => {
@@ -26,8 +26,8 @@ const Skills = (props) => {
     setSkill(() => v);
   };
 
-  const removeSkill = (s) => {
-    setSkills(SkillsArray.filter((skill) => skill != s));
+  const removeSkill = (id) => {
+    setSkills(SkillsArray.filter((skill, i) => i !== id));
   };
 
   return (
@@ -45,7 +45,7 @@ const Skills = (props) => {
       <button
         className="btn addBtn"
         onClick={addSkill}
-        disabled={SkillsArray.length == 10 ? true : false}
+        disabled={SkillsArray.length === 10 ? true : false}
       >
         Add
       </button>
@@ -55,7 +55,7 @@ const Skills = (props) => {
           <span key={index} className="skill-bill py-2 px-3 m-2">
             {skill}
             <FontAwesomeIcon
-              onClick={() => removeSkill(skill)}
+              onClick={() => removeSkill(index)}
               className="ml-2 skill-remove-icon"
               icon={faTimes}
             />

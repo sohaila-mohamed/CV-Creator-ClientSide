@@ -30,12 +30,6 @@ function Career(props) {
     <div>
       <h3 className="mb-4">Career Objective</h3>
       <div className="form-floating">
-        {/* <FormInput
-          title="Objective"
-          type="text"
-          value={Career}
-          valueBack={carrerHandler}
-        /> */}
         <textarea
           id="floatingTextarea2"
           className="form-control"
