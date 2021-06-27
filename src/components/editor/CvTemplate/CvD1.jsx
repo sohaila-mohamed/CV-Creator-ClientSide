@@ -19,8 +19,6 @@ function CvD1() {
             
             console.log(res.data);
             setTemplate(res.data);
-            
-          
         })
         .catch((err)=>{
             console.log("Invalid Template selection")
@@ -31,7 +29,7 @@ function CvD1() {
     // useEffect(()=>{console.log("template",template)},[template])
     return (
         <>
-         <iframe style={{width:'100%',height:'100%'}} srcDoc= {template } ></iframe>
+         <iframe style={{width:"100%",height:'100%'}} srcDoc= {template } ></iframe>
         </>
     )
 }
