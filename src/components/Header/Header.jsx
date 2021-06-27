@@ -10,7 +10,6 @@ import { authActions } from "../../store/auth-slice";
 import { useRef } from "react";
 
 function Header() {
-
   const ref = useRef(null);
   useEffect(() => {
     /**
@@ -29,25 +28,21 @@ function Header() {
     };
   }, [ref]);
 
+  const dispatch = useDispatch();
+  const authState = useSelector((state) => state.auth);
 
+  const [showDropSown, setshowDropSown] = useState(false);
 
-  const dispatch = useDispatch()
-  const authState = useSelector(state => state.auth)
-
-  const [showDropSown, setshowDropSown] = useState(false)
-
-  const toggleDropDown = (event)=>{
+  const toggleDropDown = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    if(event.target === event.currentTarget) {
+    if (event.target === event.currentTarget) {
       // handle
-      setshowDropSown((prev)=>{
-        return !prev
-      })
+      setshowDropSown((prev) => {
+        return !prev;
+      });
     }
-  }
-
-
+  };
 
   const history = useHistory();
 
@@ -57,11 +52,10 @@ function Header() {
   function handleSignIn() {
     history.push("/sign-in");
   }
-  const logoutHandler = ()=>{
-    dispatch(authActions.logoutUser())
+  const logoutHandler = () => {
+    dispatch(authActions.logoutUser());
     setshowDropSown(false);
-  }
-
+  };
 
   // const scrollToTop = () => {
   //   window.scrollTo({
@@ -111,14 +105,14 @@ function Header() {
                 >
                   Templates
                 </NavLink>
-                <Link
+                <NavLink
                   to="/#tips"
                   activeClassName="Active-link"
                   className="pr-3 nav-link position-relative"
                   // onClick={scrollToTop}
                 >
                   Tips
-                </Link>
+                </NavLink>
                 <NavLink
                   to="/about-us"
                   activeClassName="Active-link"
@@ -126,62 +120,73 @@ function Header() {
                 >
                   About-us
                 </NavLink>
-                {!authState.isLoggedIn &&
-                  
-                    <NavLink
-                      to="/sign-in"
-                      className="pr-3 d-lg-none nav-link d-inline-block">
-                      Sign-IN
-                    </NavLink>
-                }
-                {!authState.isLoggedIn &&
-                  
-                    <NavLink
-                      to="/sign-up"
-                      className="pr-3 d-lg-none nav-link d-inline-block">
-                      Sign-UP
-                    </NavLink>
-                }
+                {!authState.isLoggedIn && (
+                  <NavLink
+                    to="/sign-in"
+                    className="pr-3 d-lg-none nav-link d-inline-block"
+                  >
+                    Sign-IN
+                  </NavLink>
+                )}
+                {!authState.isLoggedIn && (
+                  <NavLink
+                    to="/sign-up"
+                    className="pr-3 d-lg-none nav-link d-inline-block"
+                  >
+                    Sign-UP
+                  </NavLink>
+                )}
               </Nav>
             </Navbar.Collapse>
           </div>
-          {authState.isLoggedIn && 
-          <div className="col-3 d-none d-lg-flex align-items-center justify-content-end">
-            <div className="logged-in">
-              <img src="https://image.flaticon.com/icons/png/512/149/149071.png"
-                onClick={toggleDropDown}
-                alt="" 
-                className="avatar"/>
-              <FontAwesomeIcon icon={faBars} onClick={toggleDropDown}
-                style={{position:"absolute",bottom:"5px",right:"8px",color:"white",fontSize:"20px" }}/>
-              {showDropSown && 
-                <div className="login-dropdown" ref={ref}>
+          {authState.isLoggedIn && (
+            <div className="col-3 d-none d-lg-flex align-items-center justify-content-end">
+              <div className="logged-in">
+                <img
+                  src="https://image.flaticon.com/icons/png/512/149/149071.png"
+                  onClick={toggleDropDown}
+                  alt=""
+                  className="avatar"
+                />
+                <FontAwesomeIcon
+                  icon={faBars}
+                  onClick={toggleDropDown}
+                  style={{
+                    position: "absolute",
+                    bottom: "5px",
+                    right: "8px",
+                    color: "white",
+                    fontSize: "20px",
+                  }}
+                />
+                {showDropSown && (
+                  <div className="login-dropdown" ref={ref}>
                     <div onClick={logoutHandler}>logout</div>
-                </div>
-              }
+                  </div>
+                )}
+              </div>
             </div>
-          </div>}
-          
-          {!authState.isLoggedIn &&
-          <div className="col-3  d-none d-lg-flex align-items-center justify-content-end">
-            <Button
-              variant="primary"
-              className="sign-btn d-lg-inline-block d-none"
-              id="filled-btn"
-              onClick={handleSignIn}
-            >
-              Sign-IN
-            </Button>
-            <Button
-              className="sign-btn d-lg-inline-block d-none"
-              id="outLined-btn"
-              onClick={handleSignUp}
-            >
-              Sign-UP
-            </Button>
-          </div>
-          }
-          
+          )}
+
+          {!authState.isLoggedIn && (
+            <div className="col-3  d-none d-lg-flex align-items-center justify-content-end">
+              <Button
+                variant="primary"
+                className="sign-btn d-lg-inline-block d-none"
+                id="filled-btn"
+                onClick={handleSignIn}
+              >
+                Sign-IN
+              </Button>
+              <Button
+                className="sign-btn d-lg-inline-block d-none"
+                id="outLined-btn"
+                onClick={handleSignUp}
+              >
+                Sign-UP
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </Navbar>

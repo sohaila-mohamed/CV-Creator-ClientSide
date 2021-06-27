@@ -18,15 +18,13 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
 function EditorWrapper() {
-
   useEffect(() => {
-      // get the template id from url 
+    // get the template id from url
+    //get user id from state
+    // const userID = userState.userData._id
+  }, []);
 
-      //get user id from state
-      // const userID = userState.userData._id
-  }, [])
-
-  const userState = useSelector(state => state.auth)
+  const userState = useSelector((state) => state.auth);
 
   const [personalInfo, setpersonalInfo] = useState({
     firstName: "",
@@ -96,7 +94,6 @@ function EditorWrapper() {
 
   const [ArrProjects, SetArrProjects] = useState([]);
 
-  
   const personalHandler = (data) => {
     setpersonalInfo(data);
   };
@@ -130,13 +127,8 @@ function EditorWrapper() {
 
   const [cvTemplate, setCvTemplate] = useState("Cv Template");
 
-
-  // request the new cv template with new update  
-  const loadNewCvVersion = async ()=>{
-    
-   
-  }
-
+  // request the new cv template with new update
+  const loadNewCvVersion = async () => {};
 
   return (
     <div className="editorWrapper-container">
@@ -211,15 +203,14 @@ function EditorWrapper() {
         </div>
       </div>
 
-      <div className="right-editor d-none d-md-block w-100 w-md-50">
+      <div className="right-editor d-none d-md-block ">
+        {/* w-100 w-md-50 */}
         <button onClick={loadNewCvVersion}>
           <FontAwesomeIcon icon={faEye} className="mr-2" />
           Preview
         </button>
-          {/* state with the new content "cv template " */}
-        <CvD1  >
-          
-        </CvD1>
+        {/* state with the new content "cv template " */}
+        <CvD1></CvD1>
       </div>
     </div>
   );
