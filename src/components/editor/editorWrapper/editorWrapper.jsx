@@ -80,6 +80,8 @@ function EditorWrapper() {
   });
 
   const [ArrProjects, SetArrProjects] = useState([]);
+
+  
   const personalHandler = (data) => {
     setpersonalInfo(data);
   };
