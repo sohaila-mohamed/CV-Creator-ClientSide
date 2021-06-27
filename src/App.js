@@ -7,8 +7,22 @@ import Home from "./components/Home/Home";
 import Categories from "./components/Categories/categories";
 import Error from "./components/Error/Error";
 import EditorWrapper from "./components/editor/editorWrapper/editorWrapper";
-import { React } from "react";
-const App = () => {
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { authActions } from "./store/auth-slice";
+
+function App() {
+
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const localUser=JSON.parse(localStorage.getItem("userData"))
+    if(localUser)
+      dispatch(authActions.loginUser({userData:localUser.user , authHeaders:localUser.headers}))
+  }, [])
+
+
   return (
     <BrowserRouter>
       <Header />

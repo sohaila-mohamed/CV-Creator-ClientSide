@@ -25,6 +25,31 @@ function Education(props) {
     setEducation({ ...Education, grade: v });
   };
 
+ 
+    const collageHandler = (v) =>{
+        setEducation({...Education,collage:v})
+        
+    }
+    const uGradYearHandler = (v) =>{
+        setEducation({...Education,uGraduationYear:v})
+    }
+    const uGradeHandler = (v) =>{
+        setEducation({...Education,uGrade:v})
+    }
+
+
+
+
+    const highSchoolHandler = (v) =>{
+        setEducation({...Education,highSchool:v})
+    }
+    const hGradYearHandler = (v) =>{
+        setEducation({...Education,hGraduationYear:v})
+    }
+    const hGradeHandler = (v) =>{
+        setEducation({...Education,hGrade:v})
+    }
+    
   const saveChanges = (e) => {
     // props.setPersonalData(psersonal)
   };
@@ -39,27 +64,27 @@ function Education(props) {
     props.setEducationData(Education);
   };
 
-  return (
-    <div>
-      <h3>Education</h3>
-      <FormInput
-        title="University Name"
-        width="100"
-        value={Education.university}
-        valueBack={universityHandler}
-      />
-      <FormInput
-        title="Graduation year"
-        width="100"
-        value={Education.graduationYear}
-        valueBack={gradYearHandler}
-      />
-      <FormInput
-        title="Grade"
-        width="50"
-        value={Education.grade}
-        valueBack={gradeHandler}
-      />
+  
+    return (
+        <div>
+            <h3>Education</h3>
+            <div className="collage pb-3">
+                <FormInput title="University Name" width="100" value={Education.university} valueBack={universityHandler}/>
+                <FormInput title="Collage Name" width="100" value={Education.collage} valueBack={collageHandler}/>
+                <div className="d-flex justify-content-between">
+                <FormInput title="Graduation year" width="45" value={Education.uGraduationYear} valueBack={uGradYearHandler}/>
+               <FormInput title="Grade" width="50" value={Education.uGrade} valueBack={uGradeHandler}/>
+                </div>
+            </div>
+            
+        
+            <div className="high Scholl mt-5">
+            <FormInput title="High Scholl Name" width="100" value={Education.highSchool} valueBack={highSchoolHandler}/>
+            <FormInput title="Graduation year" width="100" value={Education.hGraduationYear} valueBack={hGradYearHandler}/>
+            <FormInput title="Grade" width="50" value={Education.hGrade} valueBack={hGradeHandler}/>
+            </div>
+            
+           
 
       <ActionBtns onSave={saveChanges} onReset={resetChanges} />
     </div>

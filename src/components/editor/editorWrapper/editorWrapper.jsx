@@ -29,8 +29,14 @@ function EditorWrapper() {
 
   const [educationData, seteducationData] = useState({
     university: "",
-    graduationYear: "",
-    grade: "",
+    collage:"",
+    uGraduationYear: "",
+    uGrade: "",
+
+    highSchool:"",
+    hGraduationYear:"",
+    hGrade:""
+
   });
 
   const [experienceData, setExperienceData] = useState({
