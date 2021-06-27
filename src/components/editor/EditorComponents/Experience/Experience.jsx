@@ -5,7 +5,6 @@ import ActionBtns from "../../../ui-utilities/ActionBtns/ActionBtns";
 // import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const Experience = (props) => {
-  
   const [Experience, setExperience] = useState({});
 
   useEffect(() => {
@@ -41,7 +40,12 @@ const Experience = (props) => {
   const endDate2Handler = (v) => {
     setExperience({ ...Experience, endDate2: v });
   };
-
+  const PosDes1Handler = (v) => {
+    setExperience({ ...Experience, PosDes1: v });
+  };
+  const PosDes2Handler = (v) => {
+    setExperience({ ...Experience, PosDes2: v });
+  };
   const saveChanges = (e) => {
     // props.setPersonalData(psersonal)
   };
@@ -85,15 +89,24 @@ const Experience = (props) => {
           valueBack={companyName1Handler}
         />
         <FormInput
-          title="Start Date"
-          value={Experience.startDate1}
-          valueBack={startDate1Handler}
+          title="Title Description"
+          value={Experience.PosDes1}
+          valueBack={PosDes1Handler}
         />
-        <FormInput
-          title="End Date"
-          value={Experience.endDate1}
-          valueBack={endDate1Handler}
-        />
+        <div className="d-flex justify-content-between">
+          <FormInput
+            title="Start Date"
+            width="45"
+            value={Experience.startDate1}
+            valueBack={startDate1Handler}
+          />
+          <FormInput
+            title="End Date"
+            width="50"
+            value={Experience.endDate1}
+            valueBack={endDate1Handler}
+          />
+        </div>
       </div>
       <div className="mb-4 entry-Block">
         <h3>2</h3>
@@ -108,15 +121,24 @@ const Experience = (props) => {
           valueBack={companyName2Handler}
         />
         <FormInput
-          title="Start Date"
-          value={Experience.startDate2}
-          valueBack={startDate2Handler}
+          title="Title Description"
+          value={Experience.PosDes2}
+          valueBack={PosDes2Handler}
         />
-        <FormInput
-          title="End Date"
-          value={Experience.endDate2}
-          valueBack={endDate2Handler}
-        />
+        <div className="d-flex justify-content-between">
+          <FormInput
+            title="Start Date"
+            width="45"
+            value={Experience.startDate2}
+            valueBack={startDate2Handler}
+          />
+          <FormInput
+            title="End Date"
+            width="50"
+            value={Experience.endDate2}
+            valueBack={endDate2Handler}
+          />
+        </div>
       </div>
       {/* <Button disabled={entries.length == 2} onClick={() => addEntry()}>
         Add Entry
