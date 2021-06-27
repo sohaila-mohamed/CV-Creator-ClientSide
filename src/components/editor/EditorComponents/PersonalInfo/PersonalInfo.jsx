@@ -21,8 +21,8 @@ function PersonalInfo(props) {
   const lastNameHandler = (v) => {
     setPsersonal({ ...psersonal, lastName: v });
   };
-  const ageHandler = (v) => {
-    setPsersonal({ ...psersonal, age: v });
+  const DateofBirthHandler = (v) => {
+    setPsersonal({ ...psersonal, DateofBirth: v });
   };
   const telHandler = (v) => {
     setPsersonal({ ...psersonal, phoneNumber: v });
@@ -35,6 +35,9 @@ function PersonalInfo(props) {
   };
   const GitHubHandler = (v) => {
     setPsersonal({ ...psersonal, GitHub: v });
+  };
+  const positionHandler = (v) => {
+    setPsersonal({ ...psersonal, position: v });
   };
   const saveChanges = (e) => {
     props.setPersonalData(psersonal);
@@ -52,6 +55,12 @@ function PersonalInfo(props) {
   return (
     <div>
       <h3>Personal info</h3>
+      <FormInput
+        title="Position"
+        width="45"
+        value={psersonal.position}
+        valueBack={positionHandler}
+      />
       <div className=" d-flex justify-content-between aligen-items-center">
         <FormInput
           title="First name"
@@ -69,10 +78,10 @@ function PersonalInfo(props) {
 
       <div className=" d-flex justify-content-between aligen-items-center">
         <FormInput
-          title="Age"
-          type="text"
-          value={psersonal.age}
-          valueBack={ageHandler}
+          title="Date of Birth"
+          type="date"
+          value={psersonal.DateofBirth}
+          valueBack={DateofBirthHandler}
           width="45"
         />
         <FormInput
