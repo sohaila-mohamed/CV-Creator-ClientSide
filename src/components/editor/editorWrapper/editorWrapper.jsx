@@ -15,8 +15,21 @@ import Experience from "./../EditorComponents/Experience/Experience";
 import Courses from "./../EditorComponents/Courses/Courses";
 import Skills from "./../EditorComponents/Skills/Skills";
 import Projects from "./../EditorComponents/Projects/Projects";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function EditorWrapper() {
+
+  useEffect(() => {
+      // get the template id from url 
+
+      //get user id from state
+      // const userID = userState.userData._id
+  }, [])
+
+  const userState = useSelector(state => state.auth)
+
   const [personalInfo, setpersonalInfo] = useState({
     firstName: "",
     lastName: "",
@@ -110,6 +123,21 @@ function EditorWrapper() {
   const ArrProjectsData = (data) => {
     SetArrProjects(data);
   };
+
+  const [cvTemplate, setcvTemplate] = useState("<div>{personalInfo.firstName}</div>")
+  // request the new cv template with new update  
+  const loadNewCvVersion = ()=>{
+    const body={userId:"",cvId:"",data:""}
+    axios.post("https://still-spire-04865.herokuapp.com/api/user/cv/update",body,userState.authHeaders)
+    .then((res)=>{
+      // set the new cv template and fill each object
+    })
+    .catch((err)=>{
+
+    })
+  }
+
+
   return (
     <div className="editorWrapper-container">
       <div className="left-editor w-100 w-md-50">
@@ -184,13 +212,15 @@ function EditorWrapper() {
       </div>
 
       <div className="right-editor d-none d-md-block w-100 w-md-50">
-        <button>
+        <button onClick={loadNewCvVersion}>
           <FontAwesomeIcon icon={faEye} className="mr-2" />
           Preview
         </button>
-
-        {/* to include the cv component here  */}
-        <CvD1 />
+          {/* state with the new content "cv template " */}
+        <cvId >
+        {/* { ReactHtmlParser(cvTemplate) } */}
+       
+        </cvId>
       </div>
     </div>
   );

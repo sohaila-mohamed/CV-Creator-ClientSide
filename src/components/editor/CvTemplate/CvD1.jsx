@@ -1,9 +1,9 @@
 import React from 'react'
 
-function CvD1() {
+function CvD1(props) {
     return (
         <div>
-            <p>CV type , Modern , Id = 50060</p>
+           {props.children}
         </div>
     )
 }
