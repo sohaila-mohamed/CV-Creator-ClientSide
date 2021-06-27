@@ -128,7 +128,7 @@ function EditorWrapper() {
     SetArrProjects(data);
   };
 
-  const [cvTemplate, setcvTemplate] = useState("<div>{personalInfo.firstName}</div>")
+  const [cvTemplate, setcvTemplate] = useState("Cv Template")
   // request the new cv template with new update  
   const loadNewCvVersion = ()=>{
     const body={userId:"",cvId:"",data:""}
@@ -222,8 +222,9 @@ function EditorWrapper() {
         </button>
           {/* state with the new content "cv template " */}
         <cvId >
-        {/* { ReactHtmlParser(cvTemplate) } */}
-       
+          <div dangerouslySetInnerHTML={{__html: cvTemplate}}>
+
+          </div>
         </cvId>
       </div>
     </div>
