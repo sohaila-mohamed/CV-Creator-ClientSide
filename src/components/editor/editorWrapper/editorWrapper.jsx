@@ -18,8 +18,14 @@ function EditorWrapper() {
 
   const [educationData, seteducationData] = useState({
     university: "",
-    graduationYear: "",
-    grade: "",
+    collage:"",
+    uGraduationYear: "",
+    uGrade: "",
+
+    highSchool:"",
+    hGraduationYear:"",
+    hGrade:""
+
   });
 
   const [careerData, SetcareerData] = useState("");
@@ -60,7 +66,6 @@ function EditorWrapper() {
                 ></Education>
               )}
             />
-            <Route path="/Editor/Education" component={Education} />
             <Route path="/Editor/Contacts" render={() => <p>Contacts</p>} />
             <Route
               path="/Editor/Experiences"

@@ -1,13 +1,21 @@
-import React , { Fragment ,useState} from 'react'
+import React , { Fragment ,useEffect,useState} from 'react'
 import { useHistory } from 'react-router';
 import BounceLoader from "react-spinners/BounceLoader";
 
 
 import { css } from "@emotion/react";
 import "./SignUp.css"
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { authActions } from '../../../store/auth-slice';
 
 function SignUp() {
 
+    // redirect to home page if there user already
+    useEffect(() => {
+        if(localStorage.getItem("userData"))
+            history.push("/");
+     }, [])
      // go to sign up page
     const history = useHistory();
     function handleSignIn() {
@@ -15,8 +23,8 @@ function SignUp() {
     }
 
 
-    // Form Validation propertiy to control the button wheather it's disabled or not 
-    const [validForm, setValidForm] = useState(false);
+ 
+  
 
 
     // spinner properties
@@ -38,12 +46,25 @@ function SignUp() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    
+       // Form Validation propertiy to control the button wheather it's disabled or not 
+    const [validForm, setValidForm] = useState(false);
 
+    // Error message to display if there any error with form submision
+    const [errorMessage, seterrorMessage] = useState('');
+
+    // to hide the form and display sign in  button after user sign up succesfuly
+    const [succesfulSignUp, setsuccesfulSignUp] = useState(false);
+
+    
     // input handlers for each input field
     const firstNameHandeler= e =>{
-        setFirstName(e.target.value);
 
+        // reset error message
+        if(errorMessage)
+            seterrorMessage("")
+
+
+        setFirstName(e.target.value);
         // check if the form valid or not to make sign up button enabled 
         if(e.target.value && lastName && email && password && confirmPassword)
              setValidForm(true);
@@ -54,6 +75,12 @@ function SignUp() {
 
 
     const lastNameHandeler= e =>{
+
+
+        // reset error message
+        if(errorMessage)
+            seterrorMessage("")
+
         setLastName(e.target.value.trim());
         // check if the form valid or not to make sign up button enabled 
         if(firstName && e.target.value && email && password && confirmPassword)
@@ -65,6 +92,12 @@ function SignUp() {
 
 
     const emailHandeler= e =>{
+
+
+        // reset error message
+        if(errorMessage)
+            seterrorMessage("")
+
         setEmail(e.target.value.trim());
         // check if the form valid or not to make sign up button enabled 
         if(firstName && lastName && e.target.value && password && confirmPassword)
@@ -75,6 +108,11 @@ function SignUp() {
 
 
     const passwordHandeler= e =>{
+
+        // reset error message
+        if(errorMessage)
+            seterrorMessage("")
+
         setPassword(e.target.value.trim());
         // check if the form valid or not to make sign up button enabled 
         if(firstName && lastName && email && e.target.value && confirmPassword)
@@ -85,6 +123,10 @@ function SignUp() {
 
 
     const confirmPasswordHandeler= e =>{
+
+        // reset error message
+        if(errorMessage)
+            seterrorMessage("")
         setConfirmPassword(e.target.value.trim());
         // check if the form valid or not to make sign up button enabled 
         if(firstName && lastName && email && password && e.target.value)
@@ -98,28 +140,35 @@ function SignUp() {
 
     const signUpHandeler = (e)=>{
         e.preventDefault();
-        const userInfo = {
+        const body= {
             firstName,
             lastName,
             email,
-            password,
-            confirmPassword
+            password
         }
-        console.log(userInfo);
+        if(password!=confirmPassword)
+        {
+            seterrorMessage("Tow passwords doesn't match")
+        }
+        else
+        {
+            setLoading(true);
+            // set valid form to false to make the button disabled while the request is being procesed
+            setValidForm(false);
+            axios.post("https://still-spire-04865.herokuapp.com/api/register",body)
+            .then((res)=>{
+                setLoading(false)
+                setsuccesfulSignUp(true);
+            })
+            .catch((err)=>{
+                setLoading(false);
+                setValidForm(false);
+                seterrorMessage("This email already exists ")
+            })
+        }
+        
 
-        // reseting the for fileds
-        setFirstName("");
-        setLastName("");
-        setEmail("");
-        setPassword("");
-        setConfirmPassword("");
-
-
-        setValidForm(false);
-        setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-        }, 3000);
+      
 
     }
 
@@ -127,11 +176,20 @@ function SignUp() {
         <Fragment>
             
                 <form onSubmit={signUpHandeler}>
-                    {/* first name and last name  */}
+                {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
+                   
                     <BounceLoader color={color}  css={override} loading={loading}  size={80} />
-                    <div className={`inputs ${loading ? ['auth-form-hidden'] : ''}`}>
+                   
+                    { (!loading && succesfulSignUp)&&
+                    <div className="successful-signup">
+                    Your account has been created successfuly 
+                    you can login now <br/>
+                    <button type="button" onClick={handleSignIn}>Login now</button>
+                    </div>}
+
+                    <div className={`inputs ${(loading || succesfulSignUp ) ? ['auth-form-hidden'] : ''}`}>
+                        {/* first name and last name inputs */}
                         <div className="auth-names">
-                            
                             {/* first name  */}
                             <div className="auth-form-group">
                                 <label htmlFor="email">First name</label>
@@ -139,7 +197,8 @@ function SignUp() {
                                 onChange={firstNameHandeler} value={firstName}
                                 id="email" autoComplete='off'/>
                             </div>
-                            
+
+                            {/* first name  */}
                             <div className="auth-form-group">
                                 <label htmlFor="email">Last name</label>
                                 <input type="text"
