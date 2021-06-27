@@ -1,27 +1,31 @@
-import React, { useEffect, useState } from 'react'
-import ActionBtns from '../../../ui-utilities/ActionBtns/ActionBtns'
-import FormInput from '../../../ui-utilities/FormInput'
+import React, { useEffect, useState } from "react";
+import ActionBtns from "../../../ui-utilities/ActionBtns/ActionBtns";
+import FormInput from "../../../ui-utilities/FormInput";
 
 function Education(props) {
-    
-    const [Education, setEducation] = useState({});
+  const [Education, setEducation] = useState({});
 
+  useEffect(() => {
+    setEducation(props.data);
+  }, []);
 
-    useEffect(() => {
-        setEducation(props.data);
-    }, [])
+  // save Changes on update to make the data presesting
 
-    // save Changes on update to make the data presesting
+  useEffect(() => {
+    props.setEducationData(Education);
+  }, [Education]);
 
-    useEffect(() => {
-        props.setEducationData(Education);
-    }, [Education])
-    
+  const universityHandler = (v) => {
+    setEducation({ ...Education, university: v });
+  };
+  const gradYearHandler = (v) => {
+    setEducation({ ...Education, graduationYear: v });
+  };
+  const gradeHandler = (v) => {
+    setEducation({ ...Education, grade: v });
+  };
 
-    const universityHandler = (v) =>{
-        setEducation({...Education,university:v})
-        
-    }
+ 
     const collageHandler = (v) =>{
         setEducation({...Education,collage:v})
         
@@ -46,24 +50,19 @@ function Education(props) {
         setEducation({...Education,hGrade:v})
     }
     
+  const saveChanges = (e) => {
+    // props.setPersonalData(psersonal)
+  };
 
-    const saveChanges = (e) =>{
-        
-        // props.setPersonalData(psersonal)
+  const resetChanges = (e) => {
+    for (const key in Education) {
+      if (Object.hasOwnProperty.call(Education, key)) {
+        Education[key] = "";
+      }
     }
-    
-    const resetChanges = (e) =>{
-        
-        for (const key in Education) {
-            if (Object.hasOwnProperty.call(Education, key)) {
-                Education[key]=""
-                
-            }
-        }
-        setEducation({...Education})
-        props.setEducationData(Education)
-    }
-
+    setEducation({ ...Education });
+    props.setEducationData(Education);
+  };
 
   
     return (
@@ -87,9 +86,9 @@ function Education(props) {
             
            
 
-            <ActionBtns onSave={saveChanges} onReset={resetChanges}/>
-        </div>
-    )
+      <ActionBtns onSave={saveChanges} onReset={resetChanges} />
+    </div>
+  );
 }
 
-export default Education
+export default Education;
