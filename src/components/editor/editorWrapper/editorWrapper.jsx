@@ -20,7 +20,8 @@ function EditorWrapper() {
   const [personalInfo, setpersonalInfo] = useState({
     firstName: "",
     lastName: "",
-    age: "",
+    DateofBirth: "",
+    position: "",
     phoneNumber: "",
     address: "",
     Linkedin: "",
@@ -29,25 +30,27 @@ function EditorWrapper() {
 
   const [educationData, seteducationData] = useState({
     university: "",
-    collage:"",
+    collage: "",
     uGraduationYear: "",
+    uStartYear: "",
     uGrade: "",
 
-    highSchool:"",
-    hGraduationYear:"",
-    hGrade:""
-
+    highSchool: "",
+    hGraduationYear: "",
+    hGrade: "",
   });
 
   const [experienceData, setExperienceData] = useState({
     jobTitle1: "",
     companyName1: "",
+    PosDes1: "",
     startDate1: "",
     endDate1: "",
     jobTitle2: "",
     companyName2: "",
     startDate2: "",
     endDate2: "",
+    PosDes2: "",
   });
 
   const [coursesData, setCoursesData] = useState({
@@ -75,6 +78,7 @@ function EditorWrapper() {
   const [ProjectData, SetProjectData] = useState({
     projectTitle: "",
     date: "",
+    to: "",
     description: "",
     link: "",
   });

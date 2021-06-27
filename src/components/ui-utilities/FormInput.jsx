@@ -33,7 +33,9 @@ function FormInput(props) {
 
   return (
     <div
-      className={`form-input  ${top ? "set-top" : ""} `}
+      className={`form-input ${props.type !== "date" ? "" : "set-top"} ${
+        top && props.type !== "date" ? "set-top" : ""
+      } `}
       style={{ width: props.width + "%" }}
     >
       <label>{props.title}</label>
