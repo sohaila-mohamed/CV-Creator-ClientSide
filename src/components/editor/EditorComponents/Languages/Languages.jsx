@@ -31,6 +31,7 @@ function Languages(props) {
     SetLanguage({ ...Language, rate: v });
   };
   const addLanguage = () => {
+    SetLanguage({Lang:"", rate:"" });
     if (Language.rate !== "" && Language.Lang !== "") {
       SetArrLang((prev) => {
         return [...prev, Language];

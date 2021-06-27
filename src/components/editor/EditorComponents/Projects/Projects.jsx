@@ -39,6 +39,7 @@ const Projects = function (props) {
   };
 
   const addProjects = () => {
+    SetProject({date:"", description: "" ,projectTitle:"",link:""})
     SetArrProjects([...ArrProjects, Project]);
   };
   const removeProj = (id) => {
