@@ -38,8 +38,17 @@ const Projects = function (props) {
     SetProject({ ...Project, description: v.target.value });
   };
 
+  const TodateHandler = (v) => {
+    SetProject({ ...Project, to: v });
+  };
   const addProjects = () => {
-    SetProject({date:"", description: "" ,projectTitle:"",link:""})
+    SetProject({
+      date: "",
+      description: "",
+      projectTitle: "",
+      link: "",
+      to: "",
+    });
     SetArrProjects([...ArrProjects, Project]);
   };
   const removeProj = (id) => {
@@ -55,10 +64,16 @@ const Projects = function (props) {
           valueBack={titleHandler}
         />
         <FormInput
-          title=""
+          title="From"
           type="date"
           value={Project.date}
           valueBack={dateHandler}
+        />
+        <FormInput
+          title="To"
+          type="date"
+          value={Project.to}
+          valueBack={TodateHandler}
         />
         <FormInput title="Link" value={Project.link} valueBack={linkHandler} />
         <div className="form-floating mt-5">
@@ -83,7 +98,8 @@ const Projects = function (props) {
             <tr>
               <th scope="col">#</th>
               <th scope="col">Title</th>
-              <th scope="col">Date</th>
+              <th scope="col">From</th>
+              <th scope="col">To</th>
               <th scope="col">Link</th>
               <th scope="col">Description</th>
               <th></th>
@@ -95,6 +111,7 @@ const Projects = function (props) {
                 <th scope="row">{i + 1}</th>
                 <td>{proj.projectTitle}</td>
                 <td>{proj.date}</td>
+                <td>{proj.to}</td>
                 <td>{proj.link}</td>
                 <td>{proj.description}</td>
                 <td onClick={() => removeProj(i)}>
