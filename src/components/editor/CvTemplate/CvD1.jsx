@@ -3,12 +3,12 @@ import { useSelector } from "react-redux";
 import { authActions } from "../../../store/auth-slice";
 import axios from "axios";
 
-function CvD1() {
+function CvD1(props) {
   const authState = useSelector((state) => state.auth);
   const [template, setTemplate] = useState("");
   useEffect(() => {
     const body = {
-      tempId: "121",
+      tempId: props.cvid,
       // userId:authState.userData._id
       userId: JSON.parse(localStorage.getItem("userData")).user._id.toString(),
     };
@@ -23,11 +23,11 @@ function CvD1() {
         },
       })
       .then((res) => {
-        console.log(res.data);
+          console.log(res.headers)
         setTemplate(res.data);
       })
       .catch((err) => {
-        console.log("Invalid Template selection");
+        console.log(err);
       });
   }, []);
 
