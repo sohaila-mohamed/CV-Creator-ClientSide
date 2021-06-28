@@ -1,0 +1,55 @@
+.template-container {
+  background-color: #6b82b7;
+  text-align: center;
+  border-radius: 10px;
+  padding: 1em 0;
+  margin: 25px 1px;
+  position: relative;
+}
+
+.template-container:hover .overlay {
+  opacity: 1;
+}
+
+.template-container img {
+  width: 80%;
+}
+.template-container i {
+  margin-right: 5px;
+}
+.overlay {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: rgba(3, 1, 1, 0.5);
+  z-index: 1;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+.Btn {
+  width: 60%;
+  margin: 0.4em 0;
+  text-align: left !important;
+  padding: 0.5em 1.9em !important;
+}
+.Btn .svg-inline--fa {
+  margin-right: 0.5em;
+}
+.Btn-preview {
+  background-color: #fff !important;
+  color: #8c8c8c !important;
+  border: none !important;
+}
+.Btn-edit {
+  background-color: #6b82b7 !important;
+  color: #fff !important;
+  border: none !important;
+}
