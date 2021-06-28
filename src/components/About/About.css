@@ -2,3 +2,10 @@
   background-color: #6b82b7;
   width: 100%;
 }
+.text-size-custom {
+  font-size: 1.5rem;
+}
+.img-size {
+  width: 4rem;
+  margin-bottom: 2em;
+}

@@ -92,7 +92,7 @@ function Header() {
                   Home
                 </NavLink>
                 <NavLink
-                  to="/Editor"
+                  to="/Editor/121"
                   activeClassName="Active-link"
                   className="pr-3 nav-link position-relative"
                 >

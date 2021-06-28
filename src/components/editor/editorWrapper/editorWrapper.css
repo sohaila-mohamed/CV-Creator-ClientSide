@@ -9,17 +9,17 @@
   display: flex;
 }
 .left-editor {
-  width: 58%;
+  width: 50%;
   height: 100%;
   display: flex;
 }
 .right-editor {
-  width: 67%;
+  width: 50%;
   height: 100%;
-  background-color: #a8c2ff;
   position: relative;
   display: grid;
   place-items: center;
+  background-color: tomato  ;
 }
 .right-editor button {
   position: absolute;

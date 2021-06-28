@@ -37,7 +37,7 @@ function PersonalInfo(props) {
     setPsersonal({ ...psersonal, GitHub: v });
   };
   const positionHandler = (v) => {
-    setPsersonal({ ...psersonal, position: v });
+    setPsersonal({ ...psersonal, Title: v });
   };
   const saveChanges = (e) => {
     props.setPersonalData(psersonal);
@@ -58,7 +58,7 @@ function PersonalInfo(props) {
       <FormInput
         title="Position"
         width="45"
-        value={psersonal.position}
+        value={psersonal.Title}
         valueBack={positionHandler}
       />
       <div className=" d-flex justify-content-between aligen-items-center">
