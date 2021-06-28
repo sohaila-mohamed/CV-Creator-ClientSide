@@ -12,16 +12,18 @@ import { useEffect } from "react";
 import { authActions } from "./store/auth-slice";
 
 function App() {
-
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const localUser=JSON.parse(localStorage.getItem("userData"))
-    if(localUser)
-      dispatch(authActions.loginUser({userData:localUser.user , authHeaders:localUser.headers}))
-  }, [])
-
+    const localUser = JSON.parse(localStorage.getItem("userData"));
+    if (localUser)
+      dispatch(
+        authActions.loginUser({
+          userData: localUser.user,
+          authHeaders: localUser.headers,
+        })
+      );
+  }, []);
 
   return (
     <BrowserRouter>
@@ -38,6 +40,6 @@ function App() {
       <Footer />
     </BrowserRouter>
   );
-};
+}
 
 export default App;
