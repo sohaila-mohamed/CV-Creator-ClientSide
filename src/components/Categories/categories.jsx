@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { NavLink, useRouteMatch, Switch, Route } from "react-router-dom";
+import axois from "axios";
 import "./categories.css";
-import template from "../../images/template.png";
+
 import heroBg from "../../images/hero-bg.svg";
-import { Container, Row, Col, ListGroup, Button } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { Container, Row, Col, ListGroup } from "react-bootstrap";
+
+import Template from "./template/template";
 
 const Categories = () => {
+  const { path } = useRouteMatch();
+  const [categories, SetCategories] = useState([]);
+
+  useEffect(() => {
+    axois
+      .get("https://still-spire-04865.herokuapp.com/api/template/cat")
+      .then((res) => {
+        SetCategories(res.data);
+      });
+  }, []);
+
   return (
     <React.Fragment>
       <div className="bgContainer">
@@ -33,93 +46,24 @@ const Categories = () => {
             <Col lg="9">
               <ListGroup horizontal>
                 {/* each item will contain a router link to a specific category */}
-                <ListGroup.Item>Basic</ListGroup.Item>
-                <ListGroup.Item>Modern</ListGroup.Item>
-                <ListGroup.Item>College</ListGroup.Item>
-                <ListGroup.Item>Category</ListGroup.Item>
-                <ListGroup.Item>Category</ListGroup.Item>
+                {categories.map((c, index) => (
+                  <NavLink
+                    // activeClassName="selected"
+                    key={index + 1}
+                    to={`/templates/${c.name}`}
+                  >
+                    <ListGroup.Item>{c.name}</ListGroup.Item>
+                  </NavLink>
+                ))}
               </ListGroup>
             </Col>
           </Row>
           <Row className="template-view">
-            <Col lg="3" md="5" sm="5" xs="8" className="template-container">
-              <img src={template} alt="" />
-              <div className="overlay">
-                <Button className="Btn Btn-preview">
-                  <FontAwesomeIcon icon={faEye} />
-                  Preview
-                </Button>
-                <Button className="Btn Btn-edit">
-                  <FontAwesomeIcon icon={faEdit} />
-                  Edit
-                </Button>
-              </div>
-            </Col>
-            <Col lg="3" md="5" sm="5" xs="8" className="template-container">
-              <img src={template} alt="" />
-              <div className="overlay">
-                <Button className="Btn Btn-preview">
-                  <FontAwesomeIcon icon={faEye} />
-                  Preview
-                </Button>
-                <Button className="Btn Btn-edit">
-                  <FontAwesomeIcon icon={faEdit} />
-                  Edit
-                </Button>
-              </div>
-            </Col>
-            <Col lg="3" md="5" sm="5" xs="8" className="template-container">
-              <img src={template} alt="" />
-              <div className="overlay">
-                <Button className="Btn Btn-preview">
-                  <FontAwesomeIcon icon={faEye} />
-                  Preview
-                </Button>
-                <Button className="Btn Btn-edit">
-                  <FontAwesomeIcon icon={faEdit} />
-                  Edit
-                </Button>
-              </div>
-            </Col>
-            <Col lg="3" md="5" sm="5" xs="8" className="template-container">
-              <img src={template} alt="" />
-              <div className="overlay">
-                <Button className="Btn Btn-preview">
-                  <FontAwesomeIcon icon={faEye} />
-                  Preview
-                </Button>
-                <Button className="Btn Btn-edit">
-                  <FontAwesomeIcon icon={faEdit} />
-                  Edit
-                </Button>
-              </div>
-            </Col>
-            <Col lg="3" md="5" sm="5" xs="8" className="template-container">
-              <img src={template} alt="" />
-              <div className="overlay">
-                <Button className="Btn Btn-preview">
-                  <FontAwesomeIcon icon={faEye} />
-                  Preview
-                </Button>
-                <Button className="Btn Btn-edit">
-                  <FontAwesomeIcon icon={faEdit} />
-                  Edit
-                </Button>
-              </div>
-            </Col>
-            <Col lg="3" md="5" sm="5" xs="8" className="template-container">
-              <img src={template} alt="" />
-              <div className="overlay">
-                <Button className="Btn Btn-preview">
-                  <FontAwesomeIcon icon={faEye} />
-                  Preview
-                </Button>
-                <Button className="Btn Btn-edit">
-                  <FontAwesomeIcon icon={faEdit} />
-                  Edit
-                </Button>
-              </div>
-            </Col>
+            <Switch>
+              <Route path="/templates/:topicId">
+                <Template />
+              </Route>
+            </Switch>
           </Row>
         </Container>
       </div>
