@@ -17,7 +17,7 @@ function Category() {
   });
 
   const routeToCat = (catName) => {
-    // history.push()
+    history.push(`/templates/${catName}`);
   };
 
   return (
