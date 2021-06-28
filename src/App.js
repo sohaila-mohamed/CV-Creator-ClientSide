@@ -32,7 +32,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/Editor" component={EditorWrapper} />
-        <Route exact path="/templates" component={Categories} />
+        <Route path="/templates" component={Categories} />
         <Route path="/about-us" component={About} />
         <Route path="/sign-in" component={AuthWrapper} />
         <Route path="/sign-up" component={AuthWrapper} />
