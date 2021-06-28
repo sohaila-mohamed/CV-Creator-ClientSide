@@ -34,11 +34,7 @@ function Category() {
               className="card mb-5 Category-card-color shadow position-relative"
             >
               <div className="card-body">
-                <img
-                  src={`https://still-spire-04865.herokuapp.com${c.image}`}
-                  className="card-img h-100"
-                  alt="cvs"
-                />
+                <img src={c.image} className="card-img h-100" alt="cvs" />
                 <div className=" overlay-hover d-flex align-items-center justify-content-center">
                   <p className="text-white font-weight-bold">{c.name}</p>
                 </div>

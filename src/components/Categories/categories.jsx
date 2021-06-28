@@ -9,11 +9,11 @@ import { Container, Row, Col, ListGroup } from "react-bootstrap";
 import Template from "./template/template";
 
 const Categories = () => {
-  const { path, url } = useRouteMatch();
+  const { path } = useRouteMatch();
   const [categories, SetCategories] = useState([]);
 
   useEffect(() => {
-    const res = axois
+    axois
       .get("https://still-spire-04865.herokuapp.com/api/template/cat")
       .then((res) => {
         SetCategories(res.data);
@@ -60,10 +60,6 @@ const Categories = () => {
           </Row>
           <Row className="template-view">
             <Switch>
-              <Route exact path={path}>
-                <h3>Please select a topic.</h3>
-              </Route>
-
               <Route path="/templates/:topicId">
                 <Template />
               </Route>
