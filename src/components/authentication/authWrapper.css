@@ -42,7 +42,25 @@
     left: 20px;
     font-size:20px;
     cursor: pointer;
+    transition: 0.2s;
+    padding: 10px;
 }
+.back-home:hover
+{
+    box-sizing: border-box;
+    background-color: rgba(82, 97, 226, 0.2);
+    transform: scale(0.95);
+    border-radius: 10px;
+}
+.back-home.clickable
+{
+    transform: scale(0.95);
+    box-sizing: border-box;
+    background-color: rgba(82, 97, 226, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+}
+
 .auth-left span
 {
     color: white;

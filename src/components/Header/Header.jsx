@@ -1,9 +1,53 @@
+import { useEffect, useState } from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
 import logo from "../../images/logo.svg";
-import { NavLink, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import "./Header.css";
+import { useDispatch, useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { authActions } from "../../store/auth-slice";
+import { useRef } from "react";
 
 function Header() {
+
+  const ref = useRef(null);
+  useEffect(() => {
+    /**
+     * Alert if clicked on outside of element
+     */
+    function handleClickOutside(event) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setshowDropSown(false);
+      }
+    }
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref]);
+
+
+
+  const dispatch = useDispatch()
+  const authState = useSelector(state => state.auth)
+
+  const [showDropSown, setshowDropSown] = useState(false)
+
+  const toggleDropDown = (event)=>{
+    event.preventDefault();
+    event.stopPropagation();
+    if(event.target === event.currentTarget) {
+      // handle
+      setshowDropSown((prev)=>{
+        return !prev
+      })
+    }
+  }
+
+
 
   const history = useHistory();
 
@@ -13,8 +57,18 @@ function Header() {
   function handleSignIn() {
     history.push("/sign-in");
   }
+  const logoutHandler = ()=>{
+    dispatch(authActions.logoutUser())
+    setshowDropSown(false);
+  }
 
 
+  // const scrollToTop = () => {
+  //   window.scrollTo({
+  //     top: 950,
+  //     behavior: "smooth",
+  //   });
+  // };
   return (
     <Navbar className="shadow" style={{ zIndex: 999 }} bg="white" expand="lg">
       <div className="container-fluid">
@@ -25,6 +79,7 @@ function Header() {
                 src={logo}
                 className="d-inline-block align-center "
                 id="Logo"
+                alt="logo"
               />
             </Navbar.Brand>
           </div>
@@ -56,13 +111,14 @@ function Header() {
                 >
                   Templates
                 </NavLink>
-                <NavLink
-                  to="/tips"
+                <Link
+                  to="/#tips"
                   activeClassName="Active-link"
                   className="pr-3 nav-link position-relative"
+                  // onClick={scrollToTop}
                 >
                   Tips
-                </NavLink>
+                </Link>
                 <NavLink
                   to="/about-us"
                   activeClassName="Active-link"
@@ -70,21 +126,43 @@ function Header() {
                 >
                   About-us
                 </NavLink>
-                <NavLink
-                  to="/sign-in"
-                  className="pr-3 d-lg-none nav-link d-inline-block"
-                >
-                  Sign-IN
-                </NavLink>
-                <NavLink
-                  to="/sign-up"
-                  className="pr-3 d-lg-none nav-link d-inline-block"
-                >
-                  Sign-UP
-                </NavLink>
+                {!authState.isLoggedIn &&
+                  
+                    <NavLink
+                      to="/sign-in"
+                      className="pr-3 d-lg-none nav-link d-inline-block">
+                      Sign-IN
+                    </NavLink>
+                }
+                {!authState.isLoggedIn &&
+                  
+                    <NavLink
+                      to="/sign-up"
+                      className="pr-3 d-lg-none nav-link d-inline-block">
+                      Sign-UP
+                    </NavLink>
+                }
               </Nav>
             </Navbar.Collapse>
           </div>
+          {authState.isLoggedIn && 
+          <div className="col-3 d-none d-lg-flex align-items-center justify-content-end">
+            <div className="logged-in">
+              <img src="https://image.flaticon.com/icons/png/512/149/149071.png"
+                onClick={toggleDropDown}
+                alt="" 
+                className="avatar"/>
+              <FontAwesomeIcon icon={faBars} onClick={toggleDropDown}
+                style={{position:"absolute",bottom:"5px",right:"8px",color:"white",fontSize:"20px" }}/>
+              {showDropSown && 
+                <div className="login-dropdown" ref={ref}>
+                    <div onClick={logoutHandler}>logout</div>
+                </div>
+              }
+            </div>
+          </div>}
+          
+          {!authState.isLoggedIn &&
           <div className="col-3  d-none d-lg-flex align-items-center justify-content-end">
             <Button
               variant="primary"
@@ -102,6 +180,8 @@ function Header() {
               Sign-UP
             </Button>
           </div>
+          }
+          
         </div>
       </div>
     </Navbar>

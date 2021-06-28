@@ -5,3 +5,36 @@
   font-size: 1.8rem;
   font-family: Roboto;
 }
+.Category-card-color {
+  border-color: #6b82b7 !important;
+  background-color: #6b82b7 !important;
+  border-radius: 0.5em !important;
+  height: 22em;
+}
+.overlay-hover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s ease;
+  background-color: rgba(0, 0, 0, 0.37);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  border-radius: 0.5em !important;
+  
+}
+.overlay-hover p {
+  position: absolute;
+  top: 43%;
+  /* left: 22%; */
+  font-size: 1.8rem;
+}
+.Category-card-color:hover .overlay-hover {
+  opacity: 1;
+  cursor: pointer;
+}
+.card-text {
+  width: 24ch !important;
+}
