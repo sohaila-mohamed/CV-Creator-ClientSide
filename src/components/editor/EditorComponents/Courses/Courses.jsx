@@ -1,109 +1,115 @@
 import React, { useEffect, useState } from "react";
 import FormInput from "../../../ui-utilities/FormInput";
-import ActionBtns from "../../../ui-utilities/ActionBtns/ActionBtns";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { Button } from "react-bootstrap";
 
 const Courses = (props) => {
-  const [Courses, setCourses] = useState({});
+  const [Course, setCourse] = useState({});
+  const [Courses, setCourses] = useState([]);
 
   useEffect(() => {
-    setCourses(props.data);
+    setCourse(props.data);
+    setCourses(props.arrData);
   }, []);
 
   useEffect(() => {
-    props.setCoursesData(Courses);
+    props.setCourse(Course);
+  }, [Course]);
+
+  useEffect(() => {
+    props.setCoursesArr(Courses);
   }, [Courses]);
 
-  const courseName1Handler = (v) => {
-    setCourses({ ...Courses, courseName1: v });
+  const courseNameHandler = (v) => {
+    setCourse({ ...Course, courseName: v });
   };
-  const startDate1Handler = (v) => {
-    setCourses({ ...Courses, startDate1: v });
+  const startDateHandler = (v) => {
+    setCourse({ ...Course, startDate: v.toString() });
   };
-  const endDate1Handler = (v) => {
-    setCourses({ ...Courses, endDate1: v });
+  const endDateHandler = (v) => {
+    setCourse({ ...Course, endDate: v.toString() });
   };
-  const certificate1Handler = (v) => {
-    setCourses({ ...Courses, certificate1: v });
-  };
-
-  const courseName2Handler = (v) => {
-    setCourses({ ...Courses, courseName2: v });
-  };
-  const startDate2Handler = (v) => {
-    setCourses({ ...Courses, startDate2: v });
-  };
-  const endDate2Handler = (v) => {
-    setCourses({ ...Courses, endDate2: v });
-  };
-  const certificate2Handler = (v) => {
-    setCourses({ ...Courses, certificate2: v });
+  const certificateHandler = (v) => {
+    setCourse({ ...Course, certificate: v });
   };
 
-  const saveChanges = (e) => {
-    // props.setPersonalData(psersonal)
+  const addCourse = () => {
+    setCourse({
+      courseName: "",
+      startDate: "",
+      endDate: "",
+      certificate: "",
+    });
+    setCourses([...Courses, Course]);
   };
-
-  const resetChanges = (e) => {
-    for (const key in Courses) {
-      if (Object.hasOwnProperty.call(Courses, key)) {
-        Courses[key] = "";
-      }
-    }
-    setCourses({ ...Courses });
-    props.setCoursesData(Courses);
+  const removeCourse = (id) => {
+    setCourses(Courses.filter((crs, i) => i !== id));
   };
 
   return (
     <React.Fragment>
       <h3>Courses</h3>
-      <div className="mb-4 entry-Block">
-        <h3>1</h3>
-        <FormInput
-          title="Course Name"
-          value={Courses.courseName1}
-          valueBack={courseName1Handler}
-        />
-        <FormInput
-          title="Start Date"
-          value={Courses.startDate1}
-          valueBack={startDate1Handler}
-        />
-        <FormInput
-          title="End Date"
-          value={Courses.endDate1}
-          valueBack={endDate1Handler}
-        />
-        <FormInput
-          title="Certificate (if available)"
-          value={Courses.endDate1}
-          valueBack={endDate1Handler}
-        />
-      </div>
-      <div className="mb-4 entry-Block">
-        <h3>2</h3>
-        <FormInput
-          title="Course Name"
-          value={Courses.courseName2}
-          valueBack={courseName2Handler}
-        />
-        <FormInput
-          title="Start Date"
-          value={Courses.startDate2}
-          valueBack={startDate2Handler}
-        />
-        <FormInput
-          title="End Date"
-          value={Courses.endDate2}
-          valueBack={endDate2Handler}
-        />
-        <FormInput
-          title="Certificate (if available)"
-          value={Courses.endDate2}
-          valueBack={endDate2Handler}
-        />
-      </div>
 
-      <ActionBtns onSave={saveChanges} onReset={resetChanges} />
+      <FormInput
+        title="Course Name"
+        value={Course.courseName}
+        valueBack={courseNameHandler}
+      />
+      <FormInput
+        title="Start Date"
+        type="date"
+        value={Course.startDate}
+        valueBack={startDateHandler}
+      />
+      <FormInput
+        title="End Date"
+        type="date"
+        value={Course.endDate}
+        valueBack={endDateHandler}
+      />
+      <FormInput
+        title="Certificate Link"
+        value={Course.certificate}
+        valueBack={certificateHandler}
+      />
+
+      <Button className="mr-0 custom-style mt-3 mb-3" onClick={addCourse}>
+        <FontAwesomeIcon icon={faPlus} id="custom-icon"></FontAwesomeIcon>
+      </Button>
+
+      {Courses.length > 0 && (
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Course Name</th>
+              <th scope="col">From</th>
+              <th scope="col">To</th>
+              <th scope="col">Certificate</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {Courses.map((crs, i) => (
+              <tr key={i}>
+                <th scope="row">{i + 1}</th>
+                <td>{crs.courseName}</td>
+                <td>{crs.startDate}</td>
+                <td>{crs.endDate}</td>
+                <td>{crs.certificate}</td>
+                <td onClick={() => removeCourse(i)}>
+                  <FontAwesomeIcon
+                    icon={faTimes}
+                    className="mt-2"
+                    style={{ color: "red", cursor: "pointer" }}
+                  ></FontAwesomeIcon>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </React.Fragment>
   );
 };

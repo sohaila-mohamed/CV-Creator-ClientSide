@@ -30,8 +30,8 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/Editor" component={EditorWrapper} />
-        <Route path="/templates" component={Categories} />
+        <Route path="/Editor/:cvid" component={EditorWrapper} />
+        <Route exact path="/templates" component={Categories} />
         <Route path="/about-us" render={() => <p>About</p>} />
         <Route path="/sign-in" component={AuthWrapper} />
         <Route path="/sign-up" component={AuthWrapper} />
