@@ -1,150 +1,133 @@
 import React, { useEffect, useState } from "react";
 import FormInput from "../../../ui-utilities/FormInput";
 import ActionBtns from "../../../ui-utilities/ActionBtns/ActionBtns";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { Button } from "react-bootstrap";
 
 const Experience = (props) => {
   const [Experience, setExperience] = useState({});
+  const [Experiences, setExperiences] = useState([]);
 
   useEffect(() => {
     setExperience(props.data);
+    setExperiences(props.arrData);
   }, []);
 
   useEffect(() => {
     props.setExperienceData(Experience);
   }, [Experience]);
 
+  useEffect(() => {
+    props.setExperienceArr(Experiences);
+  }, [Experiences]);
+
   const jobTitle1Handler = (v) => {
-    setExperience({ ...Experience, jobTitle1: v });
+    setExperience({ ...Experience, jobTitle: v });
   };
-  const companyName1Handler = (v) => {
-    setExperience({ ...Experience, companyName1: v });
+  const companyNameHandler = (v) => {
+    setExperience({ ...Experience, companyName: v });
   };
-  const startDate1Handler = (v) => {
-    setExperience({ ...Experience, startDate1: v });
+  const startDateHandler = (v) => {
+    setExperience({ ...Experience, startDate: v.toString() });
   };
-  const endDate1Handler = (v) => {
-    setExperience({ ...Experience, endDate1: v });
+  const endDateHandler = (v) => {
+    setExperience({ ...Experience, endDate: v.toString() });
   };
-
-  const jobTitle2Handler = (v) => {
-    setExperience({ ...Experience, jobTitle2: v });
-  };
-  const companyName2Handler = (v) => {
-    setExperience({ ...Experience, companyName2: v });
-  };
-  const startDate2Handler = (v) => {
-    setExperience({ ...Experience, startDate2: v });
-  };
-  const endDate2Handler = (v) => {
-    setExperience({ ...Experience, endDate2: v });
-  };
-  const PosDes1Handler = (v) => {
-    setExperience({ ...Experience, PosDes1: v });
-  };
-  const PosDes2Handler = (v) => {
-    setExperience({ ...Experience, PosDes2: v });
-  };
-  const saveChanges = (e) => {
-    // props.setPersonalData(psersonal)
+  const PosDesHandler = (v) => {
+    setExperience({ ...Experience, PosDes: v.target.value });
   };
 
-  const resetChanges = (e) => {
-    for (const key in Experience) {
-      if (Object.hasOwnProperty.call(Experience, key)) {
-        Experience[key] = "";
-      }
-    }
-    setExperience({ ...Experience });
-    props.setExperienceData(Experience);
+  const addExperience = () => {
+    setExperience({
+      jobTitle: "",
+      companyName: "",
+      PosDes: "",
+      startDate: "",
+      endDate: "",
+    });
+    setExperiences([...Experiences, Experience]);
   };
-
-  // const [entries, setEntry] = useState([]);
-  // const [entryNum, setEntryNum] = useState(1);
-  // console.log(...entries);
-
-  // const addEntry = () => {
-  //   setEntryNum(entryNum + 1);
-
-  // setEntry([
-  //   ...entries,
-  //   ,
-  // ]);
-  // };
+  const removeExperience = (id) => {
+    setExperiences(Experiences.filter((exp, i) => i !== id));
+  };
 
   return (
     <React.Fragment>
       <h3>Experience</h3>
-      <div className="mb-4 entry-Block">
-        <h3>1</h3>
-        <FormInput
-          title="Job Title"
-          value={Experience.jobTitle1}
-          valueBack={jobTitle1Handler}
+      <FormInput
+        title="Job Title"
+        value={Experience.jobTitle}
+        valueBack={jobTitle1Handler}
+      />
+      <FormInput
+        title="Company Name"
+        value={Experience.companyName}
+        valueBack={companyNameHandler}
+      />
+      <FormInput
+        title="Start Date"
+        type="date"
+        value={Experience.startDate}
+        valueBack={startDateHandler}
+      />
+      <FormInput
+        title="End Date"
+        type="date"
+        value={Experience.endDate}
+        valueBack={endDateHandler}
+      />
+      <div className="form-floating mt-5">
+        <textarea
+          id="floatingTextarea2"
+          className="form-control rounded-0 border-dark"
+          rows="3"
+          cols="60"
+          value={Experience.PosDes}
+          onChange={PosDesHandler}
+          placeholder=" "
         />
-        <FormInput
-          title="Company Name"
-          value={Experience.companyName1}
-          valueBack={companyName1Handler}
-        />
-        <FormInput
-          title="Title Description"
-          value={Experience.PosDes1}
-          valueBack={PosDes1Handler}
-        />
-        <div className="d-flex justify-content-between">
-          <FormInput
-            title="Start Date"
-            width="45"
-            value={Experience.startDate1}
-            valueBack={startDate1Handler}
-          />
-          <FormInput
-            title="End Date"
-            width="50"
-            value={Experience.endDate1}
-            valueBack={endDate1Handler}
-          />
-        </div>
+        <label htmlFor="floatingTextarea2">Position Description</label>
       </div>
-      <div className="mb-4 entry-Block">
-        <h3>2</h3>
-        <FormInput
-          title="Job Title"
-          value={Experience.jobTitle2}
-          valueBack={jobTitle2Handler}
-        />
-        <FormInput
-          title="Company Name"
-          value={Experience.companyName2}
-          valueBack={companyName2Handler}
-        />
-        <FormInput
-          title="Title Description"
-          value={Experience.PosDes2}
-          valueBack={PosDes2Handler}
-        />
-        <div className="d-flex justify-content-between">
-          <FormInput
-            title="Start Date"
-            width="45"
-            value={Experience.startDate2}
-            valueBack={startDate2Handler}
-          />
-          <FormInput
-            title="End Date"
-            width="50"
-            value={Experience.endDate2}
-            valueBack={endDate2Handler}
-          />
-        </div>
-      </div>
-      {/* <Button disabled={entries.length == 2} onClick={() => addEntry()}>
-        Add Entry
-        <FontAwesomeIcon icon={faPlus} />
-      </Button> */}
-      <ActionBtns onSave={saveChanges} onReset={resetChanges} />
+
+      <Button className="mr-0 custom-style mt-3 mb-3" onClick={addExperience}>
+        <FontAwesomeIcon icon={faPlus} id="custom-icon"></FontAwesomeIcon>
+      </Button>
+
+      {Experiences.length > 0 && (
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Job Title</th>
+              <th scope="col">Company Name</th>
+              <th scope="col">From</th>
+              <th scope="col">To</th>
+              <th scope="col">Description</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {Experiences.map((exp, i) => (
+              <tr key={i}>
+                <th scope="row">{i + 1}</th>
+                <td>{exp.jobTitle}</td>
+                <td>{exp.companyName}</td>
+                <td>{exp.startDate}</td>
+                <td>{exp.endDate}</td>
+                <td>{exp.PosDes}</td>
+                <td onClick={() => removeExperience(i)}>
+                  <FontAwesomeIcon
+                    icon={faTimes}
+                    className="mt-2"
+                    style={{ color: "red", cursor: "pointer" }}
+                  ></FontAwesomeIcon>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </React.Fragment>
   );
 };

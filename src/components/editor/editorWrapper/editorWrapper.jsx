@@ -19,32 +19,35 @@ import { useEffect } from "react";
 import axios from "axios";
 
 function EditorWrapper() {
+  const { cvid } = useParams();
 
-  const {cvid} = useParams();
-
-  const [change, setchange] = useState(false)
+  const [change, setchange] = useState(false);
 
   useEffect(() => {
-    axios.get("https://still-spire-04865.herokuapp.com/api/user/cv/60d85e33c80e820004b12bf6/60da11bfb994410004b4f140",{
-      headers: {
-        //   ...authState.authHeaders,
-        ...JSON.parse(localStorage.getItem("userData")).headers,
-        "Access-Control-Allow-Origin": "*",
-      }
-    }).then((res)=>{
-      
-        setpersonalInfo({...personalInfo,...res.data.personalInfo})
-        seteducationData({...educationData,...res.data.educationData})
+    axios
+      .get(
+        "https://still-spire-04865.herokuapp.com/api/user/cv/60d85e33c80e820004b12bf6/60da11bfb994410004b4f140",
+        {
+          headers: {
+            //   ...authState.authHeaders,
+            ...JSON.parse(localStorage.getItem("userData")).headers,
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      )
+      .then((res) => {
+        setpersonalInfo({ ...personalInfo, ...res.data.personalInfo });
+        seteducationData({ ...educationData, ...res.data.educationData });
         // setExperienceData({...experienceData,...res.data.experienceData})
         // setCoursesData({...coursesData,...res.data.coursesData})
-        setSkillsData([...skillsData,...res.data.skillsData])
-        SetArrProjects([...ArrProjects,...res.data.ProjectData])
-        SetArrLangData([...ArrLangData,...res.data.LangData])
-        SetcareerData(res.data.Objective.careerData)
-
-    }).catch((err)=>{
-      console.log(err);
-    })
+        setSkillsData([...skillsData, ...res.data.skillsData]);
+        SetArrProjects([...ArrProjects, ...res.data.ProjectData]);
+        SetArrLangData([...ArrLangData, ...res.data.LangData]);
+        SetcareerData(res.data.Objective.careerData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   const userState = useSelector((state) => state.auth);
@@ -72,28 +75,22 @@ function EditorWrapper() {
   });
 
   const [experienceData, setExperienceData] = useState({
-    jobTitle1: "",
-    companyName1: "",
-    PosDes1: "",
-    startDate1: "",
-    endDate1: "",
-    jobTitle2: "",
-    companyName2: "",
-    startDate2: "",
-    endDate2: "",
-    PosDes2: "",
+    jobTitle: "",
+    companyName: "",
+    PosDes: "",
+    startDate: "",
+    endDate: "",
   });
 
-  const [coursesData, setCoursesData] = useState({
-    courseName1: "",
-    startDate1: "",
-    endDate1: "",
-    certificate1: "",
-    courseName2: "",
-    startDate2: "",
-    endDate2: "",
-    certificate2: "",
+  const [experienceArr, setExperienceArr] = useState([]);
+
+  const [courseData, setCourseData] = useState({
+    courseName: "",
+    startDate: "",
+    endDate: "",
+    certificate: "",
   });
+  const [coursesArr, setCoursesArrData] = useState([]);
 
   const [skillsData, setSkillsData] = useState([]);
 
@@ -125,11 +122,17 @@ function EditorWrapper() {
   const experienceHandler = (data) => {
     setExperienceData(data);
   };
+  const experienceArrHandler = (data) => {
+    setExperienceArr(data);
+  };
   const careerHandeler = (data) => {
     SetcareerData(data);
   };
-  const coursesHandler = (data) => {
-    setCoursesData(data);
+  const courseHandler = (data) => {
+    setCourseData(data);
+  };
+  const coursesArrHandler = (data) => {
+    setCoursesArrData(data);
   };
   const LangHandler = (data) => {
     SetLangData(data);
@@ -150,16 +153,15 @@ function EditorWrapper() {
   const [cvTemplate, setCvTemplate] = useState("Cv Template");
 
   // request the new cv template with new update
-  
+
   const [template, setTemplate] = useState("");
   const loadNewCvVersion = () => {
     const body = {
       cvId: "60da11bfb994410004b4f140",
       // userId:authState.userData._id
       userId: JSON.parse(localStorage.getItem("userData")).user._id.toString(),
-      data:{personalInfo:{...personalInfo}}
+      data: { personalInfo: { ...personalInfo } },
     };
-    
 
     axios
       .put("https://still-spire-04865.herokuapp.com/api/user/cv/update", body, {
@@ -169,8 +171,7 @@ function EditorWrapper() {
           "Access-Control-Allow-Origin": "*",
         },
       })
-      .then( async (res) => {
-        
+      .then(async (res) => {
         setTemplate(res.data);
       })
 
@@ -182,7 +183,7 @@ function EditorWrapper() {
   return (
     <div className="editorWrapper-container">
       <div className="left-editor w-100 w-md-50">
-        <Navigator cvid={cvid}/>
+        <Navigator cvid={cvid} />
         {/* to include each editor component here Ex education component , personal information component , ect */}
         <div className="each-form-component">
           <Switch>
@@ -207,7 +208,9 @@ function EditorWrapper() {
             <Route path="/Editor/:cvid/Experiences">
               <Experience
                 data={experienceData}
+                arrData={experienceArr}
                 setExperienceData={experienceHandler}
+                setExperienceArr={experienceArrHandler}
               ></Experience>
             </Route>
             <Route
@@ -224,12 +227,16 @@ function EditorWrapper() {
             <Route path="/Editor/:cvid/Skills">
               <Skills data={skillsData} setSkillsData={skillsHandler}></Skills>
             </Route>
+
             <Route path="/Editor/:cvid/Courses">
               <Courses
-                data={coursesData}
-                setCoursesData={coursesHandler}
+                data={courseData}
+                setCourse={courseHandler}
+                arrData={coursesArr}
+                setCoursesArr={coursesArrHandler}
               ></Courses>
             </Route>
+
             <Route
               path="/Editor/:cvid/Languages"
               render={() => (
@@ -259,11 +266,10 @@ function EditorWrapper() {
         </button>
         {/* state with the new content "cv template " */}
 
-          <iframe
-            style={{ width: "100%", height: "100%" }}
-            srcDoc={template}
-          ></iframe>
-          
+        <iframe
+          style={{ width: "100%", height: "100%" }}
+          srcDoc={template}
+        ></iframe>
       </div>
     </div>
   );
