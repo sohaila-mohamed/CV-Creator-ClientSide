@@ -10,18 +10,21 @@ import EditorWrapper from "./components/editor/editorWrapper/editorWrapper";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { authActions } from "./store/auth-slice";
+import About from "./components/About/About";
 
 function App() {
-
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const localUser=JSON.parse(localStorage.getItem("userData"))
-    if(localUser)
-      dispatch(authActions.loginUser({userData:localUser.user , authHeaders:localUser.headers}))
-  }, [])
-
+    const localUser = JSON.parse(localStorage.getItem("userData"));
+    if (localUser)
+      dispatch(
+        authActions.loginUser({
+          userData: localUser.user,
+          authHeaders: localUser.headers,
+        })
+      );
+  }, []);
 
   return (
     <BrowserRouter>
@@ -30,7 +33,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/Editor" component={EditorWrapper} />
         <Route exact path="/templates" component={Categories} />
-        <Route path="/about-us" render={() => <p>About</p>} />
+        <Route path="/about-us" component={About} />
         <Route path="/sign-in" component={AuthWrapper} />
         <Route path="/sign-up" component={AuthWrapper} />
         <Route path="*" component={Error} />
@@ -38,6 +41,6 @@ function App() {
       <Footer />
     </BrowserRouter>
   );
-};
+}
 
 export default App;
