@@ -12,16 +12,18 @@ import { useEffect } from "react";
 import { authActions } from "./store/auth-slice";
 
 function App() {
-
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const localUser=JSON.parse(localStorage.getItem("userData"))
-    if(localUser)
-      dispatch(authActions.loginUser({userData:localUser.user , authHeaders:localUser.headers}))
-  }, [])
-
+    const localUser = JSON.parse(localStorage.getItem("userData"));
+    if (localUser)
+      dispatch(
+        authActions.loginUser({
+          userData: localUser.user,
+          authHeaders: localUser.headers,
+        })
+      );
+  }, []);
 
   return (
     <BrowserRouter>
@@ -29,7 +31,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/Editor" component={EditorWrapper} />
-        <Route exact path="/templates" component={Categories} />
+        <Route path="/templates" component={Categories} />
         <Route path="/about-us" render={() => <p>About</p>} />
         <Route path="/sign-in" component={AuthWrapper} />
         <Route path="/sign-up" component={AuthWrapper} />
@@ -38,6 +40,6 @@ function App() {
       <Footer />
     </BrowserRouter>
   );
-};
+}
 
 export default App;
