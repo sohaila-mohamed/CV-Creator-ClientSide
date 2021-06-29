@@ -9,3 +9,53 @@
   width: 4rem;
   margin-bottom: 2em;
 }
+.image-style {
+  /* border-radius: 50% !important; */
+  height: 75% !important;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-box {
+  background-color: transparent;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-box-front,
+.flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-box-front {
+  background-color: transparent;
+  color: black;
+}
+
+/* Style the back side */
+.flip-box-back {
+  background-color: #6b82b7;
+  color: white;
+  transform: rotateY(180deg);
+}
