@@ -1,7 +1,7 @@
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { Route, Switch, useParams } from "react-router-dom";
+import { Route, Switch, useHistory, useParams } from "react-router-dom";
 
 import Education from "../EditorComponents/Education/Education";
 import PersonalInfo from "../EditorComponents/PersonalInfo/PersonalInfo";
@@ -22,7 +22,8 @@ import BounceLoader from "react-spinners/BounceLoader";
 import { css } from "@emotion/react";
 
 function EditorWrapper() {
-  const { cvid } = useParams();
+  const { cvid , cvtoken} = useParams();
+  const history = useHistory();
 
   // spinner properties
   let [loading, setLoading] = useState(true);
@@ -56,6 +57,10 @@ function EditorWrapper() {
         SetArrProjects([...ArrProjects, ...res.data.ProjectData]);
         SetArrLangData([...ArrLangData, ...res.data.LangData]);
         SetcareerData(res.data.Objective.careerData);
+
+        // navigate to personla info 
+        history.push(`/Editor/${cvid}/${cvtoken}/PersonalInfo`)
+
       })
       .catch((err) => {
         console.log(err);
@@ -167,11 +172,12 @@ function EditorWrapper() {
   // request the new cv template with new update
 
   const [template, setTemplate] = useState("");
+  
   const loadNewCvVersion = () => {
     setLoading(true);
 
     const body = {
-      cvId: "60da11bfb994410004b4f140",
+      cvId: cvtoken,
       // userId:authState.userData._id
       userId: JSON.parse(localStorage.getItem("userData")).user._id.toString(),
       data: {
@@ -202,12 +208,12 @@ function EditorWrapper() {
   return (
     <div className="editorWrapper-container">
       <div className="left-editor w-100 w-md-50">
-        <Navigator cvid={cvid} />
+        <Navigator cvid={cvid} cvtoken={cvtoken}/>
         {/* to include each editor component here Ex education component , personal information component , ect */}
         <div className="each-form-component">
           <Switch>
             <Route
-              path="/Editor/:cvid/PersonalInfo"
+              path="/Editor/:cvid/:cvtoken/PersonalInfo"
               render={() => (
                 <PersonalInfo
                   data={personalInfo}
@@ -216,7 +222,7 @@ function EditorWrapper() {
               )}
             />
             <Route
-              path="/Editor/:cvid/Education"
+              path="/Editor/:cvid/:cvtoken/Education"
               render={() => (
                 <Education
                   data={educationData}
@@ -224,7 +230,7 @@ function EditorWrapper() {
                 ></Education>
               )}
             />
-            <Route path="/Editor/:cvid/Experiences">
+            <Route path="/Editor/:cvid/:cvtoken/Experiences">
               <Experience
                 data={experienceData}
                 arrData={experienceArr}
@@ -233,7 +239,7 @@ function EditorWrapper() {
               ></Experience>
             </Route>
             <Route
-              path="/Editor/:cvid/Projects"
+              path="/Editor/:cvid/:cvtoken/Projects"
               render={() => (
                 <Projects
                   Arrdata={ArrProjects}
@@ -243,11 +249,11 @@ function EditorWrapper() {
                 />
               )}
             />
-            <Route path="/Editor/:cvid/Skills">
+            <Route path="/Editor/:cvid/:cvtoken/Skills">
               <Skills data={skillsData} setSkillsData={skillsHandler}></Skills>
             </Route>
 
-            <Route path="/Editor/:cvid/Courses">
+            <Route path="/Editor/:cvid/:cvtoken/Courses">
               <Courses
                 data={courseData}
                 setCourse={courseHandler}
@@ -257,7 +263,7 @@ function EditorWrapper() {
             </Route>
 
             <Route
-              path="/Editor/:cvid/Languages"
+              path="/Editor/:cvid/:cvtoken/Languages"
               render={() => (
                 <Languages
                   data={LangData}
@@ -268,7 +274,7 @@ function EditorWrapper() {
               )}
             />
             <Route
-              path="/Editor/:cvid/Career-objective"
+              path="/Editor/:cvid/:cvtoken/Career-objective"
               render={() => (
                 <Career data={careerData} setCareerData={careerHandeler} />
               )}

@@ -60,7 +60,6 @@ function SignIn() {
         const body={email,password}
         axios.post("https://still-spire-04865.herokuapp.com/api/login/log",body)
         .then((res)=>{
-            console.log("res.headers",res.headers);
             const userBody=res.data;
             let authHeaders={}
             authHeaders["x-login-auth-token"]=res.headers['x-login-auth-token']
