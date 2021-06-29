@@ -1,4 +1,4 @@
-import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { faEye,faFileDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Route, Switch, useParams } from "react-router-dom";
@@ -17,6 +17,9 @@ import Projects from "./../EditorComponents/Projects/Projects";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import axios from "axios";
+
+import { jsPDF } from "jspdf";
+import html2canvas from 'html2canvas';
 
 function EditorWrapper() {
   const { cvid } = useParams();
@@ -149,7 +152,25 @@ function EditorWrapper() {
   const ArrProjectsData = (data) => {
     SetArrProjects(data);
   };
+//Download Template PDF
 
+const elementRef = React.useRef();
+const downloadPdf=()=>{
+   const input= template
+  //  input.ownerDocument=input.srcdoc
+   console.log("input",input)
+  // const input = document.getElementById('divToPrint');
+  html2canvas(input)
+    .then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF();
+      pdf.addImage(imgData, 'JPEG', 0, 0);
+      // pdf.output('dataurlnewwindow');
+      pdf.save("download.pdf");
+    })
+  ;
+
+}
   const [cvTemplate, setCvTemplate] = useState("Cv Template");
 
   // request the new cv template with new update
@@ -255,22 +276,34 @@ function EditorWrapper() {
               )}
             />
           </Switch>
+          
         </div>
       </div>
 
       <div className="right-editor d-none d-md-block w-100 w-md-50">
         {/* w-100 w-md-50 */}
+        
+        
         <button onClick={loadNewCvVersion}>
           <FontAwesomeIcon icon={faEye} className="mr-2" />
           Preview
         </button>
+
+        <button onClick={downloadPdf} className="button-download" >
+          <FontAwesomeIcon icon={faFileDownload} className="mr-2 mt-1" />
+          Download
+        </button>
+
+       
         {/* state with the new content "cv template " */}
 
         <iframe
+           ref={elementRef}
           style={{ width: "100%", height: "100%" }}
           srcDoc={template}
         ></iframe>
       </div>
+     
     </div>
   );
 }

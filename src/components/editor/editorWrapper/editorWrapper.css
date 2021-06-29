@@ -1,45 +1,64 @@
 .editorWrapper-container {
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100vh;
-  width: 100%;
-  background-color: rgb(255, 255, 255);
-  z-index: 1000;
-  display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    z-index: 1000;
+    display: flex;
 }
+
 .left-editor {
-  width: 50%;
-  height: 100%;
-  display: flex;
+    width: 50%;
+    height: 100%;
+    display: flex;
 }
+
 .right-editor {
-  width: 50%;
-  height: 100%;
-  position: relative;
-  display: grid;
-  place-items: center;
-  background-color: tomato  ;
+    width: 50%;
+    height: 100%;
+    position: relative;
+    display: grid;
+    place-items: center;
+    background-color: tomato;
 }
+
 .right-editor button {
-  position: absolute;
-  box-sizing: border-box;
-  top: 0;
-  right: 100%;
-  padding: 5px 35px;
-  background-color: #6b82b7;
-  color: white;
-  outline: none;
-  border: none;
-  display: flex;
-  align-items: center;
-  box-shadow: 0px 4px 4px rgb(170, 170, 170);
+    position: absolute;
+    box-sizing: border-box;
+    top: 0;
+    right: 100%;
+    padding: 5px 35px;
+    background-color: #6b82b7;
+    color: white;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 4px 4px rgb(170, 170, 170);
+}
+
+.right-editor .button-download {
+    position: absolute;
+    box-sizing: border-box;
+    top: 0;
+    right: 125%;
+    padding: 5px 35px;
+    background-color: #6b82b7;
+    color: white;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: flex-start;
+    width: fit-content;
+    box-shadow: 0px 4px 4px rgb(170, 170, 170);
 }
 
 .each-form-component {
-  width: 83%;
-  max-height: 100%;
-  box-sizing: border-box;
-  padding: 8%;
-  overflow: auto;
+    width: 83%;
+    max-height: 100%;
+    box-sizing: border-box;
+    padding: 8%;
+    overflow: auto;
 }
