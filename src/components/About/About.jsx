@@ -9,7 +9,7 @@ import Eslam from "../../images/Team/Eslam.JPG";
 import Omar from "../../images/Team/Omar.JPG";
 import Mayar from "../../images/Team/Mayar.JPG";
 import Sohaila from "../../images/Team/Sohaila.PNG";
-import Khaled from "../../images/Team/Khaled.png";
+import Khaled from "../../images/Team/Khaled.jpeg";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import AnimatedNumber from "react-animated-number";
@@ -175,7 +175,11 @@ const About = () => {
             <div className="flip-box image-style w-100">
               <div className="flip-box-inner">
                 <div className="flip-box-front">
-                  <Card.Img variant="top" src="" className=" img-fluid  p-3" />
+                  <Card.Img
+                    variant="top"
+                    src={Khaled}
+                    className=" img-fluid w-75 p-3"
+                  />
                 </div>
                 <div className="flip-box-back">
                   <h4 className="p-5">Front-End Developer</h4>
