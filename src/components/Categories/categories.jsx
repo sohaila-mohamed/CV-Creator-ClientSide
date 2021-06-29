@@ -40,7 +40,7 @@ const Categories = () => {
         <Container>
           {Preview ? (
             <div className="preview-overlay">
-              <FontAwesomeIcon onClick={()=>hidePreview()} icon={faTimes} />
+              <FontAwesomeIcon onClick={() => hidePreview()} icon={faTimes} />
               <div className="container">
                 <img src={PreviewPath} alt="" />
               </div>

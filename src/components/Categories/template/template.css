@@ -34,22 +34,5 @@
   opacity: 0;
   transition: 0.5s ease;
 }
-.Btn {
-  width: 60%;
-  margin: 0.4em 0;
-  text-align: left !important;
-  padding: 0.5em 1.9em !important;
-}
-.Btn .svg-inline--fa {
-  margin-right: 0.5em;
-}
-.Btn-preview {
-  background-color: #fff !important;
-  color: #8c8c8c !important;
-  border: none !important;
-}
-.Btn-edit {
-  background-color: #6b82b7 !important;
-  color: #fff !important;
-  border: none !important;
-}
+
+
