@@ -190,7 +190,7 @@ const About = () => {
         <Row className="d-flex flex-wrap mb-5 justify-content-center">
           <Card
             className="w-25 mr-5 ml-5"
-            style={{ width: "18rem", height: "18rem !important" }}
+            style={{ width: "18rem", height: "18rem" }}
           >
             <div className="flip-box image-style w-100">
               <div className="flip-box-inner">
@@ -212,7 +212,10 @@ const About = () => {
               </Card.Title>
             </Card.Body>
           </Card>
-          <Card className="w-25 mr-1" style={{ width: "18rem" }}>
+          <Card
+            className="w-25 mr-1"
+            style={{ width: "18rem", height: "18rem" }}
+          >
             <div className="flip-box image-style w-100">
               <div className="flip-box-inner">
                 <div className="flip-box-front">
