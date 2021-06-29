@@ -156,16 +156,15 @@ function EditorWrapper() {
 
 const elementRef = React.useRef();
 const downloadPdf=()=>{
-   const input= template
-  //  input.ownerDocument=input.srcdoc
-   console.log("input",input)
-  // const input = document.getElementById('divToPrint');
-  html2canvas(input)
+  const input = elementRef.current.contentWindow.document.documentElement;
+   console.log("input",input);
+  html2canvas(input,{ useCORS: true})
     .then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF();
-      pdf.addImage(imgData, 'JPEG', 0, 0);
-      // pdf.output('dataurlnewwindow');
+      const pdf = new jsPDF('x', 'pt', 'a4');
+      pdf.setDisplayMode('fullwidth', 'continuous', 'FullScreen');
+      pdf.addImage(imgData, 'JPEG', 0, 0,canvas.width,canvas.height);
+      // pdf.output('dataurlnewwindow');'JPEG', 28.345, 28.345, a4Width, a4Width / canvas1.width * height
       pdf.save("download.pdf");
     })
   ;
