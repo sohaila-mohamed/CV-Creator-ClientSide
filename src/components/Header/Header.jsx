@@ -5,7 +5,7 @@ import { Link, NavLink, useHistory } from "react-router-dom";
 import "./Header.css";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faCircle, faCog, faOutdent, faPaperPlane, faSpaceShuttle, faUser } from "@fortawesome/free-solid-svg-icons";
 import { authActions } from "../../store/auth-slice";
 import { useRef } from "react";
 
@@ -36,12 +36,13 @@ function Header() {
   const toggleDropDown = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    if (event.target === event.currentTarget) {
-      // handle
-      setshowDropSown((prev) => {
-        return !prev;
-      });
-    }
+    setshowDropSown((prev) => {
+      return !prev;
+    });
+    // if (event.target === event.currentTarget) {
+    //   // handle
+      
+    // }
   };
 
   const history = useHistory();
@@ -99,7 +100,7 @@ function Header() {
                   Resume Builder
                 </NavLink>
                 <NavLink
-                  to="/templates/Classic"
+                  to="/templates/?Classic"
                   activeClassName="Active-link"
                   className="pr-3 nav-link position-relative"
                 >
@@ -149,19 +150,83 @@ function Header() {
                   className="avatar"
                 />
                 <FontAwesomeIcon
-                  icon={faBars}
                   onClick={toggleDropDown}
+                  icon={faBars}
                   style={{
                     position: "absolute",
-                    bottom: "5px",
-                    right: "8px",
+                    bottom: "0px",
+                    right: "0px",
                     color: "white",
-                    fontSize: "20px",
+                    fontSize: "15px",
+                    backgroundColor:"#556080",
+                    padding:"5px",
+                    boxSizing:"content-box",
+                    borderRadius:"50%"
+                    
                   }}
                 />
                 {showDropSown && (
                   <div className="login-dropdown" ref={ref}>
-                    <div onClick={logoutHandler}>logout</div>
+                    <div className="login-header">
+                      <div className="user-image">
+                      <img
+                        src="https://image.flaticon.com/icons/png/512/149/149071.png"
+                        
+                      />
+                      </div>
+                      <div className="user-info">
+                        <div className="user-name">
+                         {`${authState.userData.firstName} ${authState.userData.lastName}`}
+                        </div>
+                        <div className="user-email">
+                          omar@gmail.com
+                        </div>
+                      </div>
+                    </div>
+                    <div onClick={logoutHandler} className="login-link">
+                    <FontAwesomeIcon
+                     className="login-link-icon"
+                      icon={faUser}
+                      style={{
+                        color:"#888",
+                        marginRight:"10px"
+                      }}
+                      ></FontAwesomeIcon>
+                      Profile
+                      </div>
+                    <div onClick={logoutHandler} className="login-link">
+                    <FontAwesomeIcon
+                      className="login-link-icon"
+                      icon={faPaperPlane}
+                      style={{
+                        color:"#888",
+                        marginRight:"10px"
+                      }}
+                      ></FontAwesomeIcon>
+                      My CVS
+                      </div>
+                    <div onClick={logoutHandler} className="login-link">
+                    <FontAwesomeIcon
+                    className="login-link-icon"
+                      icon={faCog}
+                      style={{
+                        color:"#888",
+                        marginRight:"10px"
+                      }}
+                      ></FontAwesomeIcon>
+                      Settings
+                      </div>
+                    <div onClick={logoutHandler} className="login-link">
+                    <FontAwesomeIcon
+                      className="login-link-icon"
+                      icon={faOutdent}
+                      style={{
+                        color:"#888",
+                        marginRight:"10px"
+                      }}
+                      ></FontAwesomeIcon>
+                      Logout
+                      </div>
                   </div>
                 )}
               </div>
