@@ -39,6 +39,9 @@ function PersonalInfo(props) {
   const positionHandler = (v) => {
     setPsersonal({ ...psersonal, Title: v });
   };
+  const emailHandler = (v) => {
+    setPsersonal({ ...psersonal, email: v });
+  };
   const saveChanges = (e) => {
     props.setPersonalData(psersonal);
   };
@@ -92,6 +95,12 @@ function PersonalInfo(props) {
           width="45"
         />
       </div>
+      <FormInput
+        title="Email"
+        width="100"
+        value={psersonal.email}
+        valueBack={emailHandler}
+      />
       <FormInput
         title="Address"
         width="100"
