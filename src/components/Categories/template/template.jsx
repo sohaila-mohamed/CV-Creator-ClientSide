@@ -1,14 +1,19 @@
-import { useParams, withRouter } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useParams, withRouter, useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { Col, Button } from "react-bootstrap";
 import "./template.css";
 import axois from "axios";
-import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-const Template = () => {
+const Template = (props) => {
   const { topicId } = useParams();
   const [templates, setTemplates] = useState([]);
+  const { preview } = props;
+  const history = useHistory();
+  const authState = useSelector((state) => state.auth);
 
   useEffect(() => {
     axois
@@ -19,6 +24,29 @@ const Template = () => {
         setTemplates(res.data);
       });
   }, [topicId]);
+
+  const edit = (tempID) => {
+    const body = {
+      tempId: tempID,
+      userId: JSON.parse(localStorage.getItem("userData")).user._id.toString(),
+    };
+
+    axios
+      .put("https://still-spire-04865.herokuapp.com/api/user/cv", body, {
+        headers: {
+          ...JSON.parse(localStorage.getItem("userData")).headers,
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
+      .then((res) => {
+        history.push(`/Editor/${tempID}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    
+  };
 
   return (
     <React.Fragment>
@@ -33,13 +61,16 @@ const Template = () => {
         >
           <img src={t.image} alt="" />
           <div className="overlay">
-            <Button className="Btn Btn-preview">
+            <Button
+              onClick={() => preview(t.image)}
+              className="Btn Btn-preview"
+            >
               <FontAwesomeIcon icon={faEye} />
               Preview
             </Button>
-            <Button className="Btn Btn-edit">
+            <Button onClick={() => edit(t.templateId)} className="Btn Btn-edit">
               <FontAwesomeIcon icon={faEdit} />
-              Edit
+              Create My Cv
             </Button>
           </div>
         </Col>

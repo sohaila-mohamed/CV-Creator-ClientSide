@@ -100,7 +100,7 @@ function Header() {
                   Resume Builder
                 </NavLink>
                 <NavLink
-                  to="/templates/?Classic"
+                  to="/templates/Classic"
                   activeClassName="Active-link"
                   className="pr-3 nav-link position-relative"
                 >
