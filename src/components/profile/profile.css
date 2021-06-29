@@ -1,0 +1,222 @@
+body * {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+body a:hover {
+  text-decoration: none;
+}
+
+.cover {
+  display: block;
+  background-color: #6b82b7;
+  width: 100%;
+  height: 268px;
+  position: relative;
+}
+
+.cover p {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  color: #95a9d880;
+}
+
+.cover label {
+  position: absolute;
+  left: 95%;
+  top: 72%;
+  cursor: pointer;
+}
+.cover label img {
+  filter: invert(100);
+}
+/* .cover input {
+  display: none;
+} */
+
+.sideNav {
+  position: absolute;
+  top: -106px;
+  left: 21%;
+  border-radius: 1.5rem;
+  background-color: #6b82b7;
+  box-shadow: -2px 7px 58px -25px rgba(0, 0, 0, 0.64);
+}
+
+.sideNav__profilePic {
+  width: 8rem;
+  height: 8rem;
+  margin-top: -40px;
+}
+
+.sideNav__profileName {
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: capitalize;
+  text-align: center;
+  color: #fff;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.sideNav a {
+  font-size: 1.2rem;
+}
+
+.sideNav a:nth-of-type(3) {
+  margin-bottom: 80px;
+}
+
+.sideNav a:nth-of-type(4) {
+  margin-bottom: 10px;
+}
+
+.container-margin {
+  margin-left: 30em !important;
+}
+
+.sideNav__type1 {
+  background-color: #fff;
+  border-radius: 0.5rem;
+}
+.sideNav__type1 a,
+.sideNav__type1 a:hover {
+  color: #6b82b7;
+}
+
+.sideNav__type2 {
+  border-bottom: 1px solid #fff;
+}
+.sideNav__type2 a,
+.sideNav__type2 a:hover {
+  color: #fff;
+}
+
+.sideNav__type3,
+.sideNav__type3:hover {
+  color: #d6d1d1;
+}
+
+.sideNav__type3 img {
+  vertical-align: middle;
+  display: inline-block;
+  /* width: 20px; */
+  height: auto;
+  margin-top: -6px;
+  margin-right: 5px;
+}
+
+.cvContainerLabel {
+  font-size: 1.5rem;
+  border-radius: 0.7rem;
+  background-color: #fff;
+  box-sizing: border-box;
+  color: #6b82b7;
+}
+.Custom-Container {
+  margin-right: 1.8em !important;
+}
+.cvContainer {
+  width: 50%;
+  height: 650px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-left: 30%;
+}
+
+.cvContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.cvContainer__cvCard {
+  position: relative;
+  width: 95%;
+  height: 250px;
+  box-sizing: border-box;
+  border: 3.5px solid #6b82b7;
+  border-radius: 10px;
+  border-collapse: separate;
+  overflow: hidden;
+  background-color: #fff;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.cvContainer__cvCard img {
+  width: 100%;
+  height: auto;
+}
+
+.apper:hover .cvContainer__cvCard__panel {
+  opacity: 1;
+  transition: 0.5s ease;
+}
+
+.cvContainer__cvCard__panel {
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: rgba(118, 138, 184, 0.89);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.cvContainer__cvCard__panel img {
+  width: 25px;
+  height: auto;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.border-Radius,
+.border-custom {
+  border-radius: 1rem !important;
+}
+.border-custom {
+  border: 0.5em solid #6b82b7 !important;
+}
+
+/*Responcive*/
+/* */
+.custom {
+  padding: 3rem !important;
+  flex-grow: 0;
+}
+/* @media only screen and (max-width: 1199.98px) {
+  .custom {
+    padding: 1rem !important;
+  }
+}
+@media only screen and (max-width: 991.98px) {
+  .custom {
+    padding: 0rem !important;
+     flex-grow: 1 !important;
+  }
+} */
+/*768 991*/
+@media only screen and (max-width: 1200px) {
+  .sideNav a {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 991.98px) {
+  .sideNav__profilePic {
+    width: 6rem;
+    height: 6rem;
+  }
+  .sideNav div {
+    padding-top: 1% !important;
+    padding-right: 0% !important;
+  }
+  .sideNav {
+    width: 15rem;
+  }
+}
+@media (max-width: 768.8px) {
+  .sideNav__profilePic {
+    margin-left: 4rem;
+  }
+}

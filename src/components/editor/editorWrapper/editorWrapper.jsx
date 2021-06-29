@@ -3,8 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Route, Switch, useHistory, useParams } from "react-router-dom";
 
-
-
 import Education from "../EditorComponents/Education/Education";
 import PersonalInfo from "../EditorComponents/PersonalInfo/PersonalInfo";
 import Career from "../EditorComponents/CareerObjective/CareerObjective";
@@ -26,22 +24,21 @@ import BounceLoader from "react-spinners/BounceLoader";
 import { css } from "@emotion/react";
 
 function EditorWrapper() {
-  const { cvid , cvtoken} = useParams();
+  const { cvid, cvtoken } = useParams();
   const history = useHistory();
 
   // spinner properties
   let [loading, setLoading] = useState(true);
   let [color, setColor] = useState("#6B82B7");
   const override = css`
-  position: absolute;
-  top: 50%;
-  left:50%;
-  transform:translate(-50%,-100%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
   `;
 
   useEffect(() => {
-
-    // to get all objects from DB and set it 
+    // to get all objects from DB and set it
     axios
       .get(
         "https://still-spire-04865.herokuapp.com/api/user/cv/60d85e33c80e820004b12bf6/60da11bfb994410004b4f140",
@@ -56,21 +53,19 @@ function EditorWrapper() {
       .then((res) => {
         setpersonalInfo({ ...personalInfo, ...res.data.personalInfo });
         seteducationData({ ...educationData, ...res.data.educationData });
-        setExperienceArr([...experienceArr,...res.data.experienceData])
-        setCoursesArrData([...coursesArr,...res.data.coursesData])
+        setExperienceArr([...experienceArr, ...res.data.experienceData]);
+        setCoursesArrData([...coursesArr, ...res.data.coursesData]);
         setSkillsData([...skillsData, ...res.data.skillsData]);
         SetArrProjects([...ArrProjects, ...res.data.ProjectData]);
         SetArrLangData([...ArrLangData, ...res.data.LangData]);
         SetcareerData(res.data.Objective.careerData);
 
-        // navigate to personla info 
-        history.push(`/Editor/${cvid}/${cvtoken}/PersonalInfo`)
-
+        // navigate to personla info
+        history.push(`/Editor/${cvid}/${cvtoken}/PersonalInfo`);
       })
       .catch((err) => {
         console.log(err);
       });
-
   }, []);
 
   const userState = useSelector((state) => state.auth);
@@ -80,6 +75,7 @@ function EditorWrapper() {
     lastName: "",
     DateofBirth: "",
     Title: "",
+    email: "",
     phoneNumber: "",
     address: "",
     Linkedin: "",
@@ -195,16 +191,19 @@ const downloadPdf=()=>{
   // request the new cv template with new update
 
   const [template, setTemplate] = useState("");
-  
-  const loadNewCvVersion = () => {
 
+  const loadNewCvVersion = () => {
     setLoading(true);
 
     const body = {
       cvId: cvtoken,
       // userId:authState.userData._id
       userId: JSON.parse(localStorage.getItem("userData")).user._id.toString(),
-      data: { personalInfo: { ...personalInfo } },
+      data: {
+        personalInfo: { ...personalInfo },
+        educationData: { ...educationData },
+        experienceArr: [...experienceArr],
+      },
     };
 
     axios
@@ -228,7 +227,7 @@ const downloadPdf=()=>{
   return (
     <div className="editorWrapper-container">
       <div className="left-editor w-100 w-md-50">
-        <Navigator cvid={cvid} cvtoken={cvtoken}/>
+        <Navigator cvid={cvid} cvtoken={cvtoken} />
         {/* to include each editor component here Ex education component , personal information component , ect */}
         <div className="each-form-component">
           <Switch>
@@ -318,14 +317,19 @@ const downloadPdf=()=>{
       <div className="right-editor d-none d-md-block w-100 w-md-50">
         {/* w-100 w-md-50 */}
         {/* state with the new content "cv template " */}
-          {!loading &&
-            <iframe
+        {!loading && (
+          <iframe
             style={{ width: "100%", height: "100%" }}
             srcDoc={template}
             ref={elementRef}
           ></iframe>
-          }
-          <BounceLoader color={color}  css={override} loading={loading}  size={80} />
+        )}
+        <BounceLoader
+          color={color}
+          css={override}
+          loading={loading}
+          size={80}
+        />
       </div>
      
     </div>
