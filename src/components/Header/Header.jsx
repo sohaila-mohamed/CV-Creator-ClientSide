@@ -100,13 +100,13 @@ function Header() {
                 >
                   Home
                 </NavLink>
-                <NavLink
+                {/* <NavLink
                   to="/Editor/121"
                   activeClassName="Active-link"
                   className="pr-3 nav-link position-relative"
                 >
                   Resume Builder
-                </NavLink>
+                </NavLink> */}
                 <NavLink
                   to="/templates/Classic"
                   activeClassName="Active-link"
@@ -188,7 +188,7 @@ function Header() {
                         <div className="user-email">omar@gmail.com</div>
                       </div>
                     </div>
-                    <div onClick={logoutHandler} className="login-link">
+                    <div className="login-link">
                       <FontAwesomeIcon
                         className="login-link-icon"
                         icon={faUser}

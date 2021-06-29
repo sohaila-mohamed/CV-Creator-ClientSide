@@ -12,8 +12,18 @@ import uploadIco from "./assets/upload.svg";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
+  const userAuth = useSelector((state) => state.auth);
+  const history = useHistory();
+  useEffect(() => {
+    if (userAuth.isLoggedIn === false) {
+      history.push("/");
+    }
+  }, [userAuth.isLoggedIn]);
   return (
     <div>
       <div className="cover">
@@ -79,7 +89,7 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className="d-flex flex-wrap row-cols-4 justify-content-center mb-5">
+          <div className="d-flex flex-wrap justify-content-center mb-5">
             <Card
               className=" border-custom mr-1 apper mb-5 mr-3"
               style={{ width: "18rem" }}

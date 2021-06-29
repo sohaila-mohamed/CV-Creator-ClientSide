@@ -22,7 +22,7 @@ import BounceLoader from "react-spinners/BounceLoader";
 import { css } from "@emotion/react";
 
 function EditorWrapper() {
-  const { cvid , cvtoken} = useParams();
+  const { cvid, cvtoken } = useParams();
   const history = useHistory();
 
   // spinner properties
@@ -58,9 +58,8 @@ function EditorWrapper() {
         SetArrLangData([...ArrLangData, ...res.data.LangData]);
         SetcareerData(res.data.Objective.careerData);
 
-        // navigate to personla info 
-        history.push(`/Editor/${cvid}/${cvtoken}/PersonalInfo`)
-
+        // navigate to personla info
+        history.push(`/Editor/${cvid}/${cvtoken}/PersonalInfo`);
       })
       .catch((err) => {
         console.log(err);
@@ -74,6 +73,7 @@ function EditorWrapper() {
     lastName: "",
     DateofBirth: "",
     Title: "",
+    email: "",
     phoneNumber: "",
     address: "",
     Linkedin: "",
@@ -172,7 +172,7 @@ function EditorWrapper() {
   // request the new cv template with new update
 
   const [template, setTemplate] = useState("");
-  
+
   const loadNewCvVersion = () => {
     setLoading(true);
 
@@ -208,7 +208,7 @@ function EditorWrapper() {
   return (
     <div className="editorWrapper-container">
       <div className="left-editor w-100 w-md-50">
-        <Navigator cvid={cvid} cvtoken={cvtoken}/>
+        <Navigator cvid={cvid} cvtoken={cvtoken} />
         {/* to include each editor component here Ex education component , personal information component , ect */}
         <div className="each-form-component">
           <Switch>

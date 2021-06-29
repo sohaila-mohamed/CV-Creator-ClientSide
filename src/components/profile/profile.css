@@ -185,7 +185,7 @@ body a:hover {
   padding: 3rem !important;
   flex-grow: 0;
 }
-@media only screen and (max-width: 1199.98px) {
+/* @media only screen and (max-width: 1199.98px) {
   .custom {
     padding: 1rem !important;
   }
@@ -193,9 +193,9 @@ body a:hover {
 @media only screen and (max-width: 991.98px) {
   .custom {
     padding: 0rem !important;
-    flex-grow: 1 !important;
+     flex-grow: 1 !important;
   }
-}
+} */
 /*768 991*/
 @media only screen and (max-width: 1200px) {
   .sideNav a {
