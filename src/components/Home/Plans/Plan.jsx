@@ -1,7 +1,13 @@
+import { faArrowRight ,faCheckDouble} from "@fortawesome/free-solid-svg-icons";
 import { Button } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Plan.css";
 function Plan() {
+
+  const userAuth = useSelector(state => state.auth);
+
   return (
     <div className="bg-white">
       <div className="container">
@@ -18,10 +24,19 @@ function Plan() {
                 and Templates
               </p>
             </div>
-            <div className="card-footer bg-white">
-              <NavLink to="/sign-up">
-                <Button className="Plan-color-gray w-100">Sign up</Button>
-              </NavLink>
+            <div className="card-footer bg-white text-center">
+                {!userAuth.userData && 
+                  <NavLink to="/sign-up">
+                  <Button className="Plan-color-gray w-100">Sign up</Button>
+                  </NavLink>
+                }
+                {userAuth.userData && 
+                  <div className="py-2 text-success">
+                    <span className="mr-2">Already Subscribed</span>
+                  <FontAwesomeIcon icon={faCheckDouble}></FontAwesomeIcon>
+                  </div>
+                  
+                }
             </div>
           </div>
 

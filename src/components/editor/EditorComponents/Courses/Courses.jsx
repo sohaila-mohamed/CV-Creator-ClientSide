@@ -22,24 +22,24 @@ const Courses = (props) => {
   }, [Courses]);
 
   const courseNameHandler = (v) => {
-    setCourse({ ...Course, courseName: v });
+    setCourse({ ...Course, courseName1: v });
   };
   const startDateHandler = (v) => {
-    setCourse({ ...Course, startDate: v.toString() });
+    setCourse({ ...Course, startDate1: v.toString() });
   };
   const endDateHandler = (v) => {
-    setCourse({ ...Course, endDate: v.toString() });
+    setCourse({ ...Course, endDate1: v.toString() });
   };
   const certificateHandler = (v) => {
-    setCourse({ ...Course, certificate: v });
+    setCourse({ ...Course, certificate1: v });
   };
 
   const addCourse = () => {
     setCourse({
-      courseName: "",
-      startDate: "",
-      endDate: "",
-      certificate: "",
+      courseName1: "",
+      startDate1: "",
+      endDate1: "",
+      certificate1: "",
     });
     setCourses([...Courses, Course]);
   };
@@ -53,24 +53,24 @@ const Courses = (props) => {
 
       <FormInput
         title="Course Name"
-        value={Course.courseName}
+        value={Course.courseName1}
         valueBack={courseNameHandler}
       />
       <FormInput
         title="Start Date"
         type="date"
-        value={Course.startDate}
+        value={Course.startDate1}
         valueBack={startDateHandler}
       />
       <FormInput
         title="End Date"
         type="date"
-        value={Course.endDate}
+        value={Course.endDate1}
         valueBack={endDateHandler}
       />
       <FormInput
         title="Certificate Link"
-        value={Course.certificate}
+        value={Course.certificate1}
         valueBack={certificateHandler}
       />
 
@@ -94,10 +94,10 @@ const Courses = (props) => {
             {Courses.map((crs, i) => (
               <tr key={i}>
                 <th scope="row">{i + 1}</th>
-                <td>{crs.courseName}</td>
-                <td>{crs.startDate}</td>
-                <td>{crs.endDate}</td>
-                <td>{crs.certificate}</td>
+                <td>{crs.courseName1}</td>
+                <td>{crs.startDate1}</td>
+                <td>{crs.endDate1}</td>
+                <td>{crs.certificate1}</td>
                 <td onClick={() => removeCourse(i)}>
                   <FontAwesomeIcon
                     icon={faTimes}
