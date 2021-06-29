@@ -2,7 +2,9 @@ import { faEye,faFileDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Route, Switch, useParams } from "react-router-dom";
-import CvD1 from "../CvTemplate/CvD1";
+
+
+
 import Education from "../EditorComponents/Education/Education";
 import PersonalInfo from "../EditorComponents/PersonalInfo/PersonalInfo";
 import Career from "../EditorComponents/CareerObjective/CareerObjective";
@@ -20,13 +22,25 @@ import axios from "axios";
 
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
+import BounceLoader from "react-spinners/BounceLoader";
+import { css } from "@emotion/react";
 
 function EditorWrapper() {
   const { cvid } = useParams();
 
-  const [change, setchange] = useState(false);
+  // spinner properties
+  let [loading, setLoading] = useState(true);
+  let [color, setColor] = useState("#6B82B7");
+  const override = css`
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform:translate(-50%,-100%);
+  `;
 
   useEffect(() => {
+
+    // to get all objects from DB and set it 
     axios
       .get(
         "https://still-spire-04865.herokuapp.com/api/user/cv/60d85e33c80e820004b12bf6/60da11bfb994410004b4f140",
@@ -41,8 +55,8 @@ function EditorWrapper() {
       .then((res) => {
         setpersonalInfo({ ...personalInfo, ...res.data.personalInfo });
         seteducationData({ ...educationData, ...res.data.educationData });
-        // setExperienceData({...experienceData,...res.data.experienceData})
-        // setCoursesData({...coursesData,...res.data.coursesData})
+        setExperienceArr([...experienceArr,...res.data.experienceData])
+        setCoursesArrData([...coursesArr,...res.data.coursesData])
         setSkillsData([...skillsData, ...res.data.skillsData]);
         SetArrProjects([...ArrProjects, ...res.data.ProjectData]);
         SetArrLangData([...ArrLangData, ...res.data.LangData]);
@@ -51,6 +65,7 @@ function EditorWrapper() {
       .catch((err) => {
         console.log(err);
       });
+
   }, []);
 
   const userState = useSelector((state) => state.auth);
@@ -78,20 +93,20 @@ function EditorWrapper() {
   });
 
   const [experienceData, setExperienceData] = useState({
-    jobTitle: "",
-    companyName: "",
-    PosDes: "",
-    startDate: "",
-    endDate: "",
+    jobTitle1: "",
+    companyName1: "",
+    PosDes1: "",
+    startDate1: "",
+    endDate1: "",
   });
 
   const [experienceArr, setExperienceArr] = useState([]);
 
   const [courseData, setCourseData] = useState({
-    courseName: "",
-    startDate: "",
-    endDate: "",
-    certificate: "",
+    courseName1: "",
+    startDate1: "",
+    endDate1: "",
+    certificate1: "",
   });
   const [coursesArr, setCoursesArrData] = useState([]);
 
@@ -176,6 +191,9 @@ const downloadPdf=()=>{
 
   const [template, setTemplate] = useState("");
   const loadNewCvVersion = () => {
+
+    setLoading(true);
+
     const body = {
       cvId: "60da11bfb994410004b4f140",
       // userId:authState.userData._id
@@ -193,6 +211,7 @@ const downloadPdf=()=>{
       })
       .then(async (res) => {
         setTemplate(res.data);
+        setLoading(false);
       })
 
       .catch((err) => {
@@ -277,30 +296,30 @@ const downloadPdf=()=>{
           </Switch>
           
         </div>
+         
+        <button onClick={downloadPdf} className="button-download " >
+          <FontAwesomeIcon icon={faFileDownload} className="mr-2 mt-1" />
+          Download
+        </button>
+        
+        <button onClick={loadNewCvVersion} className="cv-preview">
+          <FontAwesomeIcon icon={faEye} className="mr-2" />
+          Preview
+        </button>
+        
       </div>
 
       <div className="right-editor d-none d-md-block w-100 w-md-50">
         {/* w-100 w-md-50 */}
-        
-        
-        <button onClick={loadNewCvVersion}>
-          <FontAwesomeIcon icon={faEye} className="mr-2" />
-          Preview
-        </button>
-
-        <button onClick={downloadPdf} className="button-download" >
-          <FontAwesomeIcon icon={faFileDownload} className="mr-2 mt-1" />
-          Download
-        </button>
-
-       
         {/* state with the new content "cv template " */}
-
-        <iframe
-           ref={elementRef}
-          style={{ width: "100%", height: "100%" }}
-          srcDoc={template}
-        ></iframe>
+          {!loading &&
+            <iframe
+            style={{ width: "100%", height: "100%" }}
+            srcDoc={template}
+            ref={elementRef}
+          ></iframe>
+          }
+          <BounceLoader color={color}  css={override} loading={loading}  size={80} />
       </div>
      
     </div>

@@ -23,28 +23,28 @@ const Experience = (props) => {
   }, [Experiences]);
 
   const jobTitle1Handler = (v) => {
-    setExperience({ ...Experience, jobTitle: v });
+    setExperience({ ...Experience, jobTitle1: v });
   };
   const companyNameHandler = (v) => {
-    setExperience({ ...Experience, companyName: v });
+    setExperience({ ...Experience, companyName1: v });
   };
   const startDateHandler = (v) => {
-    setExperience({ ...Experience, startDate: v.toString() });
+    setExperience({ ...Experience, startDate1: v.toString() });
   };
   const endDateHandler = (v) => {
-    setExperience({ ...Experience, endDate: v.toString() });
+    setExperience({ ...Experience, endDate1: v.toString() });
   };
   const PosDesHandler = (v) => {
-    setExperience({ ...Experience, PosDes: v.target.value });
+    setExperience({ ...Experience, PosDes1: v.target.value });
   };
 
   const addExperience = () => {
     setExperience({
-      jobTitle: "",
-      companyName: "",
-      PosDes: "",
-      startDate: "",
-      endDate: "",
+      jobTitle1: "",
+      companyName1: "",
+      PosDes1: "",
+      startDate1: "",
+      endDate1: "",
     });
     setExperiences([...Experiences, Experience]);
   };
@@ -57,24 +57,24 @@ const Experience = (props) => {
       <h3>Experience</h3>
       <FormInput
         title="Job Title"
-        value={Experience.jobTitle}
+        value={Experience.jobTitle1}
         valueBack={jobTitle1Handler}
       />
       <FormInput
         title="Company Name"
-        value={Experience.companyName}
+        value={Experience.companyName1}
         valueBack={companyNameHandler}
       />
       <FormInput
         title="Start Date"
         type="date"
-        value={Experience.startDate}
+        value={Experience.startDate1}
         valueBack={startDateHandler}
       />
       <FormInput
         title="End Date"
         type="date"
-        value={Experience.endDate}
+        value={Experience.endDate1}
         valueBack={endDateHandler}
       />
       <div className="form-floating mt-5">
@@ -83,7 +83,7 @@ const Experience = (props) => {
           className="form-control rounded-0 border-dark"
           rows="3"
           cols="60"
-          value={Experience.PosDes}
+          value={Experience.PosDes1}
           onChange={PosDesHandler}
           placeholder=" "
         />
@@ -111,11 +111,11 @@ const Experience = (props) => {
             {Experiences.map((exp, i) => (
               <tr key={i}>
                 <th scope="row">{i + 1}</th>
-                <td>{exp.jobTitle}</td>
-                <td>{exp.companyName}</td>
-                <td>{exp.startDate}</td>
-                <td>{exp.endDate}</td>
-                <td>{exp.PosDes}</td>
+                <td>{exp.jobTitle1}</td>
+                <td>{exp.companyName1}</td>
+                <td>{exp.startDate1}</td>
+                <td>{exp.endDate1}</td>
+                <td>{exp.PosDes1}</td>
                 <td onClick={() => removeExperience(i)}>
                   <FontAwesomeIcon
                     icon={faTimes}

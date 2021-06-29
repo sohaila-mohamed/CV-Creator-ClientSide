@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useRouteMatch, Switch, Route } from "react-router-dom";
+import { NavLink, Switch, Route } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import axois from "axios";
 import "./categories.css";
 
@@ -9,8 +11,9 @@ import { Container, Row, Col, ListGroup } from "react-bootstrap";
 import Template from "./template/template";
 
 const Categories = () => {
-  const { path } = useRouteMatch();
   const [categories, SetCategories] = useState([]);
+  const [PreviewPath, setPath] = useState("");
+  const [Preview, setPreview] = useState(false);
 
   useEffect(() => {
     axois
@@ -20,11 +23,29 @@ const Categories = () => {
       });
   }, []);
 
+  const previewImage = (img) => {
+    setPath(img);
+    setPreview(true);
+  };
+
+  const hidePreview = () => {
+    console.log("hidden");
+    setPreview(false);
+  };
+
   return (
     <React.Fragment>
       <div className="bgContainer">
+        <img className="heroBg" src={heroBg} alt="" />
         <Container>
-          <img className="heroBg" src={heroBg} alt="" />
+          {Preview ? (
+            <div className="preview-overlay">
+              <FontAwesomeIcon onClick={() => hidePreview()} icon={faTimes} />
+              <div className="container">
+                <img src={PreviewPath} alt="" />
+              </div>
+            </div>
+          ) : null}
           <div className="heroContent">
             <Row className="content-Row">
               <Col className="contentHeader" lg="8" md="10" xs="10">
@@ -48,7 +69,7 @@ const Categories = () => {
                 {/* each item will contain a router link to a specific category */}
                 {categories.map((c, index) => (
                   <NavLink
-                    // activeClassName="selected"
+                    activeClassName="selected"
                     key={index + 1}
                     to={`/templates/${c.name}`}
                   >
@@ -61,7 +82,7 @@ const Categories = () => {
           <Row className="template-view">
             <Switch>
               <Route path="/templates/:topicId">
-                <Template />
+                <Template preview={previewImage} />
               </Route>
             </Switch>
           </Row>
