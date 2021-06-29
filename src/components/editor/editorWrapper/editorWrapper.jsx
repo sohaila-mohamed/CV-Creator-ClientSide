@@ -61,6 +61,7 @@ function EditorWrapper() {
         SetArrProjects([...ArrProjects, ...res.data.ProjectData]);
         SetArrLangData([...ArrLangData, ...res.data.LangData]);
         SetcareerData(res.data.Objective.careerData);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -190,6 +191,8 @@ const downloadPdf=()=>{
   // request the new cv template with new update
 
   const [template, setTemplate] = useState("");
+
+  
   const loadNewCvVersion = () => {
 
     setLoading(true);
