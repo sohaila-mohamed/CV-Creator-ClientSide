@@ -4,7 +4,7 @@ import { faEye, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { Col, Button } from "react-bootstrap";
 import "./template.css";
 import axois from "axios";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 const Template = () => {
   const { topicId } = useParams();
@@ -21,7 +21,7 @@ const Template = () => {
   }, [topicId]);
 
   return (
-    <div>
+    <React.Fragment>
       {templates.map((t, index) => (
         <Col
           key={index + 1}
@@ -44,7 +44,7 @@ const Template = () => {
           </div>
         </Col>
       ))}
-    </div>
+    </React.Fragment>
   );
 };
 
