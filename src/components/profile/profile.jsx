@@ -1,5 +1,4 @@
 import "./profile.css";
-// import "./profileResponsive.css";
 import settings from "./assets/settings 1.svg";
 import logout from "./assets/logout 1.svg";
 import avatar from "./assets/emily.jpeg";
@@ -17,8 +16,8 @@ import Col from "react-bootstrap/Col";
 const Profile = () => {
   return (
     <div>
-      <div className="cover d-flex flex-column">
-        <p className="text-uppercase text-center justify-content-end mt-5 pt-5">
+      <div className="cover">
+        <p className="text-uppercase text-center justify-content-end pt-5">
           {" "}
           cover image
         </p>
@@ -31,8 +30,8 @@ const Profile = () => {
         </label>
         {/* <input type="file" className="align-content-end" id="coverImg" /> */}
       </div>
-      <Row>
-        <Col lg="3" className="position-relative">
+      <Row className="m-0 p-0">
+        <Col lg="3" md="4" className="position-relative">
           <div className="sideNav d-lg-inline-block d-md-inline-block d-none">
             <div className="d-lg-flex d-md-flex align-items-center justify-content-center">
               <img
@@ -73,7 +72,7 @@ const Profile = () => {
             </div>
           </div>
         </Col>
-        <Col lg="9">
+        <Col lg="9" md="8" sm="12">
           <div className="d-flex justify-content-center text-uppercase mt-5 mb-5">
             <div className="cvContainerLabel w-75 shadow p-3 Custom-Container">
               <p className="m-0">profile / my CV's</p>
@@ -82,7 +81,7 @@ const Profile = () => {
 
           <div className="d-flex flex-wrap row-cols-4 justify-content-center mb-5">
             <Card
-              className="w-25 border-custom mr-1 apper mb-5 mr-3"
+              className=" border-custom mr-1 apper mb-5 mr-3"
               style={{ width: "18rem" }}
             >
               <Card.Img
@@ -98,7 +97,7 @@ const Profile = () => {
               </div>
             </Card>
             <Card
-              className="w-25   border-custom mr-1 apper mb-5 mr-3"
+              className="border-custom mr-1 apper mb-5 mr-3"
               style={{ width: "18rem" }}
             >
               <Card.Img
@@ -114,7 +113,7 @@ const Profile = () => {
               </div>
             </Card>
             <Card
-              className="w-25  border-custom mr-1 apper mb-5 mr-3"
+              className="border-custom mr-1 apper mb-5 mr-3"
               style={{ width: "18rem" }}
             >
               <Card.Img
@@ -130,7 +129,7 @@ const Profile = () => {
               </div>
             </Card>
             <Card
-              className="p-5 border-custom align-items-center justify-content-center"
+              className=" border-custom custom align-items-center justify-content-center"
               style={{ width: "18rem" }}
             >
               <p

@@ -37,7 +37,7 @@ function App() {
         <Route path="/about-us" component={About} />
         <Route path="/sign-in" component={AuthWrapper} />
         <Route path="/sign-up" component={AuthWrapper} />
-        <Route path="/Profile" component={Profile} />
+        <Route path="/profile" component={Profile} />
         <Route path="*" component={Error} />
       </Switch>
       <Footer />
