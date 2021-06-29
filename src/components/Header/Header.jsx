@@ -106,14 +106,14 @@ function Header() {
                 >
                   Templates
                 </NavLink>
-                <NavLink
-                  to="/tips"
-                  activeClassName="Active-link"
+                <Link
+                  to="/#tips"
+                  // activeClassName="Active-link"
                   className="pr-3 nav-link position-relative"
                   // onClick={scrollToTop}
                 >
                   Tips
-                </NavLink>
+                </Link>
                 <NavLink
                   to="/about-us"
                   activeClassName="Active-link"

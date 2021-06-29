@@ -10,6 +10,7 @@ import EditorWrapper from "./components/editor/editorWrapper/editorWrapper";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { authActions } from "./store/auth-slice";
+import About from "./components/About/About";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/Editor/:cvid" component={EditorWrapper} />
         <Route path="/templates" component={Categories} />
-        <Route path="/about-us" render={() => <p>About</p>} />
+        <Route path="/about-us" component={About} />
         <Route path="/sign-in" component={AuthWrapper} />
         <Route path="/sign-up" component={AuthWrapper} />
         <Route path="*" component={Error} />
