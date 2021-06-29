@@ -48,7 +48,7 @@ const Categories = () => {
                 {/* each item will contain a router link to a specific category */}
                 {categories.map((c, index) => (
                   <NavLink
-                    // activeClassName="selected"
+                    activeClassName="selected"
                     key={index + 1}
                     to={`/templates/${c.name}`}
                   >

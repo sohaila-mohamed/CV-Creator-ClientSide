@@ -75,6 +75,10 @@ body {
   flex-wrap: wrap;
   margin-bottom: 2em !important;
 }
+.list-group a.selected .list-group-item{
+  background-color: #6b82b7;
+  color: #fff;
+}
 .list-group a:hover {
   text-decoration: none;
 }
