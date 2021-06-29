@@ -26,16 +26,17 @@ function Category() {
         <p id="Category-Header" className="p-4">
           Categories
         </p>
-        <div className="d-flex justify-content-around flex-wrap">
+        <div className="d-flex justify-content-around flex-wrap row-cols-3">
           {categories.map((c, index) => (
             <div
               key={index + 1}
               onClick={() => routeToCat(c.name)}
               className="card mb-5 Category-card-color shadow position-relative"
+              style={{ maxWidth: "18rem" }}
             >
-              <div className="card-body">
-                <img src={c.image} className="card-img h-100" alt="cvs" />
-                <div className=" overlay-hover d-flex align-items-center justify-content-center">
+              <div className="card-body text-center">
+                <img src={c.image} className="img-fluid h-100" alt="cvs" />
+                <div className="overlay-hover d-flex align-items-center justify-content-center">
                   <p className="text-white font-weight-bold">{c.name}</p>
                 </div>
               </div>
