@@ -6,10 +6,11 @@ import "./template.css";
 import axois from "axios";
 import React, { useState, useEffect } from "react";
 
-const Template = () => {
+const Template = (props) => {
   const { topicId } = useParams();
   const [templates, setTemplates] = useState([]);
-
+  const { preview } = props;
+  
   useEffect(() => {
     axois
       .get(
@@ -33,7 +34,9 @@ const Template = () => {
         >
           <img src={t.image} alt="" />
           <div className="overlay">
-            <Button className="Btn Btn-preview">
+            <Button
+            onClick={()=>preview(t.image)}
+            className="Btn Btn-preview">
               <FontAwesomeIcon icon={faEye} />
               Preview
             </Button>
