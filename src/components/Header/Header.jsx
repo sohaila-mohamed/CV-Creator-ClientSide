@@ -134,7 +134,7 @@ function Header() {
                 {/* navigate to my profile  */}
                 {authState.isLoggedIn &&
                 <NavLink
-                to="/about-us"
+                to="/profile"
                 activeClassName="Active-link"
                 className="pr-3 d-lg-none nav-link d-inline-block"
                 >
@@ -146,7 +146,7 @@ function Header() {
                 {/* navigate to my cvs in my profile */}
                 {authState.isLoggedIn &&
                 <NavLink
-                to="/about-us"
+                to="/profile/cvs"
                 activeClassName="Active-link"
                 className="pr-3 d-lg-none nav-link d-inline-block"
                 >
@@ -242,7 +242,7 @@ function Header() {
                         Profile
                       </NavLink>
                     </div>
-                    <div onClick={logoutHandler} className="login-link">
+                    <div className="login-link">
                       <FontAwesomeIcon
                         className="login-link-icon"
                         icon={faPaperPlane}
@@ -251,9 +251,15 @@ function Header() {
                           marginRight: "10px",
                         }}
                       ></FontAwesomeIcon>
-                      My CVS
+                      <NavLink
+                      to="/profile/my-cvs"
+                      className="login-link-icon"
+                      style={{ color: "#888" }}
+                      >
+                      MY CVs
+                    </NavLink>
                     </div>
-                    <div onClick={logoutHandler} className="login-link">
+                    <div  className="login-link">
                       <FontAwesomeIcon
                         className="login-link-icon"
                         icon={faCog}
@@ -262,7 +268,13 @@ function Header() {
                           marginRight: "10px",
                         }}
                       ></FontAwesomeIcon>
-                      Settings
+                     <NavLink
+                      to="/profile/my-plan"
+                      className="login-link-icon"
+                      style={{ color: "#888" }}
+                      >
+                      My Plan
+                    </NavLink>
                     </div>
                     <div onClick={logoutHandler} className="login-link">
                       <FontAwesomeIcon

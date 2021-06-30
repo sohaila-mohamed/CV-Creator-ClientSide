@@ -10,6 +10,7 @@ import axios from "axios";
 
 const Template = (props) => {
   const { topicId } = useParams();
+  const numOfCvs=topicId =="Professional" ? 2 : topicId =="Student" ? 3 : 4
   const [templates, setTemplates] = useState([]);
   const { preview } = props;
   const history = useHistory();
@@ -18,7 +19,7 @@ const Template = (props) => {
   useEffect(() => {
     axois
       .get(
-        `https://still-spire-04865.herokuapp.com/api/template/cat/${topicId}`
+        `https://still-spire-04865.herokuapp.com/api/template/cat/Classic`
       )
       .then((res) => {
         setTemplates(res.data);
@@ -50,29 +51,29 @@ const Template = (props) => {
   return (
     <React.Fragment>
       {templates.map((t, index) => (
-        <Col
-          key={index + 1}
-          lg="3"
-          md="5"
-          sm="5"
-          xs="8"
-          className="template-container"
-        >
-          <img src={t.image} alt="" />
-          <div className="overlay">
-            <Button
-              onClick={() => preview(t.image)}
-              className="Btn Btn-preview"
-            >
-              <FontAwesomeIcon icon={faEye} />
-              Preview
-            </Button>
-            <Button onClick={() => edit(t.templateId)} className="Btn Btn-edit">
-              <FontAwesomeIcon icon={faEdit} />
-              Create My Cv
-            </Button>
-          </div>
-        </Col>
+        index<numOfCvs && <Col
+        key={index + 1}
+        lg="3"
+        md="5"
+        sm="5"
+        xs="8"
+        className="template-container"
+      >
+        <img src={t.image} alt="" />
+        <div className="overlay">
+          <Button
+            onClick={() => preview(t.image)}
+            className="Btn Btn-preview"
+          >
+            <FontAwesomeIcon icon={faEye} />
+            Preview
+          </Button>
+          <Button onClick={() => edit(t.templateId)} className="Btn Btn-edit">
+            <FontAwesomeIcon icon={faEdit} />
+            Create My Cv
+          </Button>
+        </div>
+      </Col>
       ))}
     </React.Fragment>
   );

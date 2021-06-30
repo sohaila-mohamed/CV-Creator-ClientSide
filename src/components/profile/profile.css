@@ -5,7 +5,24 @@ body * {
 body a:hover {
   text-decoration: none;
 }
-
+.plan
+{
+  text-align: center;
+  font-size: 30px;
+  color: #6b82b7;
+  margin-bottom: 15px;
+}
+.avtive
+{
+  color: black !important;
+  background-color: white;
+  width: 100% !important;
+  display: block;
+  margin: 0 !important;
+  padding: 10px;
+  border-top-left-radius: 20px;
+  border-top-right-radius:20px ;
+}
 .cover {
   display: block;
   background-color: #6b82b7;

@@ -2,33 +2,70 @@ import "./profile.css";
 import settings from "./assets/settings 1.svg";
 import logout from "./assets/logout 1.svg";
 import avatar from "./assets/emily.jpeg";
-import share from "./assets/share 1.svg";
-import view from "./assets/view 2.svg";
-import download from "./assets/download 1.svg";
-import cv1 from "./assets/cv1.jpg";
-import cv2 from "./assets/cv2.png";
-import addSign from "./assets/add 1.svg";
+
+import { Route, Switch, useLocation} from "react-router-dom";
+
 import uploadIco from "./assets/upload.svg";
-import Card from "react-bootstrap/Card";
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useHistory } from "react-router-dom";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink} from "react-router-dom";
+import axios from "axios";
+
+import MyCvs from "./MyCvs/MyCvs";
+import Me from "./Me/Me";
+import Plan from "../Home/Plans/Plan";
+import { authActions } from "../../store/auth-slice";
 
 const Profile = () => {
+
+  const dispatch = useDispatch();
   const userAuth = useSelector((state) => state.auth);
   const history = useHistory();
+  const location = useLocation();
   useEffect(() => {
-    if (userAuth.isLoggedIn === false) {
+    if (!localStorage.getItem("userData")) {
       history.push("/");
     }
   }, [userAuth.isLoggedIn]);
-  const { firstName, lastName, cvs } = JSON.parse(
+
+  // const [currentRoute, setcurrentRoute] = useState("")
+  const [cvs, setCvs] = useState([])
+  useEffect(() => {
+    console.log("in use effect",location.pathname.substring(1).split("/").join(" / ").toUpperCase());
+    axios
+    .get(
+      `https://still-spire-04865.herokuapp.com/api/user/data/${JSON.parse(localStorage.getItem("userData")).user._id}`,
+      {
+        headers: {
+          //   ...authState.authHeaders,
+          ...JSON.parse(localStorage.getItem("userData")).headers,
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    )
+    .then((res) => {
+      setCvs([...res.data.cvs]);
+      console.log(res.data.cvs);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  }, [])
+
+  const logoutHandler = () => {
+    dispatch(authActions.logoutUser());
+    history.push("/")
+  };
+
+  const { firstName, lastName } = JSON.parse(
     localStorage.getItem("userData")
   ).user;
-  console.log(firstName, lastName, cvs);
+  // console.log(firstName, lastName, cvs);
   return (
     <div>
       <div className="cover">
@@ -52,22 +89,38 @@ const Profile = () => {
               <img
                 alt="avatar"
                 className="rounded-circle sideNav__profilePic d-block"
-                src={avatar}
+                src="https://image.flaticon.com/icons/png/512/149/149071.png"
               />
             </div>
             <p className="sideNav__profileName text-uppercase">
               {firstName} {lastName}
             </p>
             <div className="ml-5 mb-3 mr-5">
-              <div className="sideNav__type1 shadow pl-3 pl-lg-2 pb-2 pr-5 mb-3">
-                <NavLink to="profile/cvs" className="font-weight-bold text-uppercase ">
+              {/* <div className="sideNav__type1 shadow pl-3 pl-lg-2 pb-2 pr-5 mb-3">
+                <NavLink to="/profile/My-CVs" className="font-weight-bold text-uppercase ">
+                  my cv's
+                </NavLink>
+              </div> */}
+
+              <div className="sideNav__type2 pb-1 mb-3">
+              <NavLink 
+              activeClassName="avtive"
+              to="/profile/My-CVs" className="text-uppercase">
                   my cv's
                 </NavLink>
               </div>
+
               <div className="sideNav__type2 pb-1 mb-3">
                 <a href="#" className="text-uppercase">
                   cv creator
                 </a>
+              </div>
+              <div className="sideNav__type2 pb-1 mb-3">
+                <NavLink to="/profile/my-plan"
+                activeClassName="avtive"
+                 className="text-uppercase">
+                  My Plan
+                </NavLink>
               </div>
               <div className="sideNav__type2 pb-1 mb-3">
                 <a href="#" className="text-uppercase">
@@ -80,11 +133,11 @@ const Profile = () => {
                   settings
                 </a>
               </div>
-              <div className="mt-3">
-                <a href="#" className="sideNav__type3 text-uppercase">
+              <div className="mt-3" onClick={logoutHandler}>
+                <span  className="sideNav__type3 text-uppercase">
                   <img src={logout} alt="logout" />
                   logout
-                </a>
+                </span>
               </div>
             </div>
           </div>
@@ -92,80 +145,34 @@ const Profile = () => {
         <Col lg="9" md="8" sm="12">
           <div className="d-flex justify-content-center text-uppercase mt-5 mb-5">
             <div className="cvContainerLabel w-75 shadow p-3 Custom-Container">
-              <p className="m-0">profile / my CV's</p>
+              <p className="m-0">{location.pathname.substring(1).split("/").join(" / ").toUpperCase()}</p>
             </div>
           </div>
-
-          <div className="d-flex flex-wrap justify-content-center mb-5">
-            {cvs.map((cv, index) => (
-              <Card
-                key={index + 1}
-                className=" border-custom mr-1 apper mb-5 mr-3"
-                style={{ width: "18rem" }}
-              >
-                <Card.Img
-                  variant="top"
-                  src={cv.image}
-                  className=" img-fluid  p-2 "
-                  style={{ background: "#6b82b7" }}
-                />
-                <div className="cvContainer__cvCard__panel d-flex align-items-center justify-content-center">
-                  <img alt="hover" src={share} className="mr-4" />
-                  <img alt="hover" src={view} className="mr-4" />
-                  <img alt="hover" src={download} className="mr-4" />
+            
+            <Switch>
+            <Route
+              path="/profile"
+              exact
+              render={() => (
+                <Me></Me>
+              )}
+            />
+            <Route
+              path="/profile/My-CVs"
+              render={() => (
+                <MyCvs cvs={cvs}></MyCvs>
+              )}
+            />
+            <Route
+              path="/profile/my-plan"
+              render={() => (
+                <div >
+                  <div className="plan">My Current Plan is the Free Onw </div>
+                  <Plan></Plan>
                 </div>
-              </Card>
-            ))}
-            {/* <Card
-              className="border-custom mr-1 apper mb-5 mr-3"
-              style={{ width: "18rem" }}
-            >
-              <Card.Img
-                variant="top"
-                src={cv2}
-                className=" img-fluid  p-2 "
-                style={{ background: "#6b82b7" }}
-              />
-              <div className="cvContainer__cvCard__panel d-flex align-items-center justify-content-center">
-                <img alt="hover" src={share} className="mr-4" />
-                <img alt="hover" src={view} className="mr-4" />
-                <img alt="hover" src={download} className="mr-4" />
-              </div>
-            </Card>
-            <Card
-              className="border-custom mr-1 apper mb-5 mr-3"
-              style={{ width: "18rem" }}
-            >
-              <Card.Img
-                variant="top"
-                src={cv2}
-                className=" img-fluid  p-2 "
-                style={{ background: "#6b82b7" }}
-              />
-              <div className="cvContainer__cvCard__panel d-flex align-items-center justify-content-center">
-                <img alt="hover" src={share} className="mr-4" />
-                <img alt="hover" src={view} className="mr-4" />
-                <img alt="hover" src={download} className="mr-4" />
-              </div>
-            </Card> */}
-            <Card
-              className=" border-custom custom align-items-center justify-content-center"
-              style={{ width: "18rem" }}
-            >
-              <p
-                className="mt-5 text-capitalize font-weight-bold pl-2"
-                style={{ color: " #6b82b7" }}
-              >
-                create new for new job profile
-              </p>
-              <Card.Img
-                src={addSign}
-                className="mb-4"
-                variant="top"
-                style={{ width: "55px" }}
-              ></Card.Img>
-            </Card>
-          </div>
+              )}
+            />
+              </Switch>
         </Col>
       </Row>
     </div>

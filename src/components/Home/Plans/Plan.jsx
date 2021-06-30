@@ -20,7 +20,7 @@ function Plan() {
             <div className="card-body">
               <p className="text-price">Free</p>
               <p className="text-dark text-center card-text">
-                You can create up to 2 CVs with all of the available Categories
+                You can create up to 5 CVs with all of the available Categories
                 and Templates
               </p>
             </div>
