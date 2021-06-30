@@ -1,9 +1,7 @@
-import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { faEye,faFileDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Route, Switch, useHistory, useParams } from "react-router-dom";
-
-
 
 import Education from "../EditorComponents/Education/Education";
 import PersonalInfo from "../EditorComponents/PersonalInfo/PersonalInfo";
@@ -20,6 +18,8 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import axios from "axios";
 
+import { jsPDF } from "jspdf";
+import html2canvas from 'html2canvas';
 import BounceLoader from "react-spinners/BounceLoader";
 import { css } from "@emotion/react";
 
@@ -31,14 +31,13 @@ function EditorWrapper() {
   let [loading, setLoading] = useState(true);
   let [color, setColor] = useState("#6B82B7");
   const override = css`
-  position: absolute;
-  top: 50%;
-  left:50%;
-  transform:translate(-50%,-100%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
   `;
 
   useEffect(() => {
-    console.log("user data ", userState.userData)
 
     // to get all objects from DB and set it 
     axios
@@ -69,7 +68,6 @@ function EditorWrapper() {
       .catch((err) => {
         console.log(err);
       });
-
   }, []);
 
   const userState = useSelector((state) => state.auth);
@@ -79,6 +77,7 @@ function EditorWrapper() {
     lastName: "",
     DateofBirth: "",
     Title: "",
+    email: "",
     phoneNumber: "",
     address: "",
     Linkedin: "",
@@ -171,15 +170,31 @@ function EditorWrapper() {
   const ArrProjectsData = (data) => {
     SetArrProjects(data);
   };
+//Download Template PDF
 
+const elementRef = React.useRef();
+const downloadPdf=()=>{
+  const input = elementRef.current.contentWindow.document.documentElement;
+   console.log("input",input);
+  html2canvas(input,{ useCORS: true})
+    .then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('x', 'pt', 'a4');
+      pdf.setDisplayMode('fullwidth', 'continuous', 'FullScreen');
+      pdf.addImage(imgData, 'JPEG', 0, 0,canvas.width,canvas.height);
+      // pdf.output('dataurlnewwindow');'JPEG', 28.345, 28.345, a4Width, a4Width / canvas1.width * height
+      pdf.save("download.pdf");
+    })
+  ;
+
+}
   const [cvTemplate, setCvTemplate] = useState("Cv Template");
 
   // request the new cv template with new update
 
   const [template, setTemplate] = useState("");
-  
-  const loadNewCvVersion = () => {
 
+  const loadNewCvVersion = () => {
     setLoading(true);
 
     const body = {
@@ -291,27 +306,39 @@ function EditorWrapper() {
               )}
             />
           </Switch>
+          
         </div>
-
-
+         
+        <button onClick={downloadPdf} className="button-download " >
+          <FontAwesomeIcon icon={faFileDownload} className="mr-2 mt-1" />
+          Download
+        </button>
+        
         <button onClick={loadNewCvVersion} className="cv-preview">
           <FontAwesomeIcon icon={faEye} className="mr-2" />
           Preview
         </button>
+        
       </div>
 
       <div className="right-editor d-none d-md-block w-100 w-md-50">
         {/* w-100 w-md-50 */}
-        
         {/* state with the new content "cv template " */}
-          {!loading &&
-            <iframe
+        {!loading && (
+          <iframe
             style={{ width: "100%", height: "100%" }}
             srcDoc={template}
+            ref={elementRef}
           ></iframe>
-          }
-          <BounceLoader color={color}  css={override} loading={loading}  size={80} />
+        )}
+        <BounceLoader
+          color={color}
+          css={override}
+          loading={loading}
+          size={80}
+        />
       </div>
+     
     </div>
   );
 }

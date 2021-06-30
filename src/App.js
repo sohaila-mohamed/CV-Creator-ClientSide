@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { authActions } from "./store/auth-slice";
 import About from "./components/About/About";
+import Profile from "./components/profile/profile";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ function App() {
         <Route path="/about-us" component={About} />
         <Route path="/sign-in" component={AuthWrapper} />
         <Route path="/sign-up" component={AuthWrapper} />
+        <Route path="/profile" component={Profile} />
         <Route path="*" component={Error} />
       </Switch>
       <Footer />
