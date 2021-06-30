@@ -66,12 +66,12 @@ function Header() {
     setshowDropSown(false);
   };
 
-  // const scrollToTop = () => {
-  //   window.scrollTo({
-  //     top: 950,
-  //     behavior: "smooth",
-  //   });
-  // };
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 950,
+      behavior: "smooth",
+    });
+  };
   return (
     <Navbar className="shadow" style={{ zIndex: 999 }} bg="white" expand="lg">
       <div className="container-fluid">
@@ -118,7 +118,7 @@ function Header() {
                   to="/#tips"
                   // activeClassName="Active-link"
                   className="pr-3 nav-link position-relative"
-                  // onClick={scrollToTop}
+                  onClick={scrollToTop}
                 >
                   Tips
                 </Link>

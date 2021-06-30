@@ -39,14 +39,12 @@ const Template = (props) => {
         },
       })
       .then((res) => {
-        const cvtoken=res.headers['x-cv-token'];
+        const cvtoken = res.headers["x-cv-token"];
         history.push(`/Editor/${tempID}/${cvtoken}`);
       })
       .catch((err) => {
         console.log(err);
       });
-
-    
   };
 
   return (
