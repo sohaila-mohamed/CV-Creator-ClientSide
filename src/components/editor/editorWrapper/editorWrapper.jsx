@@ -24,7 +24,7 @@ import BounceLoader from "react-spinners/BounceLoader";
 import { css } from "@emotion/react";
 
 function EditorWrapper() {
-  const { cvid, cvtoken } = useParams();
+  const { tempid , cvtoken} = useParams();
   const history = useHistory();
 
   // spinner properties
@@ -38,10 +38,11 @@ function EditorWrapper() {
   `;
 
   useEffect(() => {
-    // to get all objects from DB and set it
+
+    // to get all objects from DB and set it 
     axios
       .get(
-        "https://still-spire-04865.herokuapp.com/api/user/cv/60d85e33c80e820004b12bf6/60da11bfb994410004b4f140",
+        `https://still-spire-04865.herokuapp.com/api/user/cv/${userState.userData._id}/${cvtoken}`,
         {
           headers: {
             //   ...authState.authHeaders,
@@ -51,17 +52,18 @@ function EditorWrapper() {
         }
       )
       .then((res) => {
-        setpersonalInfo({ ...personalInfo, ...res.data.personalInfo });
-        seteducationData({ ...educationData, ...res.data.educationData });
-        setExperienceArr([...experienceArr, ...res.data.experienceData]);
-        setCoursesArrData([...coursesArr, ...res.data.coursesData]);
-        setSkillsData([...skillsData, ...res.data.skillsData]);
-        SetArrProjects([...ArrProjects, ...res.data.ProjectData]);
-        SetArrLangData([...ArrLangData, ...res.data.LangData]);
+        setpersonalInfo({  ...res.data.personalInfo });
+        seteducationData({ ...res.data.educationData });
+        setExperienceArr([...res.data.experienceData])
+        setCoursesArrData([...res.data.coursesData])
+        setSkillsData([ ...res.data.skillsData]);
+        SetArrProjects([ ...res.data.ProjectData]);
+        SetArrLangData([ ...res.data.LangData]);
         SetcareerData(res.data.Objective.careerData);
 
-        // navigate to personla info
-        history.push(`/Editor/${cvid}/${cvtoken}/PersonalInfo`);
+        // navigate to personla info 
+        history.push(`/Editor/${tempid}/${cvtoken}/PersonalInfo`)
+
       })
       .catch((err) => {
         console.log(err);
@@ -200,10 +202,15 @@ const downloadPdf=()=>{
       // userId:authState.userData._id
       userId: JSON.parse(localStorage.getItem("userData")).user._id.toString(),
       data: {
-        personalInfo: { ...personalInfo },
-        educationData: { ...educationData },
-        experienceArr: [...experienceArr],
-      },
+         Objective:{careerData},
+         coursesData: [ ...coursesArr ] ,
+         educationData:{...educationData},
+         ProjectData:[...ArrProjects],
+         personalInfo:{...personalInfo},
+         experienceData:[...experienceArr],
+         skillsData:[...skillsData],
+         LangData:[...ArrLangData]
+      }
     };
 
     axios
@@ -227,12 +234,12 @@ const downloadPdf=()=>{
   return (
     <div className="editorWrapper-container">
       <div className="left-editor w-100 w-md-50">
-        <Navigator cvid={cvid} cvtoken={cvtoken} />
+        <Navigator tempid={tempid} cvtoken={cvtoken}/>
         {/* to include each editor component here Ex education component , personal information component , ect */}
         <div className="each-form-component">
           <Switch>
             <Route
-              path="/Editor/:cvid/:cvtoken/PersonalInfo"
+              path="/Editor/:tempid/:cvtoken/PersonalInfo"
               render={() => (
                 <PersonalInfo
                   data={personalInfo}
@@ -241,7 +248,7 @@ const downloadPdf=()=>{
               )}
             />
             <Route
-              path="/Editor/:cvid/:cvtoken/Education"
+              path="/Editor/:tempid/:cvtoken/Education"
               render={() => (
                 <Education
                   data={educationData}
@@ -249,7 +256,7 @@ const downloadPdf=()=>{
                 ></Education>
               )}
             />
-            <Route path="/Editor/:cvid/:cvtoken/Experiences">
+            <Route path="/Editor/:tempid/:cvtoken/Experiences">
               <Experience
                 data={experienceData}
                 arrData={experienceArr}
@@ -258,7 +265,7 @@ const downloadPdf=()=>{
               ></Experience>
             </Route>
             <Route
-              path="/Editor/:cvid/:cvtoken/Projects"
+              path="/Editor/:tempid/:cvtoken/Projects"
               render={() => (
                 <Projects
                   Arrdata={ArrProjects}
@@ -268,11 +275,11 @@ const downloadPdf=()=>{
                 />
               )}
             />
-            <Route path="/Editor/:cvid/:cvtoken/Skills">
+            <Route path="/Editor/:tempid/:cvtoken/Skills">
               <Skills data={skillsData} setSkillsData={skillsHandler}></Skills>
             </Route>
 
-            <Route path="/Editor/:cvid/:cvtoken/Courses">
+            <Route path="/Editor/:tempid/:cvtoken/Courses">
               <Courses
                 data={courseData}
                 setCourse={courseHandler}
@@ -282,7 +289,7 @@ const downloadPdf=()=>{
             </Route>
 
             <Route
-              path="/Editor/:cvid/:cvtoken/Languages"
+              path="/Editor/:tempid/:cvtoken/Languages"
               render={() => (
                 <Languages
                   data={LangData}
@@ -293,7 +300,7 @@ const downloadPdf=()=>{
               )}
             />
             <Route
-              path="/Editor/:cvid/:cvtoken/Career-objective"
+              path="/Editor/:tempid/:cvtoken/Career-objective"
               render={() => (
                 <Career data={careerData} setCareerData={careerHandeler} />
               )}

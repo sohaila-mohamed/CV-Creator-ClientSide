@@ -66,12 +66,12 @@ function Header() {
     setshowDropSown(false);
   };
 
-  // const scrollToTop = () => {
-  //   window.scrollTo({
-  //     top: 950,
-  //     behavior: "smooth",
-  //   });
-  // };
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 950,
+      behavior: "smooth",
+    });
+  };
   return (
     <Navbar className="shadow" style={{ zIndex: 999 }} bg="white" expand="lg">
       <div className="container-fluid">
@@ -118,7 +118,7 @@ function Header() {
                   to="/#tips"
                   // activeClassName="Active-link"
                   className="pr-3 nav-link position-relative"
-                  // onClick={scrollToTop}
+                  onClick={scrollToTop}
                 >
                   Tips
                 </Link>
@@ -129,6 +129,43 @@ function Header() {
                 >
                   About-us
                 </NavLink>
+
+
+                {/* navigate to my profile  */}
+                {authState.isLoggedIn &&
+                <NavLink
+                to="/about-us"
+                activeClassName="Active-link"
+                className="pr-3 d-lg-none nav-link d-inline-block"
+                >
+                Profile
+                </NavLink>
+                
+                }
+
+                {/* navigate to my cvs in my profile */}
+                {authState.isLoggedIn &&
+                <NavLink
+                to="/about-us"
+                activeClassName="Active-link"
+                className="pr-3 d-lg-none nav-link d-inline-block"
+                >
+                My CVS
+                </NavLink>
+                
+                }
+
+                {authState.isLoggedIn &&
+                <span
+                onClick={logoutHandler}
+                activeClassName="Active-link"
+                className="pr-3 d-lg-none nav-link d-inline-block cursor-pointer"
+                >
+                Logout
+                </span>
+                
+                }
+
                 {!authState.isLoggedIn && (
                   <NavLink
                     to="/sign-in"

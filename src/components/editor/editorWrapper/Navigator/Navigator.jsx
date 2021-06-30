@@ -20,7 +20,7 @@ function Navigator(props) {
 
       <div className="each-section">
         <NavLink
-          to={`/Editor/${props.cvid}/${props.cvtoken}/PersonalInfo`}
+          to={`/Editor/${props.tempid}/${props.cvtoken}/PersonalInfo`}
           exact
           className="each-section-link"
           activeClassName="active-route"
@@ -31,7 +31,7 @@ function Navigator(props) {
 
       <div className="each-section">
         <NavLink
-          to={`/Editor/${props.cvid}/${props.cvtoken}/Career-objective`}
+          to={`/Editor/${props.tempid}/${props.cvtoken}/Career-objective`}
           className="each-section-link"
           exact
           activeClassName="active-route"
@@ -43,7 +43,7 @@ function Navigator(props) {
 
       <div className="each-section">
         <NavLink
-          to={`/Editor/${props.cvid}/${props.cvtoken}/Education`}
+          to={`/Editor/${props.tempid}/${props.cvtoken}/Education`}
           className="each-section-link"
           exact
           activeClassName="active-route"
@@ -54,7 +54,7 @@ function Navigator(props) {
 
       <div className="each-section">
         <NavLink
-        to={`/Editor/${props.cvid}/${props.cvtoken}/Experiences`}
+        to={`/Editor/${props.tempid}/${props.cvtoken}/Experiences`}
           className="each-section-link"
           exact
           activeClassName="active-route"
@@ -65,7 +65,7 @@ function Navigator(props) {
 
       <div className="each-section">
         <NavLink
-        to={`/Editor/${props.cvid}/${props.cvtoken}/Projects`}
+        to={`/Editor/${props.tempid}/${props.cvtoken}/Projects`}
           className="each-section-link"
           exact
           activeClassName="active-route"
@@ -76,7 +76,7 @@ function Navigator(props) {
 
       <div className="each-section">
         <NavLink
-        to={`/Editor/${props.cvid}/${props.cvtoken}/Skills`}
+        to={`/Editor/${props.tempid}/${props.cvtoken}/Skills`}
           className="each-section-link"
           exact
           activeClassName="active-route"
@@ -87,7 +87,7 @@ function Navigator(props) {
 
       <div className="each-section">
         <NavLink
-        to={`/Editor/${props.cvid}/${props.cvtoken}/Courses`}
+        to={`/Editor/${props.tempid}/${props.cvtoken}/Courses`}
           className="each-section-link"
           exact
           activeClassName="active-route"
@@ -98,7 +98,7 @@ function Navigator(props) {
 
       <div className="each-section">
         <NavLink
-          to={`/Editor/${props.cvid}/${props.cvtoken}/Languages`}
+          to={`/Editor/${props.tempid}/${props.cvtoken}/Languages`}
           className="each-section-link"
           exact
           activeClassName="active-route"
