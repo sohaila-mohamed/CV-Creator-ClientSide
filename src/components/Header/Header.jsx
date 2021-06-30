@@ -121,6 +121,43 @@ function Header() {
                 >
                   About-us
                 </NavLink>
+
+
+                {/* navigate to my profile  */}
+                {authState.isLoggedIn &&
+                <NavLink
+                to="/about-us"
+                activeClassName="Active-link"
+                className="pr-3 d-lg-none nav-link d-inline-block"
+                >
+                Profile
+                </NavLink>
+                
+                }
+
+                {/* navigate to my cvs in my profile */}
+                {authState.isLoggedIn &&
+                <NavLink
+                to="/about-us"
+                activeClassName="Active-link"
+                className="pr-3 d-lg-none nav-link d-inline-block"
+                >
+                My CVS
+                </NavLink>
+                
+                }
+
+                {authState.isLoggedIn &&
+                <span
+                onClick={logoutHandler}
+                activeClassName="Active-link"
+                className="pr-3 d-lg-none nav-link d-inline-block cursor-pointer"
+                >
+                Logout
+                </span>
+                
+                }
+
                 {!authState.isLoggedIn && (
                   <NavLink
                     to="/sign-in"

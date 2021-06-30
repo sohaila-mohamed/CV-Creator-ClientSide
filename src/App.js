@@ -31,7 +31,7 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/Editor/:cvid/:cvtoken" component={EditorWrapper} />
+        <Route path="/Editor/:tempid/:cvtoken" component={EditorWrapper} />
         <Route path="/templates/:cat" component={Categories} />
         <Route path="/about-us" component={About} />
         <Route path="/sign-in" component={AuthWrapper} />

@@ -23,6 +23,7 @@ const authSlice = createSlice({
             state.authHeaders=null;
             state.isLoggedIn=false;
             localStorage.removeItem("userData");
+            
         }
     }
 })
