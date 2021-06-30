@@ -24,6 +24,10 @@ const Profile = () => {
       history.push("/");
     }
   }, [userAuth.isLoggedIn]);
+  const { firstName, lastName, cvs } = JSON.parse(
+    localStorage.getItem("userData")
+  ).user;
+  console.log(firstName, lastName, cvs);
   return (
     <div>
       <div className="cover">
@@ -50,7 +54,9 @@ const Profile = () => {
                 src={avatar}
               />
             </div>
-            <p className="sideNav__profileName text-uppercase">emily blunt</p>
+            <p className="sideNav__profileName text-uppercase">
+              {firstName} {lastName}
+            </p>
             <div className="ml-5 mb-3 mr-5">
               <div className="sideNav__type1 shadow pl-3 pl-lg-2 pb-2 pr-5 mb-3">
                 <a href="#" className="font-weight-bold text-uppercase ">
@@ -90,23 +96,26 @@ const Profile = () => {
           </div>
 
           <div className="d-flex flex-wrap justify-content-center mb-5">
-            <Card
-              className=" border-custom mr-1 apper mb-5 mr-3"
-              style={{ width: "18rem" }}
-            >
-              <Card.Img
-                variant="top"
-                src={cv2}
-                className=" img-fluid  p-2 "
-                style={{ background: "#6b82b7" }}
-              />
-              <div className="cvContainer__cvCard__panel d-flex align-items-center justify-content-center">
-                <img alt="hover" src={share} className="mr-4" />
-                <img alt="hover" src={view} className="mr-4" />
-                <img alt="hover" src={download} className="mr-4" />
-              </div>
-            </Card>
-            <Card
+            {cvs.map((cv, index) => (
+              <Card
+                key={index + 1}
+                className=" border-custom mr-1 apper mb-5 mr-3"
+                style={{ width: "18rem" }}
+              >
+                <Card.Img
+                  variant="top"
+                  src={cv.image}
+                  className=" img-fluid  p-2 "
+                  style={{ background: "#6b82b7" }}
+                />
+                <div className="cvContainer__cvCard__panel d-flex align-items-center justify-content-center">
+                  <img alt="hover" src={share} className="mr-4" />
+                  <img alt="hover" src={view} className="mr-4" />
+                  <img alt="hover" src={download} className="mr-4" />
+                </div>
+              </Card>
+            ))}
+            {/* <Card
               className="border-custom mr-1 apper mb-5 mr-3"
               style={{ width: "18rem" }}
             >
@@ -137,7 +146,7 @@ const Profile = () => {
                 <img alt="hover" src={view} className="mr-4" />
                 <img alt="hover" src={download} className="mr-4" />
               </div>
-            </Card>
+            </Card> */}
             <Card
               className=" border-custom custom align-items-center justify-content-center"
               style={{ width: "18rem" }}
