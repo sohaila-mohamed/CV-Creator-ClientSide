@@ -68,6 +68,35 @@ function EditorWrapper() {
       .catch((err) => {
         console.log(err);
       });
+
+      // get the cv First Time 
+      const body = {
+        cvId: cvtoken,
+        // userId:authState.userData._id
+        userId: JSON.parse(localStorage.getItem("userData")).user._id.toString(),
+        data: { }
+      };
+  
+      axios
+        .put("https://still-spire-04865.herokuapp.com/api/user/cv/update", body, {
+          headers: {
+            //   ...authState.authHeaders,
+            ...JSON.parse(localStorage.getItem("userData")).headers,
+            "Access-Control-Allow-Origin": "*",
+          },
+        })
+        .then(async (res) => {
+          setTemplate(res.data);
+          setLoading(false);
+        })
+  
+        .catch((err) => {
+          console.log("Invalid Template selection");
+        });
+
+
+
+
   }, []);
 
   const userState = useSelector((state) => state.auth);

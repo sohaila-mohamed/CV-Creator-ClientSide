@@ -15,6 +15,7 @@ import Col from "react-bootstrap/Col";
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { NavLink} from "react-router-dom";
 
 const Profile = () => {
   const userAuth = useSelector((state) => state.auth);
@@ -53,9 +54,9 @@ const Profile = () => {
             <p className="sideNav__profileName text-uppercase">emily blunt</p>
             <div className="ml-5 mb-3 mr-5">
               <div className="sideNav__type1 shadow pl-3 pl-lg-2 pb-2 pr-5 mb-3">
-                <a href="#" className="font-weight-bold text-uppercase ">
+                <NavLink to="profile/cvs" className="font-weight-bold text-uppercase ">
                   my cv's
-                </a>
+                </NavLink>
               </div>
               <div className="sideNav__type2 pb-1 mb-3">
                 <a href="#" className="text-uppercase">
